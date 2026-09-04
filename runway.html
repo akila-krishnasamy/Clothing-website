@@ -142,59 +142,126 @@
     .btn-add-all { width: 100%; background: var(--text-dark); color: #ffffff; border: none; padding: 9px; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.25s ease, transform 0.15s; }
     .btn-add-all:hover { background: var(--gold-primary); color: #ffffff; transform: translateY(-1px); }
 
-    /* Responsive */
-    @media (max-width: 1080px) {
-      .runway-viewport { grid-template-columns: 280px 1fr 320px; }
+    /* ── Tablet: 769px – 1199px ─────────────────────────────────────── */
+    @media (max-width: 1199px) {
+      .runway-viewport { grid-template-columns: 280px 1fr 300px; }
     }
+    @media (max-width: 1050px) {
+      .runway-viewport { grid-template-columns: 240px 1fr 260px; }
+      .left-360-panel { padding: 10px; }
+      .right-accessories-panel { padding: 10px; }
+    }
+
+    /* ── Tablet stacked: 769px – 900px ──────────────────────────────── */
     @media (max-width: 900px) {
-      body { overflow: auto; }
-      .runway-viewport { grid-template-columns: 1fr; height: auto; max-height: none; }
-      .left-360-panel { height: 420px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
-      .center-stage { height: 480px; }
-      .right-accessories-panel { height: auto; }
+      body { overflow-x: hidden; overflow-y: auto; }
+      .runway-viewport {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+      }
+      .left-360-panel {
+        height: 380px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        flex-direction: row;
+        align-items: stretch;
+        padding: 12px;
+      }
+      .character-viewport-frame { border-radius: 6px; }
+      .view-toggle-wrap { flex-direction: column; width: 90px; gap: 6px; }
+      .btn-view-toggle { padding: 6px; font-size: 8px; }
+      .center-stage { height: 460px; }
+      .right-accessories-panel { height: auto; max-height: none; border-left: none; border-top: 1px solid var(--border-subtle); }
+      .items-scroll-list { max-height: none; }
+    }
+
+    /* ── Mobile: ≤ 767px ─────────────────────────────────────────────── */
+    @media (max-width: 767px) {
+      body { overflow-x: hidden; overflow-y: auto; }
+
+      .runway-viewport {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+      }
+
+      /* 1. Outfit Preview Viewer */
+      .left-360-panel {
+        height: auto;
+        min-height: 360px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        flex-direction: column;
+        padding: 10px;
+        gap: 8px;
+      }
+      .character-viewport-frame { min-height: 260px; border-radius: 6px; }
+      .view-toggle-wrap { flex-direction: row; width: 100%; padding: 8px 10px; gap: 8px; }
+      .btn-view-toggle { flex: 1; font-size: 9px; padding: 10px 6px; min-height: 44px; }
+      .panel-header-badge { align-self: flex-start; }
+
+      /* 2. Main Model Stage */
+      .center-stage {
+        height: auto;
+        min-height: 380px;
+        padding: 14px;
+      }
+      .center-model-container { padding-bottom: 60px; }
+      .center-model-img { max-height: 42vh; }
+      .stage-header h1 { font-size: 16px; letter-spacing: 2px; }
+      .stage-header p { display: none; }
+
+      /* Controls bar — touch-friendly */
+      .controls-bar { padding: 6px 14px; gap: 10px; bottom: 10px; }
+      .nav-btn { width: 36px; height: 36px; font-size: 14px; }
+
+      /* 3. Accessories Panel — full width below */
+      .right-accessories-panel {
+        height: auto;
+        max-height: none;
+        border-left: none;
+        border-top: 1px solid var(--border-subtle);
+        padding: 12px;
+        overflow: visible;
+      }
+      .items-scroll-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        max-height: none;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+      }
+      .items-scroll-list::-webkit-scrollbar { height: 4px; }
+      .items-scroll-list::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
+      .outfit-item-card {
+        flex: 0 0 140px;
+        min-width: 140px;
+      }
+      .footer-summary { padding: 10px; }
+      .btn-add-all { min-height: 44px; font-size: 10px; }
+    }
+
+    /* ── Very small phones: < 375px ─────────────────────────────────── */
+    @media (max-width: 374px) {
+      .character-viewport-frame { min-height: 220px; }
+      .center-stage { min-height: 320px; }
+      .outfit-item-card { flex: 0 0 120px; min-width: 120px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-announcement-bar text-center">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-      <span class="d-none d-md-inline-block"><i class="bi bi-telephone me-1"></i> CLIENT CARE: +91 98765 43210</span>
-      <span>SPRING SUMMER 2026 RUNWAY LOOKBOOK — <a href="index.html" class="ms-1">VISIT MAIN STORE</a></span>
-      <span class="d-none d-sm-inline-block"><i class="bi bi-globe me-1"></i> EN / INR (₹)</span>
-    </div>
-  </div>
-
-  <!-- Editorial Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-editorial">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-      <a class="navbar-brand" href="index.html">VALENCE</a>
-      
-      <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex">
-        <ul class="navbar-nav align-items-center gap-1">
-          <li class="nav-item"><a class="nav-link nav-link-editorial active text-warning" href="runway.html"><i class="bi bi-stars me-1"></i> RUNWAY SHOP</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="collection.html">COLLECTION</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#asymmetric-section">GALLERY</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#campaign-section">LOOKBOOK</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#story-section">ABOUT</a></li>
-        </ul>
-      </div>
-
-      <div class="d-flex align-items-center gap-1">
-        <button class="nav-icon-btn" title="Search"><i class="bi bi-search"></i></button>
-        <button class="nav-icon-btn" title="Account"><i class="bi bi-person"></i></button>
-        <button class="nav-icon-btn" title="Wishlist">
-          <i class="bi bi-heart"></i>
-          <span class="cart-badge" id="global-wishlist-count">0</span>
-        </button>
-        <button class="nav-icon-btn" title="Bag">
-          <i class="bi bi-bag"></i>
-          <span class="cart-badge" id="global-cart-count">0</span>
-        </button>
-      </div>
-    </div>
-  </nav>
+  <!-- Dynamic Shared Navbar (from js/components.js) -->
+  <div id="site-navbar"></div>
 
   <!-- 3-Column Runway Viewport -->
   <div class="runway-viewport">
@@ -578,5 +645,7 @@
     // Initial Render
     renderLook(0);
   </script>
+  <!-- Shared Dynamic Components (Navbar + Footer) -->
+  <script src="js/components.js"></script>
 </body>
 </html>

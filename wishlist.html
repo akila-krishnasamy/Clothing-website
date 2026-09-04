@@ -16,35 +16,8 @@
 </head>
 <body class="bg-cream">
 
-  <!-- Editorial Announcement Bar -->
-  <div class="announcement-editorial py-2 px-3 text-center border-bottom">
-    <span class="announcement-text extra-small uppercase fw-bold tracking-widest me-2">EXPRESS DELIVERY ACROSS INDIA</span>
-    <span class="text-muted extra-small">| &nbsp;Complimentary Shipping On Orders Above ₹2,999</span>
-  </div>
-
-  <!-- Editorial Navigation Bar -->
-  <header class="navbar-editorial sticky-top bg-white border-bottom">
-    <div class="container-fluid px-lg-5">
-      <div class="d-flex align-items-center justify-content-between py-3">
-        <a href="index.html" class="nav-brand font-serif fs-2 fw-bold text-dark text-decoration-none">Valence</a>
-        
-        <ul class="d-none d-md-flex align-items-center gap-4 list-unstyled mb-0 font-serif fs-6">
-          <li><a href="index.html#collection-section" class="nav-link-editorial">COLLECTION</a></li>
-          <li><a href="index.html#asymmetric-section" class="nav-link-editorial">EDITORIAL</a></li>
-          <li><a href="runway.html" class="nav-link-editorial text-gold"><i class="bi bi-stars me-1"></i> RUNWAY SHOWCASE</a></li>
-          <li><a href="contact.html" class="nav-link-editorial">CONTACT</a></li>
-        </ul>
-
-        <div class="d-flex align-items-center gap-3">
-          <a href="wishlist.html" class="text-dark fs-5 text-decoration-none" title="Wishlist"><i class="bi bi-heart-fill text-danger"></i></a>
-          <a href="cart.html" class="text-dark fs-5 text-decoration-none position-relative" title="Shopping Bag">
-            <i class="bi bi-bag"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark extra-small" id="cart-badge-count">2</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <!-- Dynamic Shared Navbar -->
+  <div id="site-navbar"></div>
 
   <!-- Page Header -->
   <section class="py-5 bg-white border-bottom text-center">
@@ -217,6 +190,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/components.js"></script>
   <script>
     document.querySelectorAll('.remove-wishlist-item').forEach(btn => {
       btn.addEventListener('click', () => {

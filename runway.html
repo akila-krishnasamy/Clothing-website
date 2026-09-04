@@ -486,7 +486,7 @@
       <div class="runway-header-actions">
         <a href="#" data-bs-toggle="modal" data-bs-target="#accountModal">LOGIN</a>
         <a href="#" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
-        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas"><i class="bi bi-heart"></i></a>
+        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#wishlistOffcanvas"><i class="bi bi-heart"></i></a>
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">CART (<span id="runway-cart-count">0</span>)</a>
       </div>
     </header>
@@ -930,31 +930,38 @@
       const breakdownModalEl = document.getElementById('outfitBreakdownModal');
       const breakdownModal = breakdownModalEl ? new bootstrap.Modal(breakdownModalEl) : null;
 
-      // Data map for look outfit breakdowns (Exact matching model items)
+      // Data map for look outfit breakdowns (3-4 matching products per look)
       const LOOK_DATA = {
         'prod-5': {
           lookNum: 'LOOK 11',
           mainImg: 'images/product-5.jpg',
           top: { name: 'ZR Football Jersey Forest Stripe', price: 4999, img: 'images/product-5.jpg', id: 'prod-5' },
-          pant: { name: 'Dark Washed Relaxed Denim Pant', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
+          pant: { name: 'Dark Washed Relaxed Denim Pant', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
+          altTop: { name: 'Boxy SS Overshirt Blue Stripe', price: 5999, img: 'images/product-2.jpg', id: 'prod-3' },
+          accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
         },
         'prod-3': {
           lookNum: 'LOOK 15',
           mainImg: 'images/product-2.jpg',
           top: { name: 'Boxy SS Overshirt Blue Stripe', price: 5999, img: 'images/product-2.jpg', id: 'prod-3' },
-          pant: { name: 'Tailored Navy Work Trousers', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
+          pant: { name: 'Tailored Navy Work Trousers', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
+          altTop: { name: 'Steed Raglan Lounge Tee Vintage', price: 3999, img: 'images/product-1.jpg', id: 'prod-2' },
+          accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
         },
         'prod-4': {
           lookNum: 'LOOK 13',
           mainImg: 'images/product-3.jpg',
           top: { name: 'Steed Raglan Lounge Tee Vintage', price: 3999, img: 'images/product-1.jpg', id: 'prod-2' },
-          pant: { name: 'Legacy Work Pant Sand', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
+          pant: { name: 'Legacy Work Pant Sand', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
+          altTop: { name: 'ZR Football Jersey Forest Stripe', price: 4999, img: 'images/product-5.jpg', id: 'prod-5' },
+          accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
         },
         'prod-2': {
           lookNum: 'LOOK 14',
           mainImg: 'images/product-1.jpg',
           top: { name: 'Steed Raglan Lounge Tee Vintage', price: 3999, img: 'images/product-1.jpg', id: 'prod-2' },
-          pant: { name: 'Washed Black Denim Trousers', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
+          pant: { name: 'Washed Black Denim Trousers', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
+          altTop: { name: 'Boxy SS Overshirt Blue Stripe', price: 5999, img: 'images/product-2.jpg', id: 'prod-3' }
         },
         'prod-1': {
           lookNum: 'LOOK 12',
@@ -1048,7 +1055,7 @@
         }
       });
 
-      // Render Right Panel Items Dynamically For Active Look
+      // Render Right Panel Items Dynamically For Active Look (3-4 products listed)
       let activeLookId = 'prod-5';
 
       function renderRightPanelForLook(lookId) {
@@ -1100,6 +1107,25 @@
               <div class="d-flex justify-content-between align-items-center mt-2">
                 <div class="runway-card-price text-dark fw-bold">₹${look.pant.price.toLocaleString('en-IN')}</div>
                 <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.pant.id}', '32', 1)">ADD TO BAG</button>
+              </div>
+            </div>
+          `;
+        }
+
+        if (look.altTop) {
+          cardsHTML += `
+            <div class="runway-product-card-ref" id="right-card-alttop" data-pin="alttop">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="outfit-category-badge"><i class="bi bi-layers-fill text-gold me-1"></i> MATCHING ALTERNATIVE TOP</span>
+                <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+              </div>
+              <div class="runway-card-img-box">
+                <img src="${look.altTop.img}" alt="${look.altTop.name}" class="runway-card-img">
+              </div>
+              <h3 class="runway-card-title">${look.altTop.name}</h3>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="runway-card-price text-dark fw-bold">₹${look.altTop.price.toLocaleString('en-IN')}</div>
+                <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.altTop.id}', 'M', 1)">ADD TO BAG</button>
               </div>
             </div>
           `;

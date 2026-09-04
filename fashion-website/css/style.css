@@ -257,6 +257,8 @@ button {
   text-transform: uppercase;
   position: relative;
   z-index: 1050;
+}
+
 /* Outfit Category Badge Alignment Fix */
 .outfit-category-badge {
   display: inline-flex;

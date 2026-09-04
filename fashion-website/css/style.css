@@ -29,7 +29,7 @@
   --transition-main: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.2s ease;
 
-  --nav-height: 80px;
+  --nav-height: 52px;
 }
 
 /* --------------------------------------------------------------------------
@@ -266,7 +266,7 @@ button {
   width: 100%;
   height: var(--nav-height);
   z-index: 1000;
-  padding: 0 2rem;
+  padding: 0.25rem 1.5rem;
   transition: background-color 0.4s var(--ease-out-expo),
               top 0.4s var(--ease-out-expo),
               box-shadow 0.4s ease,
@@ -275,15 +275,15 @@ button {
 
 .navbar-editorial.scrolled {
   top: 0;
-  background-color: rgba(250, 249, 245, 0.88);
+  background-color: rgba(250, 249, 245, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-light);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .navbar-editorial .navbar-brand {
-  font-size: 1.75rem;
+  font-size: 1.4rem !important;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -296,12 +296,12 @@ button {
 }
 
 .nav-link-editorial {
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #FFFFFF;
-  padding: 0.5rem 1rem !important;
+  padding: 0.35rem 0.75rem !important;
   position: relative;
   transition: color 0.3s ease;
 }

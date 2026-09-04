@@ -615,57 +615,19 @@
 
       </section>
 
-      <!-- RIGHT 35%: SCROLLABLE PRODUCT CARDS FEED -->
+      <!-- RIGHT 35%: SCROLLABLE OUTFIT PIECES & ACCESSORIES FEED -->
       <section class="runway-products-panel" id="right-product-scroller">
         
-        <div class="runway-product-card-ref active" id="card-prod-5" data-id="prod-5" data-look="11">
-          <i class="bi bi-heart runway-card-heart" data-id="prod-5"></i>
-          <div class="runway-card-img-box">
-            <img src="images/product-5.jpg" alt="ZR Football Jersey Forest Stripe" class="runway-card-img">
+        <div class="p-3 border-bottom mb-3 bg-cream d-flex align-items-center justify-content-between sticky-top" style="z-index: 10;">
+          <div>
+            <span class="text-uppercase extra-small text-gold fw-bold tracking-widest">OUTFIT PIECES & ACCESSORIES</span>
+            <h4 class="font-serif fs-5 mb-0 fw-bold" id="right-look-heading">LOOK 11 — MATCHING ITEMS</h4>
           </div>
-          <h3 class="runway-card-title">ZR FOOTBALL JERSEY FOREST STRIPE</h3>
-          <div class="runway-card-price">₹4,999</div>
-          <i class="bi bi-plus-lg runway-card-plus trigger-breakdown" data-id="prod-5"></i>
+          <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold px-3 trigger-breakdown" id="right-btn-breakdown" data-id="prod-5">VIEW PRICING</button>
         </div>
 
-        <div class="runway-product-card-ref" id="card-prod-3" data-id="prod-3" data-look="15">
-          <i class="bi bi-heart runway-card-heart" data-id="prod-3"></i>
-          <div class="runway-card-img-box">
-            <img src="images/product-2.jpg" alt="Boxy SS Overshirt Blue Stripe" class="runway-card-img">
-          </div>
-          <h3 class="runway-card-title">BOXY SS OVERSHIRT BLUE STRIPE</h3>
-          <div class="runway-card-price">₹5,999</div>
-          <i class="bi bi-plus-lg runway-card-plus trigger-breakdown" data-id="prod-3"></i>
-        </div>
-
-        <div class="runway-product-card-ref" id="card-prod-4" data-id="prod-4" data-look="13">
-          <i class="bi bi-heart runway-card-heart" data-id="prod-4"></i>
-          <div class="runway-card-img-box">
-            <img src="images/product-3.jpg" alt="Legacy Work Pant Sand" class="runway-card-img">
-          </div>
-          <h3 class="runway-card-title">LEGACY WORK PANT SAND</h3>
-          <div class="runway-card-price">₹6,999</div>
-          <i class="bi bi-plus-lg runway-card-plus trigger-breakdown" data-id="prod-4"></i>
-        </div>
-
-        <div class="runway-product-card-ref" id="card-prod-2" data-id="prod-2" data-look="14">
-          <i class="bi bi-heart runway-card-heart" data-id="prod-2"></i>
-          <div class="runway-card-img-box">
-            <img src="images/product-1.jpg" alt="Steed Raglan Lounge Tee" class="runway-card-img">
-          </div>
-          <h3 class="runway-card-title">STEED RAGLAN LOUNGE TEE VINTAGE</h3>
-          <div class="runway-card-price">₹3,999</div>
-          <i class="bi bi-plus-lg runway-card-plus trigger-breakdown" data-id="prod-2"></i>
-        </div>
-
-        <div class="runway-product-card-ref" id="card-prod-1" data-id="prod-1" data-look="12">
-          <i class="bi bi-heart runway-card-heart" data-id="prod-1"></i>
-          <div class="runway-card-img-box">
-            <img src="images/product-4.jpg" alt="Steed Cap Vintage White" class="runway-card-img">
-          </div>
-          <h3 class="runway-card-title">STEED CAP VINTAGE WHITE/BLACK</h3>
-          <div class="runway-card-price">₹2,499</div>
-          <i class="bi bi-plus-lg runway-card-plus trigger-breakdown" data-id="prod-1"></i>
+        <div id="right-dynamic-pieces-list" class="d-flex flex-direction-column flex-column gap-3">
+          <!-- Dynamically populated via JS depending on active left model look -->
         </div>
 
       </section>
@@ -906,16 +868,109 @@
         }
       });
 
+      // Render Right Panel Items Dynamically For Active Look
+      let activeLookId = 'prod-5';
+
+      function renderRightPanelForLook(lookId) {
+        if (activeLookId === lookId && document.getElementById('right-card-top')) return;
+        activeLookId = lookId;
+
+        const look = LOOK_DATA[lookId] || LOOK_DATA['prod-5'];
+        const heading = document.getElementById('right-look-heading');
+        const btnBreakdown = document.getElementById('right-btn-breakdown');
+        const container = document.getElementById('right-dynamic-pieces-list');
+
+        if (heading) heading.textContent = `${look.lookNum} — MATCHING ITEMS`;
+        if (btnBreakdown) btnBreakdown.setAttribute('data-id', lookId);
+
+        if (!container) return;
+
+        container.innerHTML = `
+          <!-- Item 1: Top / T-Shirt -->
+          <div class="runway-product-card-ref active" id="right-card-top" data-pin="top">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="outfit-category-badge">👔 TOP / T-SHIRT (PIN 1)</span>
+              <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+            </div>
+            <div class="runway-card-img-box">
+              <img src="${look.top.img}" alt="${look.top.name}" class="runway-card-img">
+            </div>
+            <h3 class="runway-card-title">${look.top.name}</h3>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div class="runway-card-price text-dark fw-bold">₹${look.top.price.toLocaleString('en-IN')}</div>
+              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.top.id}', 'M', 1)">ADD TO BAG</button>
+            </div>
+          </div>
+
+          <!-- Item 2: Bottom / Pant -->
+          <div class="runway-product-card-ref" id="right-card-pant" data-pin="pant">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="outfit-category-badge">👖 BOTTOM / PANT (PIN 2)</span>
+              <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+            </div>
+            <div class="runway-card-img-box">
+              <img src="${look.pant.img}" alt="${look.pant.name}" class="runway-card-img">
+            </div>
+            <h3 class="runway-card-title">${look.pant.name}</h3>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div class="runway-card-price text-dark fw-bold">₹${look.pant.price.toLocaleString('en-IN')}</div>
+              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.pant.id}', '32', 1)">ADD TO BAG</button>
+            </div>
+          </div>
+
+          <!-- Item 3: Accessory -->
+          <div class="runway-product-card-ref" id="right-card-acc" data-pin="acc">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="outfit-category-badge">🧢 ACCESSORY / FINISHING TOUCH</span>
+              <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+            </div>
+            <div class="runway-card-img-box">
+              <img src="${look.accessory.img}" alt="${look.accessory.name}" class="runway-card-img">
+            </div>
+            <h3 class="runway-card-title">${look.accessory.name}</h3>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div class="runway-card-price text-dark fw-bold">₹${look.accessory.price.toLocaleString('en-IN')}</div>
+              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.accessory.id}', 'ONE SIZE', 1)">ADD TO BAG</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // Initialize right panel for initial look
+      renderRightPanelForLook('prod-5');
+
+      // Handle Hotspot Pin clicks to highlight right side card
+      document.addEventListener('click', (e) => {
+        const topPin = e.target.closest('.top-pin');
+        const pantPin = e.target.closest('.pant-pin');
+
+        if (topPin) {
+          e.stopPropagation();
+          const cardTop = document.getElementById('right-card-top');
+          if (cardTop) {
+            document.querySelectorAll('.runway-product-card-ref').forEach(c => c.classList.remove('active'));
+            cardTop.classList.add('active');
+            cardTop.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        } else if (pantPin) {
+          e.stopPropagation();
+          const cardPant = document.getElementById('right-card-pant');
+          if (cardPant) {
+            document.querySelectorAll('.runway-product-card-ref').forEach(c => c.classList.remove('active'));
+            cardPant.classList.add('active');
+            cardPant.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+      });
+
       // Synchronize Dual Scrollers (Left horizontal runway stage & Right vertical products)
       const leftScroller = document.getElementById('left-runway-scroller');
       const rightScroller = document.getElementById('right-product-scroller');
       const slides = document.querySelectorAll('.runway-look-slide');
-      const cards = document.querySelectorAll('.runway-product-card-ref');
       const btnPrev = document.getElementById('btn-runway-prev');
       const btnNext = document.getElementById('btn-runway-next');
 
-      if (leftScroller && rightScroller) {
-        // Prev/Next Navigation Buttons
+      if (leftScroller) {
         btnPrev?.addEventListener('click', () => {
           leftScroller.scrollBy({ left: -leftScroller.clientWidth, behavior: 'smooth' });
         });
@@ -924,7 +979,7 @@
           leftScroller.scrollBy({ left: leftScroller.clientWidth, behavior: 'smooth' });
         });
 
-        // Synchronize right active card when left scroller scrolls horizontally (left-to-right)
+        // Synchronize right active card feed when left scroller scrolls horizontally
         leftScroller.addEventListener('scroll', () => {
           let currentSlideId = null;
           slides.forEach(slide => {
@@ -936,29 +991,8 @@
           });
 
           if (currentSlideId) {
-            cards.forEach(c => {
-              if (c.getAttribute('data-id') === currentSlideId) {
-                c.classList.add('active');
-                c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              } else {
-                c.classList.remove('active');
-              }
-            });
+            renderRightPanelForLook(currentSlideId);
           }
-        });
-
-        // Click card on right to smooth scroll left stage horizontally
-        cards.forEach(card => {
-          card.addEventListener('click', (e) => {
-            if (e.target.classList.contains('runway-card-heart') || e.target.classList.contains('runway-card-plus')) return;
-            const targetId = card.getAttribute('data-id');
-            const targetSlide = document.querySelector(`.runway-look-slide[data-id="${targetId}"]`);
-            if (targetSlide) {
-              targetSlide.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-            }
-            cards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-          });
         });
       }
     });

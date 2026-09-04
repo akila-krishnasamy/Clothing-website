@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VALENCE STUDIOS — 360° Luxury Runway Lookbook</title>
-  <meta name="description" content="VALENCE STUDIOS Spring Summer 2026 Interactive 360° Runway Lookbook and Shop the Look Accessories.">
+  <meta name="description" content="VALENCE STUDIOS Spring Summer 2026 Interactive 360° Runway Lookbook and Complete Product Catalog.">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>V</text></svg>">
@@ -49,12 +49,14 @@
     .cart-badge { position: absolute; top: 1px; right: 3px; background: var(--gold-primary); color: #fff; font-size: 9px; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
     /* Main 3-Column Studio Layout */
-    .runway-viewport { display: grid; grid-template-columns: 340px minmax(0, 1fr) 380px; height: calc(100vh - 90px); min-height: 640px; background: #eaebee; position: relative; overflow: hidden; }
+    .runway-viewport { display: grid; grid-template-columns: 350px minmax(0, 1fr) 400px; height: calc(100vh - 90px); min-height: 650px; background: #eaebee; position: relative; overflow: hidden; }
 
     /* 1. LEFT: 360° Studio Viewer */
-    .left-360-panel { background: #e3e5e9; border-right: 1px solid var(--border-subtle); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 22px 18px; user-select: none; }
+    .left-360-panel { background: #e3e5e9; border-right: 1px solid var(--border-subtle); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 20px 16px; user-select: none; }
+    
     .panel-header-badge { display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid rgba(0,0,0,0.1); border-radius: 30px; padding: 6px 16px; box-shadow: var(--shadow-sm); }
     .panel-header-badge i { color: var(--gold-primary); font-size: 14px; animation: spin 8s linear infinite; }
+    .panel-header-badge.spinning i { animation-duration: 3s; }
     .panel-header-badge span { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--text-dark); text-transform: uppercase; }
 
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -62,13 +64,19 @@
     .model-360-wrap { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; cursor: grab; perspective: 1000px; }
     .model-360-wrap:active { cursor: grabbing; }
 
-    .model-360-img { max-height: 58vh; height: 480px; width: auto; object-fit: contain; filter: drop-shadow(0 12px 25px rgba(0,0,0,0.12)); transition: transform 0.15s ease-out; }
+    .model-360-img { max-height: 54vh; height: 450px; width: auto; object-fit: contain; filter: drop-shadow(0 12px 25px rgba(0,0,0,0.12)); transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
 
-    .pose-indicator-bar { display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 5; background: #ffffff; padding: 8px 18px; border-radius: 20px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); }
-    .angle-text { font-size: 10px; letter-spacing: 2px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
-    .angle-dots { display: flex; gap: 6px; }
-    .angle-dot { width: 6px; height: 6px; border-radius: 50%; background: #d0d3da; transition: all 0.2s; }
-    .angle-dot.active { background: var(--gold-primary); transform: scale(1.4); }
+    /* Interactive 360 Controls Bar on Left */
+    .view-360-controls-wrap { width: 100%; display: flex; flex-direction: column; gap: 10px; align-items: center; z-index: 5; background: #ffffff; padding: 12px 16px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); }
+    
+    .btn-360-group { display: flex; align-items: center; gap: 6px; width: 100%; justify-content: center; }
+    .btn-360-action { background: #f0f2f5; border: 1px solid var(--border-subtle); color: var(--text-dark); padding: 5px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 4px; }
+    .btn-360-action:hover, .btn-360-action.active { background: var(--gold-primary); color: #fff; border-color: var(--gold-primary); }
+
+    .angle-slider-wrap { width: 100%; display: flex; align-items: center; gap: 10px; }
+    .angle-range-slider { flex: 1; accent-color: var(--gold-primary); height: 4px; cursor: pointer; }
+
+    .angle-text { font-size: 10px; letter-spacing: 1.5px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
 
     /* 2. CENTER: Main Runway Model Stage */
     .center-stage { position: relative; overflow: hidden; background: radial-gradient(circle at 50% 45%, #ffffff 0%, #eceee6 55%, #dfd5c9 100%); display: flex; flex-direction: column; justify-content: space-between; padding: 30px; }
@@ -93,47 +101,57 @@
     .expand-btn { background: none; border: none; color: var(--text-muted); font-size: 15px; cursor: pointer; transition: color 0.2s; }
     .expand-btn:hover { color: var(--text-dark); }
 
-    /* 3. RIGHT: High-Fashion Outfit Accessories Panel */
+    /* 3. RIGHT: Complete Store Product Catalog & Accessories Panel */
     .right-accessories-panel { background: #ffffff; border-left: 1px solid var(--border-subtle); display: flex; flex-direction: column; height: 100%; z-index: 20; box-shadow: var(--shadow-sm); }
-    .panel-header { padding: 22px 24px 16px; border-bottom: 1px solid var(--border-subtle); background: #fafafa; }
-    .panel-header h2 { margin: 0 0 4px; font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 3px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
-    .panel-header p { margin: 0; font-size: 11px; color: var(--text-muted); }
+    .panel-header { padding: 18px 20px 12px; border-bottom: 1px solid var(--border-subtle); background: #fafafa; }
+    .panel-header h2 { margin: 0 0 2px; font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 2px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
+    .panel-header p { margin: 0 0 10px; font-size: 11px; color: var(--text-muted); }
 
-    .accessories-scroll-list { flex: 1; overflow-y: auto; padding: 18px 22px; }
+    /* Search Input & Category Tabs */
+    .catalog-search-input { width: 100%; padding: 6px 12px 6px 30px; font-size: 11px; border: 1px solid var(--border-subtle); border-radius: 20px; background: #ffffff; margin-bottom: 10px; }
+    .search-wrap { position: relative; width: 100%; }
+    .search-wrap i { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #999; font-size: 12px; }
+
+    .category-filter-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 4px; scrollbar-width: none; }
+    .category-filter-tabs::-webkit-scrollbar { display: none; }
+    .category-tab { font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 15px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); white-space: nowrap; cursor: pointer; transition: all 0.2s; }
+    .category-tab:hover, .category-tab.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
+
+    .accessories-scroll-list { flex: 1; overflow-y: auto; padding: 14px 18px; }
     .accessories-scroll-list::-webkit-scrollbar { width: 4px; }
     .accessories-scroll-list::-webkit-scrollbar-thumb { background: #d0d3da; border-radius: 2px; }
 
     /* Elegant Product Card */
-    .accessory-card { display: flex; align-items: center; gap: 14px; padding: 12px; background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; margin-bottom: 12px; transition: all 0.25s ease; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .accessory-card { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; margin-bottom: 10px; transition: all 0.25s ease; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
     .accessory-card:hover { border-color: var(--gold-primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
     .accessory-card.selected { border-color: var(--gold-primary); background: #fdfbf7; box-shadow: 0 4px 12px rgba(197, 155, 39, 0.12); }
 
-    .accessory-thumb { width: 58px; height: 68px; background: #f0f1f4; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+    .accessory-thumb { width: 54px; height: 64px; background: #f0f1f4; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
     .accessory-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
     .accessory-details { flex: 1; min-width: 0; }
-    .accessory-cat { font-size: 9px; letter-spacing: 1.8px; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 2px; }
-    .accessory-title { font-size: 12px; font-weight: 600; color: var(--text-dark); margin: 0 0 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .accessory-price { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+    .accessory-cat { font-size: 9px; letter-spacing: 1.5px; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 2px; }
+    .accessory-title { font-size: 11px; font-weight: 600; color: var(--text-dark); margin: 0 0 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .accessory-price { font-size: 11px; font-weight: 700; color: var(--text-dark); }
 
-    .toggle-select-pill { padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: 1px; transition: all 0.2s; flex-shrink: 0; display: flex; align-items: center; gap: 4px; }
+    .toggle-select-pill { padding: 5px 10px; border-radius: 20px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); font-size: 9px; font-weight: 700; letter-spacing: 1px; transition: all 0.2s; flex-shrink: 0; display: flex; align-items: center; gap: 3px; }
     .accessory-card.selected .toggle-select-pill { background: var(--gold-primary); border-color: var(--gold-primary); color: #ffffff; }
 
     /* Right Panel Action Footer */
-    .panel-footer { padding: 18px 24px; border-top: 1px solid var(--border-subtle); background: #fafafa; display: flex; flex-direction: column; gap: 12px; }
-    .footer-summary { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-dark); }
-    .footer-summary strong { font-weight: 700; font-size: 13px; }
+    .panel-footer { padding: 16px 20px; border-top: 1px solid var(--border-subtle); background: #fafafa; display: flex; flex-direction: column; gap: 10px; }
+    .footer-summary { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-dark); }
+    .footer-summary strong { font-weight: 700; font-size: 12px; }
 
-    .btn-add-all { width: 100%; background: var(--text-dark); color: #ffffff; border: none; padding: 12px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.25s ease, transform 0.15s; }
+    .btn-add-all { width: 100%; background: var(--text-dark); color: #ffffff; border: none; padding: 11px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.25s ease, transform 0.15s; }
     .btn-add-all:hover { background: var(--gold-primary); color: #ffffff; transform: translateY(-1px); }
 
     /* Responsive */
     @media (max-width: 1080px) {
-      .runway-viewport { grid-template-columns: 280px 1fr 320px; }
+      .runway-viewport { grid-template-columns: 290px 1fr 340px; }
     }
     @media (max-width: 900px) {
       .runway-viewport { grid-template-columns: 1fr; height: auto; }
-      .left-360-panel { height: 420px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+      .left-360-panel { height: 460px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
       .center-stage { height: 520px; }
       .right-accessories-panel { height: auto; }
     }
@@ -183,29 +201,37 @@
   <!-- 3-Column Runway Viewport -->
   <div class="runway-viewport">
     
-    <!-- 1. LEFT: Interactive 360° Model Viewer (Initial: Back Pose) -->
+    <!-- 1. LEFT: Interactive 360° Model Viewer -->
     <div class="left-360-panel" id="left360Panel">
-      <div class="panel-header-badge">
+      <div class="panel-header-badge" id="autoSpinBadge">
         <i class="bi bi-arrow-repeat"></i>
-        <span>DRAG TO ROTATE 360°</span>
+        <span>INTERACTIVE 360° VIEW</span>
       </div>
 
-      <div class="model-360-wrap" id="dragArea" title="Drag horizontally to spin model 360°">
+      <div class="model-360-wrap" id="dragArea" title="Drag horizontally or use controls to rotate">
         <img id="model360Img" class="model-360-img" src="images/product-1-alt.jpg" alt="Model 360 View">
       </div>
 
-      <div class="pose-indicator-bar">
-        <span class="angle-text" id="angleText">POSE: BACK (180°)</span>
-        <div class="angle-dots" id="angleDotsWrap">
-          <div class="angle-dot active"></div>
-          <div class="angle-dot"></div>
-          <div class="angle-dot"></div>
-          <div class="angle-dot"></div>
-          <div class="angle-dot"></div>
-          <div class="angle-dot"></div>
-          <div class="angle-dot"></div>
-          <div class="angle-dot"></div>
+      <!-- Enhanced 360 Controls Bar -->
+      <div class="view-360-controls-wrap">
+        <div class="btn-360-group">
+          <button class="btn-360-action" id="btnSpinPrev"><i class="bi bi-arrow-left"></i> Spin Left</button>
+          <button class="btn-360-action" id="btnAutoSpin"><i class="bi bi-play-fill"></i> Auto 360°</button>
+          <button class="btn-360-action" id="btnSpinNext">Spin Right <i class="bi bi-arrow-right"></i></button>
         </div>
+
+        <div class="btn-360-group">
+          <button class="btn-360-action" onclick="setPoseAngle(0)">180° Back</button>
+          <button class="btn-360-action" onclick="setPoseAngle(2)">270° Left</button>
+          <button class="btn-360-action" onclick="setPoseAngle(4)">0° Front</button>
+          <button class="btn-360-action" onclick="setPoseAngle(6)">90° Right</button>
+        </div>
+
+        <div class="angle-slider-wrap">
+          <input type="range" class="angle-range-slider" id="angleRangeSlider" min="0" max="7" value="0">
+        </div>
+
+        <span class="angle-text" id="angleText">POSE: BACK (180°)</span>
       </div>
     </div>
 
@@ -235,15 +261,30 @@
       </div>
     </div>
 
-    <!-- 3. RIGHT: Outfit Accessories & Related Products List -->
+    <!-- 3. RIGHT: Complete Store Product Catalog & Outfit Items Panel -->
     <aside class="right-accessories-panel">
       <div class="panel-header">
-        <h2 id="sidebarSub">LOOK 01 — OUTFIT ACCESSORIES</h2>
-        <p>Select items worn in this complete look</p>
+        <h2 id="sidebarSub">RUNWAY CATALOG & OUTFITS</h2>
+        <p>Browse & shop items from this look or full catalog</p>
+        
+        <div class="search-wrap">
+          <i class="bi bi-search"></i>
+          <input type="text" class="catalog-search-input" id="catalogSearch" placeholder="Search products (e.g. Trench, Pants, Mule)..." onkeyup="filterProducts()">
+        </div>
+
+        <!-- Category Filters -->
+        <div class="category-filter-tabs" id="categoryFilterTabs">
+          <span class="category-tab active" data-cat="OUTFIT">Outfit Items</span>
+          <span class="category-tab" data-cat="ALL">All Store Items</span>
+          <span class="category-tab" data-cat="TOP">Tops & Outerwear</span>
+          <span class="category-tab" data-cat="BOTTOM">Pants & Skirts</span>
+          <span class="category-tab" data-cat="SHOES">Shoes & Bags</span>
+          <span class="category-tab" data-cat="ACC">Accessories</span>
+        </div>
       </div>
 
       <div class="accessories-scroll-list" id="accessoriesList">
-        <!-- Dynamically rendered per look -->
+        <!-- Dynamically rendered per selected tab/look -->
       </div>
 
       <div class="panel-footer">
@@ -274,7 +315,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
   <script>
-    // 8 360° Angle Poses Descriptions
+    // 8 360° Angle Poses
     const ANGLES = [
       { name: "POSE: BACK (180°)", scaleX: 1, rotY: 0 },
       { name: "POSE: BACK-LEFT (225°)", scaleX: 0.9, rotY: -20 },
@@ -286,7 +327,26 @@
       { name: "POSE: BACK-RIGHT (135°)", scaleX: 0.9, rotY: 20 }
     ];
 
-    // 4 Runway Looks & Outfit Accessories
+    // Master Catalog of ALL Store Products
+    const ALL_STORE_PRODUCTS = [
+      { id: "p1", type: "TOP", cat: "TOP / SHIRT", name: "Oversized Cotton Trench Coat", price: 5950, img: "images/product-1.jpg" },
+      { id: "p2", type: "BOTTOM", cat: "PANTS", name: "Wide Leg Tailored Trousers", price: 4895, img: "images/product-3.jpg" },
+      { id: "p3", type: "SHOES", cat: "SHOES", name: "Pointed Toe Runway Pumps", price: 4500, img: "images/product-2.jpg" },
+      { id: "p4", type: "SHOES", cat: "HANDBAG", name: "Structured Leather Tote", price: 3999, img: "images/product-4.jpg" },
+      { id: "p5", type: "ACC", cat: "EARRINGS", name: "Hammered Gold Hoop Earrings", price: 1299, img: "images/product-5.jpg" },
+      { id: "p6", type: "TOP", cat: "JACKET", name: "Sculpted Double-Breasted Blazer", price: 8490, img: "images/product-2.jpg" },
+      { id: "p7", type: "BOTTOM", cat: "SKIRT", name: "Pleated Asymmetric Midi Skirt", price: 6200, img: "images/product-5.jpg" },
+      { id: "p8", type: "SHOES", cat: "SHOES", name: "Leather Platform Runway Mule", price: 7800, img: "images/product-6.jpg" },
+      { id: "p9", type: "ACC", cat: "BELT", name: "Statement Buckle Waist Belt", price: 2100, img: "images/product-7.jpg" },
+      { id: "p10", type: "TOP", cat: "OUTERWEAR", name: "Embossed Leather Trench Coat", price: 12500, img: "images/product-3.jpg" },
+      { id: "p11", type: "TOP", cat: "TOP", name: "Organza Overlay Blouse", price: 5100, img: "images/product-8.jpg" },
+      { id: "p12", type: "ACC", cat: "NECKLACE", name: "Chunky Chain Pendant Necklace", price: 2450, img: "images/product-1.jpg" },
+      { id: "p13", type: "ACC", cat: "SUNGLASSES", name: "Cat-Eye Acetate Sunglasses", price: 3200, img: "images/product-4.jpg" },
+      { id: "p14", type: "TOP", cat: "DRESS", name: "Fringed Tiered Silk Cocktail Dress", price: 9800, img: "images/product-4.jpg" },
+      { id: "p15", type: "ACC", cat: "BRACELET", name: "Hammered Gold Cuff Bracelet", price: 3450, img: "images/product-5.jpg" }
+    ];
+
+    // 4 Runway Looks
     const LOOKS = [
       {
         title: "SPRING SUMMER 2026",
@@ -295,13 +355,7 @@
         desc: "Explore elevated runway silhouettes and hand-tailored editorial garments. Each piece explores structural draping and contemporary elegance.",
         frontImg: "images/product-1.jpg",
         backImg: "images/product-1-alt.jpg",
-        accessories: [
-          { id: "l1_top", cat: "TOP / SHIRT", name: "Oversized Cotton Trench Coat", price: 5950, img: "images/product-1.jpg", defaultSelected: true },
-          { id: "l1_pants", cat: "PANTS", name: "Wide Leg Tailored Trousers", price: 4895, img: "images/product-3.jpg", defaultSelected: false },
-          { id: "l1_shoes", cat: "SHOES", name: "Pointed Toe Runway Pumps", price: 4500, img: "images/product-2.jpg", defaultSelected: false },
-          { id: "l1_bag", cat: "HANDBAG", name: "Structured Leather Tote", price: 3999, img: "images/product-4.jpg", defaultSelected: false },
-          { id: "l1_earrings", cat: "EARRINGS", name: "Hammered Gold Hoop Earrings", price: 1299, img: "images/product-5.jpg", defaultSelected: false }
-        ]
+        outfitIds: ["p1", "p2", "p3", "p4", "p5"]
       },
       {
         title: "SPRING SUMMER 2026",
@@ -310,12 +364,7 @@
         desc: "Architectural tailoring meets fluidity in this modern minimalist ensemble. Crafted from premium Italian silk-wool blend with hand-draped accents.",
         frontImg: "images/product-2.jpg",
         backImg: "images/product-2-alt.jpg",
-        accessories: [
-          { id: "l2_jacket", cat: "JACKET", name: "Sculpted Double-Breasted Blazer", price: 8490, img: "images/product-2.jpg", defaultSelected: true },
-          { id: "l2_skirt", cat: "SKIRT", name: "Pleated Asymmetric Midi Skirt", price: 6200, img: "images/product-5.jpg", defaultSelected: true },
-          { id: "l2_shoes", cat: "SHOES", name: "Leather Platform Runway Mule", price: 7800, img: "images/product-6.jpg", defaultSelected: false },
-          { id: "l2_belt", cat: "BELT", name: "Statement Buckle Waist Belt", price: 2100, img: "images/product-7.jpg", defaultSelected: false }
-        ]
+        outfitIds: ["p6", "p7", "p8", "p9"]
       },
       {
         title: "SPRING SUMMER 2026",
@@ -324,12 +373,7 @@
         desc: "A bold exploration of contrast, pairing structured leather corsetry with delicate sheer organza for a captivating evening aesthetic.",
         frontImg: "images/product-3.jpg",
         backImg: "images/product-3-alt.jpg",
-        accessories: [
-          { id: "l3_coat", cat: "OUTERWEAR", name: "Embossed Leather Trench Coat", price: 12500, img: "images/product-3.jpg", defaultSelected: true },
-          { id: "l3_blouse", cat: "TOP", name: "Organza Overlay Blouse", price: 5100, img: "images/product-8.jpg", defaultSelected: false },
-          { id: "l3_necklace", cat: "NECKLACE", name: "Chunky Chain Pendant Necklace", price: 2450, img: "images/product-1.jpg", defaultSelected: false },
-          { id: "l3_sun", cat: "SUNGLASSES", name: "Cat-Eye Acetate Sunglasses", price: 3200, img: "images/product-4.jpg", defaultSelected: false }
-        ]
+        outfitIds: ["p10", "p11", "p12", "p13"]
       },
       {
         title: "SPRING SUMMER 2026",
@@ -338,24 +382,24 @@
         desc: "Vibrant hues and dynamic fringe movement define this showstopping finale look. Designed for high impact and effortless motion.",
         frontImg: "images/product-4.jpg",
         backImg: "images/product-4-alt.jpg",
-        accessories: [
-          { id: "l4_dress", cat: "DRESS", name: "Fringed Tiered Silk Cocktail Dress", price: 9800, img: "images/product-4.jpg", defaultSelected: true },
-          { id: "l4_cuff", cat: "BRACELET", name: "Hammered Gold Cuff Bracelet", price: 3450, img: "images/product-5.jpg", defaultSelected: false },
-          { id: "l4_heels", cat: "SHOES", name: "Jewel Embellished Satin Heels", price: 7250, img: "images/product-2.jpg", defaultSelected: false }
-        ]
+        outfitIds: ["p14", "p15", "p3", "p5"]
       }
     ];
 
     let currentLookIdx = 0;
     let currentAngleIdx = 0; // Starts at 0 (Back pose)
+    let currentCategoryFilter = "OUTFIT";
     let cartCount = 0;
-    const selectedStateMap = {};
+    let autoSpinInterval = null;
+    const selectedStateMap = { "p1": true, "p6": true, "p10": true, "p14": true };
 
-    // Elements
+    // DOM Elements
     const model360Img = document.getElementById("model360Img");
     const angleText = document.getElementById("angleText");
-    const angleDots = document.querySelectorAll("#angleDotsWrap .angle-dot");
+    const angleRangeSlider = document.getElementById("angleRangeSlider");
     const dragArea = document.getElementById("dragArea");
+    const btnAutoSpin = document.getElementById("btnAutoSpin");
+    const autoSpinBadge = document.getElementById("autoSpinBadge");
 
     const centerModelImg = document.getElementById("centerModelImg");
     const lookTitle = document.getElementById("lookTitle");
@@ -390,15 +434,35 @@
       currentAngleIdx = 0;
       update360Pose();
 
-      // Update Right Sidebar Accessories
-      sidebarSub.textContent = look.subtitle;
-      accessoriesList.innerHTML = "";
+      // Update Right Sidebar Products
+      sidebarSub.textContent = currentCategoryFilter === "OUTFIT" ? look.subtitle : "ALL PRODUCTS CATALOG";
+      renderProductCatalog();
+    }
 
-      look.accessories.forEach(acc => {
-        if (selectedStateMap[acc.id] === undefined) {
-          selectedStateMap[acc.id] = acc.defaultSelected;
-        }
-        const isSel = selectedStateMap[acc.id];
+    function renderProductCatalog() {
+      accessoriesList.innerHTML = "";
+      const currentLook = LOOKS[currentLookIdx];
+      const searchQuery = document.getElementById("catalogSearch").value.toLowerCase();
+
+      let productsToShow = ALL_STORE_PRODUCTS;
+
+      if (currentCategoryFilter === "OUTFIT") {
+        productsToShow = ALL_STORE_PRODUCTS.filter(p => currentLook.outfitIds.includes(p.id));
+      } else if (currentCategoryFilter !== "ALL") {
+        productsToShow = ALL_STORE_PRODUCTS.filter(p => p.type === currentCategoryFilter);
+      }
+
+      if (searchQuery) {
+        productsToShow = productsToShow.filter(p => p.name.toLowerCase().includes(searchQuery) || p.cat.toLowerCase().includes(searchQuery));
+      }
+
+      if (productsToShow.length === 0) {
+        accessoriesList.innerHTML = '<div class="text-center py-4 text-muted" style="font-size:11px;">No matching products found.</div>';
+        return;
+      }
+
+      productsToShow.forEach(acc => {
+        const isSel = !!selectedStateMap[acc.id];
         
         const card = document.createElement("div");
         card.className = `accessory-card ${isSel ? 'selected' : ''}`;
@@ -425,9 +489,29 @@
       updateSelectionSummary();
     }
 
-    // Left 360° Drag Handler
+    // Category Tabs Switching
+    document.querySelectorAll("#categoryFilterTabs .category-tab").forEach(tab => {
+      tab.addEventListener("click", (e) => {
+        document.querySelectorAll("#categoryFilterTabs .category-tab").forEach(t => t.classList.remove("active"));
+        e.target.classList.add("active");
+        currentCategoryFilter = e.target.getAttribute("data-cat");
+        sidebarSub.textContent = currentCategoryFilter === "OUTFIT" ? LOOKS[currentLookIdx].subtitle : `${currentCategoryFilter} PRODUCTS`;
+        renderProductCatalog();
+      });
+    });
+
+    function filterProducts() {
+      renderProductCatalog();
+    }
+
+    // Left 360° Drag & Controls Handler
     let isDragging = false;
     let startX = 0;
+
+    function setPoseAngle(angleIndex) {
+      currentAngleIdx = (angleIndex + ANGLES.length) % ANGLES.length;
+      update360Pose();
+    }
 
     function update360Pose() {
       const angle = ANGLES[currentAngleIdx];
@@ -442,12 +526,42 @@
 
       model360Img.style.transform = `scaleX(${angle.scaleX}) rotateY(${angle.rotY}deg)`;
       angleText.textContent = angle.name;
-
-      angleDots.forEach((dot, i) => {
-        if (i === currentAngleIdx) dot.classList.add("active");
-        else dot.classList.remove("active");
-      });
+      angleRangeSlider.value = currentAngleIdx;
     }
+
+    angleRangeSlider.addEventListener("input", (e) => {
+      currentAngleIdx = parseInt(e.target.value);
+      update360Pose();
+    });
+
+    document.getElementById("btnSpinPrev").addEventListener("click", () => {
+      currentAngleIdx = (currentAngleIdx - 1 + ANGLES.length) % ANGLES.length;
+      update360Pose();
+    });
+
+    document.getElementById("btnSpinNext").addEventListener("click", () => {
+      currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
+      update360Pose();
+    });
+
+    // Auto Spin Toggle
+    btnAutoSpin.addEventListener("click", () => {
+      if (autoSpinInterval) {
+        clearInterval(autoSpinInterval);
+        autoSpinInterval = null;
+        btnAutoSpin.classList.remove("active");
+        btnAutoSpin.innerHTML = '<i class="bi bi-play-fill"></i> Auto 360°';
+        autoSpinBadge.classList.remove("spinning");
+      } else {
+        btnAutoSpin.classList.add("active");
+        btnAutoSpin.innerHTML = '<i class="bi bi-pause-fill"></i> Pause';
+        autoSpinBadge.classList.add("spinning");
+        autoSpinInterval = setInterval(() => {
+          currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
+          update360Pose();
+        }, 800);
+      }
+    });
 
     dragArea.addEventListener("mousedown", (e) => {
       isDragging = true;
@@ -457,7 +571,7 @@
     window.addEventListener("mousemove", (e) => {
       if (!isDragging) return;
       const deltaX = e.clientX - startX;
-      if (Math.abs(deltaX) > 25) {
+      if (Math.abs(deltaX) > 20) {
         if (deltaX > 0) {
           currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
         } else {
@@ -479,7 +593,7 @@
     window.addEventListener("touchmove", (e) => {
       if (!isDragging) return;
       const deltaX = e.touches[0].clientX - startX;
-      if (Math.abs(deltaX) > 25) {
+      if (Math.abs(deltaX) > 20) {
         if (deltaX > 0) {
           currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
         } else {
@@ -510,11 +624,10 @@
     }
 
     function updateSelectionSummary() {
-      const currentLook = LOOKS[currentLookIdx];
       let count = 0;
       let total = 0;
 
-      currentLook.accessories.forEach(acc => {
+      ALL_STORE_PRODUCTS.forEach(acc => {
         if (selectedStateMap[acc.id]) {
           count++;
           total += acc.price;
@@ -526,20 +639,19 @@
     }
 
     function addSelectedItemsToCart() {
-      const currentLook = LOOKS[currentLookIdx];
       let added = 0;
-      currentLook.accessories.forEach(acc => {
+      ALL_STORE_PRODUCTS.forEach(acc => {
         if (selectedStateMap[acc.id]) added++;
       });
 
       if (added === 0) {
-        showToast("Please select at least one item from the right panel.");
+        showToast("Please select at least one item from the catalog.");
         return;
       }
 
       cartCount += added;
       globalCartCount.textContent = cartCount;
-      showToast(`Added ${added} selected outfit item(s) to your Shopping Bag.`);
+      showToast(`Added ${added} selected product(s) to your Shopping Bag.`);
     }
 
     function showToast(msg) {

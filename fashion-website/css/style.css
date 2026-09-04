@@ -1839,3 +1839,188 @@ button {
     font-size: 1.5rem;
   }
 }
+
+/* --------------------------------------------------------------------------
+   22. FLAUNTER BLUSH PINK CTA BANNER, PAINT DROPS & DARK LUXURY FOOTER
+   -------------------------------------------------------------------------- */
+.pink-cta-banner {
+  background-color: #F8C3B9;
+  color: #111111;
+  padding: 5rem 1.5rem 3.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pink-cta-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 400;
+  color: #111111;
+  max-width: 800px;
+  margin: 0 auto 1.75rem auto;
+  line-height: 1.25;
+}
+
+.btn-dark-get-started {
+  background-color: #222222;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-dark-get-started:hover {
+  background-color: #000000;
+  color: #F8C3B9;
+  transform: translateY(-2px);
+}
+
+.footer-drops-wrapper {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background-color: #F8C3B9;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 5;
+}
+
+.footer-drops-svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 55px;
+}
+
+.flaunter-dark-footer {
+  background-color: #1A1A1A !important;
+  color: #CCCCCC !important;
+  padding: 4.5rem 1.5rem 3rem 1.5rem !important;
+  text-align: center !important;
+  border-top: none !important;
+  position: relative;
+  z-index: 10;
+}
+
+.flaunter-brand-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.8rem;
+  font-style: italic;
+  color: #FFFFFF !important;
+  margin-bottom: 2rem;
+  display: inline-block;
+  text-decoration: none !important;
+}
+
+.flaunter-primary-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.flaunter-primary-nav li {
+  list-style: none;
+}
+
+.flaunter-primary-nav a {
+  color: #FFFFFF !important;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.flaunter-primary-nav a:hover {
+  color: #F8C3B9 !important;
+}
+
+.flaunter-divider {
+  width: 100%;
+  max-width: 1000px;
+  height: 1px;
+  background-color: #333333;
+  margin: 0 auto 2rem auto;
+}
+
+.flaunter-sub-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2.5rem;
+}
+
+.flaunter-sub-nav li {
+  list-style: none;
+}
+
+.flaunter-sub-nav a {
+  color: #AAAAAA !important;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.flaunter-sub-nav a:hover {
+  color: #FFFFFF !important;
+}
+
+.flaunter-social-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.flaunter-social-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #444444;
+  border-radius: 50%;
+  color: #FFFFFF !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+.flaunter-social-btn:hover {
+  border-color: #F8C3B9;
+  color: #F8C3B9 !important;
+  transform: translateY(-3px);
+}
+
+.flaunter-copy-text {
+  font-size: 0.72rem;
+  color: #777777 !important;
+  margin-bottom: 0.25rem;
+}
+
+.flaunter-copy-text a {
+  color: #999999 !important;
+  text-decoration: none !important;
+}
+
+.flaunter-copy-text a:hover {
+  color: #FFFFFF !important;
+}

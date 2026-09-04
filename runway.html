@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VALENCE STUDIOS — 360° Luxury Runway Lookbook</title>
-  <meta name="description" content="VALENCE STUDIOS Spring Summer 2026 Interactive 360° Runway Lookbook and Complete Product Catalog.">
+  <title>VALENCE STUDIOS — Luxury Runway Lookbook</title>
+  <meta name="description" content="VALENCE STUDIOS Spring Summer 2026 Interactive Runway Lookbook and Complete Product Catalog.">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>V</text></svg>">
@@ -52,39 +52,28 @@
     .runway-viewport { display: grid; grid-template-columns: 330px minmax(0, 1fr) 360px; height: calc(100vh - 84px); max-height: calc(100vh - 84px); background: #eaebee; position: relative; overflow: hidden; }
 
     /* 1. LEFT: GTA-Style Fixed Card + Multi-Angle Character Viewer */
-    .left-360-panel { background: #e3e5e9; border-right: 1px solid var(--border-subtle); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px 14px; user-select: none; height: 100%; overflow: hidden; }
+    .left-360-panel { background: #e3e5e9; border-right: 1px solid var(--border-subtle); position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 14px; user-select: none; height: 100%; overflow: hidden; }
     
     .panel-header-badge { display: flex; align-items: center; gap: 6px; background: #ffffff; border: 1px solid rgba(0,0,0,0.1); border-radius: 30px; padding: 4px 14px; box-shadow: var(--shadow-sm); z-index: 10; }
-    .panel-header-badge i { color: var(--gold-primary); font-size: 12px; animation: spin 8s linear infinite; }
-    .panel-header-badge.spinning i { animation-duration: 3s; }
+    .panel-header-badge i { color: var(--gold-primary); font-size: 12px; }
     .panel-header-badge span { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--text-dark); text-transform: uppercase; }
 
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    /* Fixed Viewport Frame — fills remaining height */
+    .character-viewport-frame { flex: 1; width: 100%; min-height: 0; position: relative; overflow: hidden; background: radial-gradient(circle at 50% 30%, #ffffff 0%, #e6e8ec 100%); border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
 
-    /* Completely Fixed Viewport Frame for GTA Multi-Angle Character Inspection */
-    .character-viewport-frame { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; cursor: grab; min-height: 0; overflow: hidden; background: radial-gradient(circle at 50% 50%, #ffffff 0%, #e6e8ec 100%); border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
-    .character-viewport-frame:active { cursor: grabbing; }
+    /* Ground Shadow */
+    .character-pedestal-shadow { position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); width: 120px; height: 18px; background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none; z-index: 2; }
 
-    /* Ground Shadow/Pedestal Circle for Character Inspection */
-    .character-pedestal-shadow { position: absolute; bottom: 6%; width: 150px; height: 22px; background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none; }
+    /* Character Image — fills frame, anchored top so full figure is visible */
+    .gta-character-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center top; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15)); transition: opacity 0.2s ease; }
+    .gta-character-img.fading { opacity: 0; }
 
-    /* The Multi-Angle Character Model Image (Changes Source Frames on Drag, No 2D Skewing) */
-    .gta-character-img { max-height: 44vh; height: auto; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); transition: opacity 0.12s ease-out; }
-
-    /* Drag Prompt Watermark inside card */
-    .drag-indicator-prompt { position: absolute; bottom: 3%; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: rgba(0,0,0,0.5); text-transform: uppercase; background: rgba(255,255,255,0.7); padding: 3px 12px; border-radius: 12px; backdrop-filter: blur(4px); pointer-events: none; }
-
-    /* Compact 360 Controls Bar on Left */
-    .view-360-controls-wrap { width: 100%; display: flex; flex-direction: column; gap: 6px; align-items: center; z-index: 5; background: #ffffff; padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); }
-    
-    .btn-360-group { display: flex; align-items: center; gap: 4px; width: 100%; justify-content: center; }
-    .btn-360-action { background: #f0f2f5; border: 1px solid var(--border-subtle); color: var(--text-dark); padding: 4px 8px; border-radius: 15px; font-size: 9px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 3px; }
-    .btn-360-action:hover, .btn-360-action.active { background: var(--gold-primary); color: #fff; border-color: var(--gold-primary); }
-
-    .angle-slider-wrap { width: 100%; display: flex; align-items: center; gap: 8px; margin: 2px 0; }
-    .angle-range-slider { flex: 1; accent-color: var(--gold-primary); height: 3px; cursor: pointer; }
-
-    .angle-text { font-size: 9px; letter-spacing: 1.2px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
+    /* Front / Back Toggle Controls */
+    .view-toggle-wrap { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; z-index: 5; background: #ffffff; padding: 10px 14px; border-radius: 10px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); }
+    .btn-view-toggle { flex: 1; background: #f0f2f5; border: 1px solid var(--border-subtle); color: var(--text-dark); padding: 7px 10px; border-radius: 20px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
+    .btn-view-toggle:hover { background: #e2e4e8; }
+    .btn-view-toggle.active { background: var(--gold-primary); color: #fff; border-color: var(--gold-primary); }
+    .view-label { font-size: 9px; letter-spacing: 1.2px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; text-align: center; margin-top: 2px; }
 
     /* 2. CENTER: Main Runway Model Stage */
     .center-stage { position: relative; overflow: hidden; background: radial-gradient(circle at 50% 45%, #ffffff 0%, #eceee6 55%, #dfd5c9 100%); display: flex; flex-direction: column; justify-content: space-between; padding: 20px; height: 100%; }
@@ -184,7 +173,7 @@
       
       <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex">
         <ul class="navbar-nav align-items-center gap-1">
-          <li class="nav-item"><a class="nav-link nav-link-editorial active text-warning" href="runway.html"><i class="bi bi-360-degrees me-1"></i> 360° RUNWAY</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-editorial active text-warning" href="runway.html"><i class="bi bi-stars me-1"></i> RUNWAY SHOP</a></li>
           <li class="nav-item"><a class="nav-link nav-link-editorial" href="collection.html">COLLECTION</a></li>
           <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#asymmetric-section">GALLERY</a></li>
           <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#campaign-section">LOOKBOOK</a></li>
@@ -210,41 +199,23 @@
   <!-- 3-Column Runway Viewport -->
   <div class="runway-viewport">
     
-    <!-- 1. LEFT: GTA-Style Fixed Card + Multi-Angle Character Inspection Viewer -->
+    <!-- 1. LEFT: Front / Back Character Viewer -->
     <div class="left-360-panel" id="left360Panel">
-      <div class="panel-header-badge" id="autoSpinBadge">
-        <i class="bi bi-arrow-repeat"></i>
-        <span>GTA 360° CHARACTER INSPECTION</span>
+      <div class="panel-header-badge">
+        <i class="bi bi-person-bounding-box"></i>
+        <span>OUTFIT PREVIEW</span>
       </div>
 
-      <!-- Completely Fixed Viewport Container -->
-      <div class="character-viewport-frame" id="dragArea" title="Click & drag horizontally to rotate character 360°">
+      <!-- Fixed Viewport Container -->
+      <div class="character-viewport-frame">
         <div class="character-pedestal-shadow"></div>
-        <!-- Real Multi-Angle Image Frame (Updates src dynamically, NO flat 2D CSS skewing) -->
-        <img id="gtaCharacterImg" class="gta-character-img" src="images/product-1.jpg" alt="GTA 360 Rotating Model Character">
-        <div class="drag-indicator-prompt"><i class="bi bi-arrows-expand me-1"></i> ↔ DRAG TO ROTATE</div>
+        <img id="gtaCharacterImg" class="gta-character-img" src="images/product-1.jpg" alt="Model View">
       </div>
 
-      <!-- GTA Character Controls Bar Below Viewer -->
-      <div class="view-360-controls-wrap">
-        <div class="btn-360-group">
-          <button class="btn-360-action" id="btnSpinPrev"><i class="bi bi-arrow-left"></i> Spin Left</button>
-          <button class="btn-360-action" id="btnAutoSpin"><i class="bi bi-play-fill"></i> Auto 360°</button>
-          <button class="btn-360-action" id="btnSpinNext">Spin Right <i class="bi bi-arrow-right"></i></button>
-        </div>
-
-        <div class="btn-360-group">
-          <button class="btn-360-action" onclick="setCardinalAngle(0)">Front (0°)</button>
-          <button class="btn-360-action" onclick="setCardinalAngle(90)">Right Side (90°)</button>
-          <button class="btn-360-action" onclick="setCardinalAngle(180)">Back (180°)</button>
-          <button class="btn-360-action" onclick="setCardinalAngle(270)">Left Side (270°)</button>
-        </div>
-
-        <div class="angle-slider-wrap">
-          <input type="range" class="angle-range-slider" id="angleRangeSlider" min="0" max="359" value="0">
-        </div>
-
-        <span class="angle-text" id="angleText">ANGLE: FRONT (0°)</span>
+      <!-- Front / Back Toggle -->
+      <div class="view-toggle-wrap">
+        <button class="btn-view-toggle active" id="btnFrontView" onclick="setView('front')"><i class="bi bi-person me-1"></i> FRONT</button>
+        <button class="btn-view-toggle" id="btnBackView" onclick="setView('back')"><i class="bi bi-person-fill me-1"></i> BACK</button>
       </div>
     </div>
 
@@ -396,36 +367,39 @@
     ];
 
     let currentLookIdx = 0;
-    let currentDegrees = 0; // 0 to 359 degrees
-    let velocity = 0; // Inertia velocity
-    let isDragging = false;
-    let startX = 0;
-    let lastX = 0;
-    let autoSpinInterval = null;
+    let currentView = 'front'; // 'front' or 'back'
     let currentCategoryFilter = "OUTFIT";
     let cartCount = 0;
     const selectedStateMap = { "p1": true, "p6": true, "p10": true, "p14": true };
 
     // DOM Elements
     const gtaCharacterImg = document.getElementById("gtaCharacterImg");
-    const angleText = document.getElementById("angleText");
-    const angleRangeSlider = document.getElementById("angleRangeSlider");
-    const dragArea = document.getElementById("dragArea");
-    const btnAutoSpin = document.getElementById("btnAutoSpin");
-    const autoSpinBadge = document.getElementById("autoSpinBadge");
-
     const centerModelImg = document.getElementById("centerModelImg");
     const lookTitle = document.getElementById("lookTitle");
     const lookDesc = document.getElementById("lookDesc");
     const lookCounter = document.getElementById("lookCounter");
     const dots = document.querySelectorAll("#dotsWrap .dot");
-
     const sidebarSub = document.getElementById("sidebarSub");
     const accessoriesList = document.getElementById("accessoriesList");
     const selectedCountText = document.getElementById("selectedCountText");
     const selectedTotalPrice = document.getElementById("selectedTotalPrice");
-
     const globalCartCount = document.getElementById("global-cart-count");
+
+    // Set Front or Back view
+    function setView(view) {
+      currentView = view;
+      const look = LOOKS[currentLookIdx];
+      const img = gtaCharacterImg;
+
+      img.classList.add('fading');
+      setTimeout(() => {
+        img.src = view === 'front' ? look.frontImg : look.backImg;
+        img.classList.remove('fading');
+      }, 150);
+
+      document.getElementById('btnFrontView').classList.toggle('active', view === 'front');
+      document.getElementById('btnBackView').classList.toggle('active', view === 'back');
+    }
 
     // Initialize View
     function renderLook(index) {
@@ -444,10 +418,11 @@
         else dot.classList.remove("active");
       });
 
-      // Reset Left GTA Character Angle to 0° Front
-      currentDegrees = 0;
-      velocity = 0;
-      updateGTACharacterFrame();
+      // Reset to front view
+      currentView = 'front';
+      gtaCharacterImg.src = look.frontImg;
+      document.getElementById('btnFrontView').classList.add('active');
+      document.getElementById('btnBackView').classList.remove('active');
 
       // Update Right Sidebar Products
       sidebarSub.textContent = currentCategoryFilter === "OUTFIT" ? look.subtitle : "ALL PRODUCTS CATALOG";
@@ -519,123 +494,7 @@
       renderProductCatalog();
     }
 
-    // GTA-Style Multi-Angle Frame Selection (Real distinct view angles, NO 2D flat image skewing!)
-    function updateGTACharacterFrame() {
-      // Normalize angle to [0, 360)
-      currentDegrees = (currentDegrees % 360 + 360) % 360;
-      const deg = Math.round(currentDegrees);
-      const look = LOOKS[currentLookIdx];
 
-      let targetImg = look.frontImg;
-      let angleLabel = `ANGLE: FRONT (${deg}°)`;
-
-      // Real 360° Multi-Angle View Switching:
-      // 315° - 45°: FRONT
-      // 45° - 135°: RIGHT SIDE PROFILE (90°)
-      // 135° - 225°: BACK VIEW (180°)
-      // 225° - 315°: LEFT SIDE PROFILE (270°)
-      if (deg >= 45 && deg < 135) {
-        targetImg = look.sideImg; // True Right Side Profile photo
-        angleLabel = `ANGLE: RIGHT SIDE (${deg}°)`;
-      } else if (deg >= 135 && deg < 225) {
-        targetImg = look.backImg; // True Back view photo
-        angleLabel = `ANGLE: BACK (${deg}°)`;
-      } else if (deg >= 225 && deg < 315) {
-        targetImg = look.sideLeftImg; // True Left Side Profile photo
-        angleLabel = `ANGLE: LEFT SIDE (${deg}°)`;
-      }
-
-      // Smoothly update image source without rotating the card or 2D image
-      if (gtaCharacterImg.getAttribute("src") !== targetImg) {
-        gtaCharacterImg.src = targetImg;
-      }
-
-      angleText.textContent = angleLabel;
-      angleRangeSlider.value = deg;
-    }
-
-    function setCardinalAngle(deg) {
-      currentDegrees = deg;
-      velocity = 0;
-      updateGTACharacterFrame();
-    }
-
-    angleRangeSlider.addEventListener("input", (e) => {
-      currentDegrees = parseInt(e.target.value);
-      velocity = 0;
-      updateGTACharacterFrame();
-    });
-
-    document.getElementById("btnSpinPrev").addEventListener("click", () => {
-      currentDegrees -= 45;
-      updateGTACharacterFrame();
-    });
-
-    document.getElementById("btnSpinNext").addEventListener("click", () => {
-      currentDegrees += 45;
-      updateGTACharacterFrame();
-    });
-
-    // Auto 360° Spin
-    btnAutoSpin.addEventListener("click", () => {
-      if (autoSpinInterval) {
-        clearInterval(autoSpinInterval);
-        autoSpinInterval = null;
-        btnAutoSpin.classList.remove("active");
-        btnAutoSpin.innerHTML = '<i class="bi bi-play-fill"></i> Auto 360°';
-        autoSpinBadge.classList.remove("spinning");
-      } else {
-        btnAutoSpin.classList.add("active");
-        btnAutoSpin.innerHTML = '<i class="bi bi-pause-fill"></i> Pause';
-        autoSpinBadge.classList.add("spinning");
-        autoSpinInterval = setInterval(() => {
-          currentDegrees += 6;
-          updateGTACharacterFrame();
-        }, 50);
-      }
-    });
-
-    // Mouse & Touch Dragging with Real Inertia Physics
-    function startDrag(x) {
-      isDragging = true;
-      startX = x;
-      lastX = x;
-      velocity = 0;
-    }
-
-    function moveDrag(x) {
-      if (!isDragging) return;
-      const deltaX = x - lastX;
-      velocity = deltaX * 0.8;
-      currentDegrees += velocity;
-      lastX = x;
-      updateGTACharacterFrame();
-    }
-
-    function endDrag() {
-      if (!isDragging) return;
-      isDragging = false;
-      applyInertia();
-    }
-
-    function applyInertia() {
-      if (Math.abs(velocity) > 0.1 && !isDragging) {
-        currentDegrees += velocity;
-        velocity *= 0.90; // Inertia friction
-        updateGTACharacterFrame();
-        requestAnimationFrame(applyInertia);
-      }
-    }
-
-    // Mouse Events
-    dragArea.addEventListener("mousedown", (e) => startDrag(e.clientX));
-    window.addEventListener("mousemove", (e) => moveDrag(e.clientX));
-    window.addEventListener("mouseup", endDrag);
-
-    // Touch Events
-    dragArea.addEventListener("touchstart", (e) => startDrag(e.touches[0].clientX));
-    window.addEventListener("touchmove", (e) => moveDrag(e.touches[0].clientX));
-    window.addEventListener("touchend", endDrag);
 
     // Accessory Selection Toggle
     function toggleAccessorySelection(id, cardEl) {

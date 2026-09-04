@@ -247,63 +247,59 @@ button {
 /* --------------------------------------------------------------------------
    5. NAVBAR & ANNOUNCEMENT BAR
    -------------------------------------------------------------------------- */
-.top-announcement-bar {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+.top-announcement-bar,
+.marquee-wrapper {
+  background-color: #111111;
+  color: #FAF9F5;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 8px 0;
   position: relative;
-  z-index: 1001;
+  z-index: 1050;
 }
 
 .navbar-editorial {
-  position: fixed;
-  top: 31px;
+  position: sticky;
+  top: 0;
   left: 0;
   width: 100%;
-  height: var(--nav-height);
-  z-index: 1000;
-  padding: 0.25rem 1.5rem;
-  transition: background-color 0.4s var(--ease-out-expo),
-              top 0.4s var(--ease-out-expo),
-              box-shadow 0.4s ease,
-              backdrop-filter 0.4s ease;
-}
-
-.navbar-editorial.scrolled {
-  top: 0;
-  background-color: rgba(250, 249, 245, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-light);
+  min-height: 52px;
+  background-color: rgba(250, 249, 245, 0.96);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  z-index: 1040;
+  padding: 0.35rem 1.5rem;
+  transition: all 0.3s ease;
 }
 
 .navbar-editorial .navbar-brand {
   font-size: 1.4rem !important;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FFFFFF;
-  transition: color 0.4s ease;
+  color: #111111 !important;
+  transition: color 0.3s ease;
 }
 
-.navbar-editorial.scrolled .navbar-brand {
-  color: var(--text-dark);
-}
-
+.navbar-editorial .nav-link,
 .nav-link-editorial {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #111111 !important;
   padding: 0.35rem 0.75rem !important;
   position: relative;
   transition: color 0.3s ease;
+}
+
+.navbar-editorial .nav-link:hover,
+.nav-link-editorial:hover,
+.navbar-editorial .nav-link.active {
+  color: var(--accent-gold) !important;
 }
 
 .navbar-editorial.scrolled .nav-link-editorial {

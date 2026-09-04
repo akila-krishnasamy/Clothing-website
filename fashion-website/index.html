@@ -880,6 +880,218 @@
     <span id="toast-message">Item added to your bag</span>
   </div>
 
+  <!-- =========================================================================
+       WISHLIST OFFCANVAS DRAWER
+       ========================================================================= -->
+  <div class="offcanvas offcanvas-end offcanvas-cart" tabindex="-1" id="wishlistOffcanvas">
+    <div class="offcanvas-header border-bottom bg-cream">
+      <div>
+        <span class="text-uppercase extra-small text-gold fw-bold tracking-widest">SAVED ITEMS</span>
+        <h4 class="font-serif fs-5 mb-0 fw-bold">MY WISHLIST (<span id="wishlist-drawer-count">3</span>)</h4>
+      </div>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-4">
+      <div>
+        <div id="wishlist-items-container" class="d-flex flex-column gap-3">
+          <!-- Item 1 -->
+          <div class="d-flex gap-3 p-3 bg-cream border align-items-center position-relative">
+            <img src="images/product-5.jpg" alt="ZR Football Jersey" style="width: 70px; height: 85px; object-fit: cover;">
+            <div class="flex-grow-1">
+              <span class="badge bg-dark text-white extra-small uppercase mb-1">IN STOCK</span>
+              <h6 class="fs-6 font-serif fw-bold mb-1">ZR Football Jersey Forest Stripe</h6>
+              <div class="fw-bold text-dark fs-6 mb-2">₹4,999</div>
+              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold px-3 btn-move-wishlist-cart" data-id="prod-5">MOVE TO BAG</button>
+            </div>
+            <button class="btn btn-link text-muted p-0 position-absolute top-0 end-0 m-2" title="Remove"><i class="bi bi-x-lg"></i></button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="d-flex gap-3 p-3 bg-cream border align-items-center position-relative">
+            <img src="images/product-2.jpg" alt="Boxy SS Overshirt" style="width: 70px; height: 85px; object-fit: cover;">
+            <div class="flex-grow-1">
+              <span class="badge bg-dark text-white extra-small uppercase mb-1">IN STOCK</span>
+              <h6 class="fs-6 font-serif fw-bold mb-1">Boxy SS Overshirt Blue Stripe</h6>
+              <div class="fw-bold text-dark fs-6 mb-2">₹5,999</div>
+              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold px-3 btn-move-wishlist-cart" data-id="prod-3">MOVE TO BAG</button>
+            </div>
+            <button class="btn btn-link text-muted p-0 position-absolute top-0 end-0 m-2" title="Remove"><i class="bi bi-x-lg"></i></button>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="d-flex gap-3 p-3 bg-cream border align-items-center position-relative">
+            <img src="images/product-3.jpg" alt="Legacy Work Pant" style="width: 70px; height: 85px; object-fit: cover;">
+            <div class="flex-grow-1">
+              <span class="badge bg-dark text-white extra-small uppercase mb-1">IN STOCK</span>
+              <h6 class="fs-6 font-serif fw-bold mb-1">Legacy Work Pant Sand</h6>
+              <div class="fw-bold text-dark fs-6 mb-2">₹6,999</div>
+              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold px-3 btn-move-wishlist-cart" data-id="prod-4">MOVE TO BAG</button>
+            </div>
+            <button class="btn btn-link text-muted p-0 position-absolute top-0 end-0 m-2" title="Remove"><i class="bi bi-x-lg"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top pt-3 mt-4">
+        <button class="btn-editorial btn-editorial-dark w-100 btn-magnetic mb-2" id="btn-move-all-wishlist">MOVE ALL TO BAG</button>
+        <button class="btn-editorial btn-editorial-outline w-100" data-bs-dismiss="offcanvas">CONTINUE SHOPPING</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       USER PROFILE & ACCOUNT MODAL
+       ========================================================================= -->
+  <div class="modal fade" id="accountModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-cream border-0 rounded-0">
+        <div class="modal-header border-bottom p-4">
+          <ul class="nav nav-tabs border-0 flex-grow-1" id="accountTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active font-serif fs-5 fw-bold text-dark text-uppercase border-0 bg-transparent ps-0" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab">USER PROFILE & ORDERS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link font-serif fs-5 fw-bold text-muted text-uppercase border-0 bg-transparent" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane" type="button" role="tab">SIGN IN / REGISTER</button>
+            </li>
+          </ul>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 p-md-5">
+          <div class="tab-content" id="accountTabContent">
+            
+            <!-- Tab 1: Profile & Order History -->
+            <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" tabindex="0">
+              
+              <!-- Profile Header Card -->
+              <div class="d-flex align-items-center gap-3 p-3 bg-white border mb-4">
+                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-4" style="width: 54px; height: 54px;">
+                  AK
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex align-items-center gap-2 mb-1">
+                    <h5 class="font-serif fs-5 fw-bold mb-0">Akila Krishnasamy</h5>
+                    <span class="badge bg-gold text-dark extra-small fw-bold uppercase"><i class="bi bi-star-fill me-1"></i> VALENCE VIP</span>
+                  </div>
+                  <div class="small text-muted">akila.krishnasamy@gmail.com &nbsp;|&nbsp; +91 98765 43210</div>
+                </div>
+                <button class="btn btn-outline-dark btn-sm rounded-0 extra-small uppercase">EDIT PROFILE</button>
+              </div>
+
+              <!-- Order History Section -->
+              <h6 class="extra-small fw-bold text-uppercase tracking-wider text-muted mb-3">RECENT ORDERS & SHIPMENTS</h6>
+              
+              <div class="d-flex flex-column gap-3 mb-4">
+                
+                <!-- Order 1 -->
+                <div class="p-3 bg-white border">
+                  <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                    <div>
+                      <span class="fw-bold text-dark me-2">ORDER #VAL-9842</span>
+                      <span class="small text-muted">Placed on Sept 02, 2026</span>
+                    </div>
+                    <span class="badge bg-success text-white extra-small uppercase"><i class="bi bi-truck me-1"></i> DELIVERED</span>
+                  </div>
+                  
+                  <div class="d-flex gap-3 align-items-center mb-3">
+                    <img src="images/product-5.jpg" alt="Order product" style="width: 55px; height: 70px; object-fit: cover;">
+                    <div class="flex-grow-1">
+                      <div class="fw-bold text-dark fs-6">ZR Football Jersey Forest Stripe</div>
+                      <div class="small text-muted">Size: M &nbsp;|&nbsp; Qty: 1 &nbsp;|&nbsp; Price: ₹4,999</div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold fs-6">₹4,999</div>
+                      <a href="#" class="extra-small text-decoration-underline text-dark">INVOICE (PDF)</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Order 2 -->
+                <div class="p-3 bg-white border">
+                  <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                    <div>
+                      <span class="fw-bold text-dark me-2">ORDER #VAL-8710</span>
+                      <span class="small text-muted">Placed on Aug 18, 2026</span>
+                    </div>
+                    <span class="badge bg-dark text-white extra-small uppercase"><i class="bi bi-check-circle me-1"></i> COMPLETED</span>
+                  </div>
+                  
+                  <div class="d-flex gap-3 align-items-center">
+                    <img src="images/product-3.jpg" alt="Order product" style="width: 55px; height: 70px; object-fit: cover;">
+                    <div class="flex-grow-1">
+                      <div class="fw-bold text-dark fs-6">Legacy Work Pant Sand</div>
+                      <div class="small text-muted">Size: 32 &nbsp;|&nbsp; Qty: 1 &nbsp;|&nbsp; Price: ₹6,999</div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold fs-6">₹6,999</div>
+                      <a href="#" class="extra-small text-decoration-underline text-dark">INVOICE (PDF)</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Saved Addresses & Preferences Grid -->
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="p-3 bg-white border h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="extra-small fw-bold text-uppercase text-muted">SAVED SHIPPING ADDRESS</span>
+                      <i class="bi bi-geo-alt text-dark"></i>
+                    </div>
+                    <div class="fw-bold text-dark small mb-1">Akila Krishnasamy</div>
+                    <div class="small text-muted">
+                      104 Sunset Boulevard, Turner Road,<br>
+                      Bandra West, Mumbai, Maharashtra - 400050<br>
+                      Phone: +91 98765 43210
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="p-3 bg-white border h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="extra-small fw-bold text-uppercase text-muted">FIT PREFERENCES</span>
+                      <i class="bi bi-rulers text-dark"></i>
+                    </div>
+                    <div class="small mb-1"><strong class="text-dark">Top Size:</strong> Medium (M)</div>
+                    <div class="small mb-1"><strong class="text-dark">Waist:</strong> 32 Inches</div>
+                    <div class="small"><strong class="text-dark">Style Preferred:</strong> Boxy Oversized</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Tab 2: Login / Register Form -->
+            <div class="tab-pane fade" id="login-tab-pane" role="tabpanel" tabindex="0">
+              <form id="account-login-form">
+                <div class="mb-3">
+                  <label class="form-label extra-small fw-bold uppercase tracking-wider">EMAIL ADDRESS *</label>
+                  <input type="email" class="form-control rounded-0" placeholder="Enter your email address..." required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label extra-small fw-bold uppercase tracking-wider">PASSWORD *</label>
+                  <input type="password" class="form-control rounded-0" placeholder="••••••••••••" required>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input rounded-0" type="checkbox" id="rememberMe" checked>
+                    <label class="form-check-label extra-small text-muted" for="rememberMe">Remember me</label>
+                  </div>
+                  <a href="#" class="extra-small text-dark text-decoration-underline">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-editorial btn-editorial-dark w-100 mb-3">SIGN IN TO VALENCE</button>
+                <div class="text-center small text-muted">Don't have an account? <a href="#" class="text-dark fw-bold text-decoration-underline">Register now for VIP perks</a></div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Bootstrap 5.3.3 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Custom Script Engine -->

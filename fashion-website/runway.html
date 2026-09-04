@@ -31,128 +31,137 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-dark); overflow-x: hidden; }
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-dark); overflow: hidden; }
 
     /* Top Announcement Bar */
-    .top-announcement-bar { background: #111215; color: #b5b9c0; font-size: 11px; letter-spacing: 1.2px; padding: 7px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .top-announcement-bar { background: #111215; color: #b5b9c0; font-size: 10px; letter-spacing: 1px; padding: 5px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); height: 28px; }
     .top-announcement-bar a { color: #e5c158; text-decoration: none; font-weight: 600; }
     .top-announcement-bar a:hover { text-decoration: underline; }
 
     /* Editorial Navigation Header */
-    .navbar-editorial { background: #ffffff; border-bottom: 1px solid var(--border-subtle); padding: 14px 36px; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
-    .navbar-brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; letter-spacing: 5px; color: var(--text-dark) !important; text-transform: uppercase; }
-    .nav-link-editorial { color: #4a4e57 !important; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 8px 16px !important; transition: color 0.2s ease; }
+    .navbar-editorial { background: #ffffff; border-bottom: 1px solid var(--border-subtle); padding: 8px 28px; height: 56px; z-index: 1000; box-shadow: var(--shadow-sm); display: flex; align-items: center; }
+    .navbar-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; letter-spacing: 4px; color: var(--text-dark) !important; text-transform: uppercase; }
+    .nav-link-editorial { color: #4a4e57 !important; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 6px 12px !important; transition: color 0.2s ease; }
     .nav-link-editorial:hover, .nav-link-editorial.active { color: var(--gold-primary) !important; }
     
-    .nav-icon-btn { background: none; border: none; color: #2d3036; font-size: 18px; padding: 6px 12px; position: relative; cursor: pointer; transition: transform 0.2s, color 0.2s; }
+    .nav-icon-btn { background: none; border: none; color: #2d3036; font-size: 16px; padding: 4px 8px; position: relative; cursor: pointer; transition: transform 0.2s, color 0.2s; }
     .nav-icon-btn:hover { color: var(--gold-primary); transform: translateY(-1px); }
-    .cart-badge { position: absolute; top: 1px; right: 3px; background: var(--gold-primary); color: #fff; font-size: 9px; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .cart-badge { position: absolute; top: 0px; right: 1px; background: var(--gold-primary); color: #fff; font-size: 8px; font-weight: 700; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
     /* Main 3-Column Studio Layout */
-    .runway-viewport { display: grid; grid-template-columns: 350px minmax(0, 1fr) 400px; height: calc(100vh - 90px); min-height: 650px; background: #eaebee; position: relative; overflow: hidden; }
+    .runway-viewport { display: grid; grid-template-columns: 330px minmax(0, 1fr) 360px; height: calc(100vh - 84px); max-height: calc(100vh - 84px); background: #eaebee; position: relative; overflow: hidden; }
 
-    /* 1. LEFT: 360° Studio Viewer */
-    .left-360-panel { background: #e3e5e9; border-right: 1px solid var(--border-subtle); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 20px 16px; user-select: none; }
+    /* 1. LEFT: GTA-Style Fixed Card + Multi-Angle Character Viewer */
+    .left-360-panel { background: #e3e5e9; border-right: 1px solid var(--border-subtle); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px 14px; user-select: none; height: 100%; overflow: hidden; }
     
-    .panel-header-badge { display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid rgba(0,0,0,0.1); border-radius: 30px; padding: 6px 16px; box-shadow: var(--shadow-sm); }
-    .panel-header-badge i { color: var(--gold-primary); font-size: 14px; animation: spin 8s linear infinite; }
+    .panel-header-badge { display: flex; align-items: center; gap: 6px; background: #ffffff; border: 1px solid rgba(0,0,0,0.1); border-radius: 30px; padding: 4px 14px; box-shadow: var(--shadow-sm); z-index: 10; }
+    .panel-header-badge i { color: var(--gold-primary); font-size: 12px; animation: spin 8s linear infinite; }
     .panel-header-badge.spinning i { animation-duration: 3s; }
-    .panel-header-badge span { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--text-dark); text-transform: uppercase; }
+    .panel-header-badge span { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--text-dark); text-transform: uppercase; }
 
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    .model-360-wrap { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; cursor: grab; perspective: 1000px; }
-    .model-360-wrap:active { cursor: grabbing; }
+    /* Completely Fixed Viewport Frame for GTA Multi-Angle Character Inspection */
+    .character-viewport-frame { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; cursor: grab; min-height: 0; overflow: hidden; background: radial-gradient(circle at 50% 50%, #ffffff 0%, #e6e8ec 100%); border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
+    .character-viewport-frame:active { cursor: grabbing; }
 
-    .model-360-img { max-height: 54vh; height: 450px; width: auto; object-fit: contain; filter: drop-shadow(0 12px 25px rgba(0,0,0,0.12)); transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
+    /* Ground Shadow/Pedestal Circle for Character Inspection */
+    .character-pedestal-shadow { position: absolute; bottom: 6%; width: 150px; height: 22px; background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none; }
 
-    /* Interactive 360 Controls Bar on Left */
-    .view-360-controls-wrap { width: 100%; display: flex; flex-direction: column; gap: 10px; align-items: center; z-index: 5; background: #ffffff; padding: 12px 16px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); }
+    /* The Multi-Angle Character Model Image (Changes Source Frames on Drag, No 2D Skewing) */
+    .gta-character-img { max-height: 44vh; height: auto; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); transition: opacity 0.12s ease-out; }
+
+    /* Drag Prompt Watermark inside card */
+    .drag-indicator-prompt { position: absolute; bottom: 3%; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: rgba(0,0,0,0.5); text-transform: uppercase; background: rgba(255,255,255,0.7); padding: 3px 12px; border-radius: 12px; backdrop-filter: blur(4px); pointer-events: none; }
+
+    /* Compact 360 Controls Bar on Left */
+    .view-360-controls-wrap { width: 100%; display: flex; flex-direction: column; gap: 6px; align-items: center; z-index: 5; background: #ffffff; padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); }
     
-    .btn-360-group { display: flex; align-items: center; gap: 6px; width: 100%; justify-content: center; }
-    .btn-360-action { background: #f0f2f5; border: 1px solid var(--border-subtle); color: var(--text-dark); padding: 5px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 4px; }
+    .btn-360-group { display: flex; align-items: center; gap: 4px; width: 100%; justify-content: center; }
+    .btn-360-action { background: #f0f2f5; border: 1px solid var(--border-subtle); color: var(--text-dark); padding: 4px 8px; border-radius: 15px; font-size: 9px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 3px; }
     .btn-360-action:hover, .btn-360-action.active { background: var(--gold-primary); color: #fff; border-color: var(--gold-primary); }
 
-    .angle-slider-wrap { width: 100%; display: flex; align-items: center; gap: 10px; }
-    .angle-range-slider { flex: 1; accent-color: var(--gold-primary); height: 4px; cursor: pointer; }
+    .angle-slider-wrap { width: 100%; display: flex; align-items: center; gap: 8px; margin: 2px 0; }
+    .angle-range-slider { flex: 1; accent-color: var(--gold-primary); height: 3px; cursor: pointer; }
 
-    .angle-text { font-size: 10px; letter-spacing: 1.5px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
+    .angle-text { font-size: 9px; letter-spacing: 1.2px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
 
     /* 2. CENTER: Main Runway Model Stage */
-    .center-stage { position: relative; overflow: hidden; background: radial-gradient(circle at 50% 45%, #ffffff 0%, #eceee6 55%, #dfd5c9 100%); display: flex; flex-direction: column; justify-content: space-between; padding: 30px; }
+    .center-stage { position: relative; overflow: hidden; background: radial-gradient(circle at 50% 45%, #ffffff 0%, #eceee6 55%, #dfd5c9 100%); display: flex; flex-direction: column; justify-content: space-between; padding: 20px; height: 100%; }
     
-    .stage-header { position: absolute; left: 40px; top: 30px; z-index: 10; pointer-events: none; max-width: 400px; }
-    .stage-header h1 { margin: 0 0 6px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; letter-spacing: 5px; color: var(--text-dark); text-transform: uppercase; }
-    .stage-header p { margin: 0; font-size: 11px; line-height: 1.6; color: var(--text-muted); }
+    .stage-header { position: absolute; left: 30px; top: 20px; z-index: 10; pointer-events: none; max-width: 360px; }
+    .stage-header h1 { margin: 0 0 4px; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; letter-spacing: 4px; color: var(--text-dark); text-transform: uppercase; }
+    .stage-header p { margin: 0; font-size: 10px; line-height: 1.5; color: var(--text-muted); }
 
-    .center-model-container { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 60px; z-index: 2; }
-    .center-model-img { max-height: 70vh; height: 600px; width: auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 25px 45px rgba(0,0,0,0.15)); transition: opacity 0.35s ease; }
+    .center-model-container { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 50px; z-index: 2; }
+    .center-model-img { max-height: 58vh; height: auto; width: auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 20px 35px rgba(0,0,0,0.15)); transition: opacity 0.35s ease; }
 
     /* Floating Glassmorphic Stage Controls Bar */
-    .controls-bar { position: absolute; left: 50%; transform: translateX(-50%); bottom: 25px; z-index: 10; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 30px; padding: 8px 24px; display: flex; align-items: center; gap: 20px; box-shadow: var(--shadow-md); }
-    .nav-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); background: #ffffff; color: var(--text-dark); display: flex; align-items: center; justify-content: center; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+    .controls-bar { position: absolute; left: 50%; transform: translateX(-50%); bottom: 14px; z-index: 10; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 25px; padding: 6px 18px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-md); }
+    .nav-btn { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); background: #ffffff; color: var(--text-dark); display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; transition: all 0.2s; }
     .nav-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
-    .look-counter { font-size: 11px; letter-spacing: 3px; font-weight: 700; color: var(--text-dark); }
-    .dots-wrap { display: flex; align-items: center; gap: 8px; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: #c8cbd2; cursor: pointer; transition: all 0.25s; }
+    .look-counter { font-size: 10px; letter-spacing: 2px; font-weight: 700; color: var(--text-dark); }
+    .dots-wrap { display: flex; align-items: center; gap: 6px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #c8cbd2; cursor: pointer; transition: all 0.25s; }
     .dot.active { background: var(--gold-primary); transform: scale(1.4); }
 
-    .expand-btn { background: none; border: none; color: var(--text-muted); font-size: 15px; cursor: pointer; transition: color 0.2s; }
+    .expand-btn { background: none; border: none; color: var(--text-muted); font-size: 14px; cursor: pointer; transition: color 0.2s; }
     .expand-btn:hover { color: var(--text-dark); }
 
-    /* 3. RIGHT: Complete Store Product Catalog & Accessories Panel */
-    .right-accessories-panel { background: #ffffff; border-left: 1px solid var(--border-subtle); display: flex; flex-direction: column; height: 100%; z-index: 20; box-shadow: var(--shadow-sm); }
-    .panel-header { padding: 18px 20px 12px; border-bottom: 1px solid var(--border-subtle); background: #fafafa; }
-    .panel-header h2 { margin: 0 0 2px; font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 2px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
-    .panel-header p { margin: 0 0 10px; font-size: 11px; color: var(--text-muted); }
+    /* 3. RIGHT: Product Catalog & Outfit Items Panel */
+    .right-accessories-panel { background: #ffffff; border-left: 1px solid var(--border-subtle); display: flex; flex-direction: column; height: 100%; z-index: 20; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .panel-header { padding: 14px 16px 10px; border-bottom: 1px solid var(--border-subtle); background: #fafafa; flex-shrink: 0; }
+    .panel-header h2 { margin: 0 0 2px; font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; }
+    .panel-header p { margin: 0 0 8px; font-size: 10px; color: var(--text-muted); }
 
     /* Search Input & Category Tabs */
-    .catalog-search-input { width: 100%; padding: 6px 12px 6px 30px; font-size: 11px; border: 1px solid var(--border-subtle); border-radius: 20px; background: #ffffff; margin-bottom: 10px; }
+    .catalog-search-input { width: 100%; padding: 5px 10px 5px 28px; font-size: 10px; border: 1px solid var(--border-subtle); border-radius: 15px; background: #ffffff; margin-bottom: 8px; }
     .search-wrap { position: relative; width: 100%; }
-    .search-wrap i { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #999; font-size: 12px; }
+    .search-wrap i { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: #999; font-size: 11px; }
 
-    .category-filter-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 4px; scrollbar-width: none; }
+    .category-filter-tabs { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
     .category-filter-tabs::-webkit-scrollbar { display: none; }
-    .category-tab { font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 15px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); white-space: nowrap; cursor: pointer; transition: all 0.2s; }
+    .category-tab { font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 12px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); white-space: nowrap; cursor: pointer; transition: all 0.2s; }
     .category-tab:hover, .category-tab.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
-    .accessories-scroll-list { flex: 1; overflow-y: auto; padding: 14px 18px; }
+    .accessories-scroll-list { flex: 1; overflow-y: auto; padding: 10px 14px; }
     .accessories-scroll-list::-webkit-scrollbar { width: 4px; }
     .accessories-scroll-list::-webkit-scrollbar-thumb { background: #d0d3da; border-radius: 2px; }
 
     /* Elegant Product Card */
-    .accessory-card { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; margin-bottom: 10px; transition: all 0.25s ease; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .accessory-card { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; margin-bottom: 8px; transition: all 0.2s ease; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
     .accessory-card:hover { border-color: var(--gold-primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-    .accessory-card.selected { border-color: var(--gold-primary); background: #fdfbf7; box-shadow: 0 4px 12px rgba(197, 155, 39, 0.12); }
+    .accessory-card.selected { border-color: var(--gold-primary); background: #fdfbf7; box-shadow: 0 3px 10px rgba(197, 155, 39, 0.12); }
 
-    .accessory-thumb { width: 54px; height: 64px; background: #f0f1f4; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+    .accessory-thumb { width: 46px; height: 54px; background: #f0f1f4; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
     .accessory-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
     .accessory-details { flex: 1; min-width: 0; }
-    .accessory-cat { font-size: 9px; letter-spacing: 1.5px; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 2px; }
-    .accessory-title { font-size: 11px; font-weight: 600; color: var(--text-dark); margin: 0 0 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .accessory-price { font-size: 11px; font-weight: 700; color: var(--text-dark); }
+    .accessory-cat { font-size: 8px; letter-spacing: 1.2px; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 1px; }
+    .accessory-title { font-size: 10px; font-weight: 600; color: var(--text-dark); margin: 0 0 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .accessory-price { font-size: 10px; font-weight: 700; color: var(--text-dark); }
 
-    .toggle-select-pill { padding: 5px 10px; border-radius: 20px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); font-size: 9px; font-weight: 700; letter-spacing: 1px; transition: all 0.2s; flex-shrink: 0; display: flex; align-items: center; gap: 3px; }
+    .toggle-select-pill { padding: 4px 8px; border-radius: 15px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); font-size: 8px; font-weight: 700; letter-spacing: 1px; transition: all 0.2s; flex-shrink: 0; display: flex; align-items: center; gap: 3px; }
     .accessory-card.selected .toggle-select-pill { background: var(--gold-primary); border-color: var(--gold-primary); color: #ffffff; }
 
-    /* Right Panel Action Footer */
-    .panel-footer { padding: 16px 20px; border-top: 1px solid var(--border-subtle); background: #fafafa; display: flex; flex-direction: column; gap: 10px; }
-    .footer-summary { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-dark); }
-    .footer-summary strong { font-weight: 700; font-size: 12px; }
+    /* Right Panel Action Footer - Always Pinned & Visible */
+    .panel-footer { padding: 12px 16px; border-top: 1px solid var(--border-subtle); background: #fafafa; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; z-index: 10; }
+    .footer-summary { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--text-dark); }
+    .footer-summary strong { font-weight: 700; font-size: 11px; }
 
-    .btn-add-all { width: 100%; background: var(--text-dark); color: #ffffff; border: none; padding: 11px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.25s ease, transform 0.15s; }
+    .btn-add-all { width: 100%; background: var(--text-dark); color: #ffffff; border: none; padding: 9px; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.25s ease, transform 0.15s; }
     .btn-add-all:hover { background: var(--gold-primary); color: #ffffff; transform: translateY(-1px); }
 
     /* Responsive */
     @media (max-width: 1080px) {
-      .runway-viewport { grid-template-columns: 290px 1fr 340px; }
+      .runway-viewport { grid-template-columns: 280px 1fr 320px; }
     }
     @media (max-width: 900px) {
-      .runway-viewport { grid-template-columns: 1fr; height: auto; }
-      .left-360-panel { height: 460px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
-      .center-stage { height: 520px; }
+      body { overflow: auto; }
+      .runway-viewport { grid-template-columns: 1fr; height: auto; max-height: none; }
+      .left-360-panel { height: 420px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+      .center-stage { height: 480px; }
       .right-accessories-panel { height: auto; }
     }
   </style>
@@ -174,16 +183,16 @@
       <a class="navbar-brand" href="index.html">VALENCE</a>
       
       <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex">
-        <ul class="navbar-nav align-items-center gap-2">
+        <ul class="navbar-nav align-items-center gap-1">
           <li class="nav-item"><a class="nav-link nav-link-editorial active text-warning" href="runway.html"><i class="bi bi-360-degrees me-1"></i> 360° RUNWAY</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#collection-section">COLLECTION</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-editorial" href="collection.html">COLLECTION</a></li>
           <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#asymmetric-section">GALLERY</a></li>
           <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#campaign-section">LOOKBOOK</a></li>
           <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#story-section">ABOUT</a></li>
         </ul>
       </div>
 
-      <div class="d-flex align-items-center gap-2">
+      <div class="d-flex align-items-center gap-1">
         <button class="nav-icon-btn" title="Search"><i class="bi bi-search"></i></button>
         <button class="nav-icon-btn" title="Account"><i class="bi bi-person"></i></button>
         <button class="nav-icon-btn" title="Wishlist">
@@ -201,18 +210,22 @@
   <!-- 3-Column Runway Viewport -->
   <div class="runway-viewport">
     
-    <!-- 1. LEFT: Interactive 360° Model Viewer -->
+    <!-- 1. LEFT: GTA-Style Fixed Card + Multi-Angle Character Inspection Viewer -->
     <div class="left-360-panel" id="left360Panel">
       <div class="panel-header-badge" id="autoSpinBadge">
         <i class="bi bi-arrow-repeat"></i>
-        <span>INTERACTIVE 360° VIEW</span>
+        <span>GTA 360° CHARACTER INSPECTION</span>
       </div>
 
-      <div class="model-360-wrap" id="dragArea" title="Drag horizontally or use controls to rotate">
-        <img id="model360Img" class="model-360-img" src="images/product-1-alt.jpg" alt="Model 360 View">
+      <!-- Completely Fixed Viewport Container -->
+      <div class="character-viewport-frame" id="dragArea" title="Click & drag horizontally to rotate character 360°">
+        <div class="character-pedestal-shadow"></div>
+        <!-- Real Multi-Angle Image Frame (Updates src dynamically, NO flat 2D CSS skewing) -->
+        <img id="gtaCharacterImg" class="gta-character-img" src="images/product-1.jpg" alt="GTA 360 Rotating Model Character">
+        <div class="drag-indicator-prompt"><i class="bi bi-arrows-expand me-1"></i> ↔ DRAG TO ROTATE</div>
       </div>
 
-      <!-- Enhanced 360 Controls Bar -->
+      <!-- GTA Character Controls Bar Below Viewer -->
       <div class="view-360-controls-wrap">
         <div class="btn-360-group">
           <button class="btn-360-action" id="btnSpinPrev"><i class="bi bi-arrow-left"></i> Spin Left</button>
@@ -221,21 +234,21 @@
         </div>
 
         <div class="btn-360-group">
-          <button class="btn-360-action" onclick="setPoseAngle(0)">180° Back</button>
-          <button class="btn-360-action" onclick="setPoseAngle(2)">270° Left</button>
-          <button class="btn-360-action" onclick="setPoseAngle(4)">0° Front</button>
-          <button class="btn-360-action" onclick="setPoseAngle(6)">90° Right</button>
+          <button class="btn-360-action" onclick="setCardinalAngle(0)">Front (0°)</button>
+          <button class="btn-360-action" onclick="setCardinalAngle(90)">Right Side (90°)</button>
+          <button class="btn-360-action" onclick="setCardinalAngle(180)">Back (180°)</button>
+          <button class="btn-360-action" onclick="setCardinalAngle(270)">Left Side (270°)</button>
         </div>
 
         <div class="angle-slider-wrap">
-          <input type="range" class="angle-range-slider" id="angleRangeSlider" min="0" max="7" value="0">
+          <input type="range" class="angle-range-slider" id="angleRangeSlider" min="0" max="359" value="0">
         </div>
 
-        <span class="angle-text" id="angleText">POSE: BACK (180°)</span>
+        <span class="angle-text" id="angleText">ANGLE: FRONT (0°)</span>
       </div>
     </div>
 
-    <!-- 2. CENTER: Main Front Model & Stage Controls -->
+    <!-- 2. CENTER: Main Runway Model Stage -->
     <div class="center-stage" id="stageArea">
       <div class="stage-header">
         <h1 id="lookTitle">SPRING SUMMER 2026</h1>
@@ -261,7 +274,7 @@
       </div>
     </div>
 
-    <!-- 3. RIGHT: Complete Store Product Catalog & Outfit Items Panel -->
+    <!-- 3. RIGHT: Product Catalog & Outfit Items Panel -->
     <aside class="right-accessories-panel">
       <div class="panel-header">
         <h2 id="sidebarSub">RUNWAY CATALOG & OUTFITS</h2>
@@ -269,16 +282,16 @@
         
         <div class="search-wrap">
           <i class="bi bi-search"></i>
-          <input type="text" class="catalog-search-input" id="catalogSearch" placeholder="Search products (e.g. Trench, Pants, Mule)..." onkeyup="filterProducts()">
+          <input type="text" class="catalog-search-input" id="catalogSearch" placeholder="Search products..." onkeyup="filterProducts()">
         </div>
 
         <!-- Category Filters -->
         <div class="category-filter-tabs" id="categoryFilterTabs">
           <span class="category-tab active" data-cat="OUTFIT">Outfit Items</span>
           <span class="category-tab" data-cat="ALL">All Store Items</span>
-          <span class="category-tab" data-cat="TOP">Tops & Outerwear</span>
-          <span class="category-tab" data-cat="BOTTOM">Pants & Skirts</span>
-          <span class="category-tab" data-cat="SHOES">Shoes & Bags</span>
+          <span class="category-tab" data-cat="TOP">Tops</span>
+          <span class="category-tab" data-cat="BOTTOM">Pants</span>
+          <span class="category-tab" data-cat="SHOES">Shoes</span>
           <span class="category-tab" data-cat="ACC">Accessories</span>
         </div>
       </div>
@@ -315,18 +328,6 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
   <script>
-    // 8 360° Angle Poses
-    const ANGLES = [
-      { name: "POSE: BACK (180°)", scaleX: 1, rotY: 0 },
-      { name: "POSE: BACK-LEFT (225°)", scaleX: 0.9, rotY: -20 },
-      { name: "POSE: LEFT PROFILE (270°)", scaleX: 0.65, rotY: -50 },
-      { name: "POSE: FRONT-LEFT (315°)", scaleX: 0.85, rotY: -30 },
-      { name: "POSE: FRONT (0°)", scaleX: 1, rotY: 0 },
-      { name: "POSE: FRONT-RIGHT (45°)", scaleX: 0.85, rotY: 30 },
-      { name: "POSE: RIGHT PROFILE (90°)", scaleX: 0.65, rotY: 50 },
-      { name: "POSE: BACK-RIGHT (135°)", scaleX: 0.9, rotY: 20 }
-    ];
-
     // Master Catalog of ALL Store Products
     const ALL_STORE_PRODUCTS = [
       { id: "p1", type: "TOP", cat: "TOP / SHIRT", name: "Oversized Cotton Trench Coat", price: 5950, img: "images/product-1.jpg" },
@@ -346,7 +347,7 @@
       { id: "p15", type: "ACC", cat: "BRACELET", name: "Hammered Gold Cuff Bracelet", price: 3450, img: "images/product-5.jpg" }
     ];
 
-    // 4 Runway Looks
+    // 4 Runway Looks with Real Multi-Angle Views (Front, Side Profile, Back, Left Profile)
     const LOOKS = [
       {
         title: "SPRING SUMMER 2026",
@@ -354,7 +355,9 @@
         subtitle: "LOOK 01 — OUTFIT ACCESSORIES",
         desc: "Explore elevated runway silhouettes and hand-tailored editorial garments. Each piece explores structural draping and contemporary elegance.",
         frontImg: "images/product-1.jpg",
+        sideImg: "images/collection-3.jpg",
         backImg: "images/product-1-alt.jpg",
+        sideLeftImg: "images/editorial-campaign.jpg",
         outfitIds: ["p1", "p2", "p3", "p4", "p5"]
       },
       {
@@ -363,7 +366,9 @@
         subtitle: "LOOK 02 — OUTFIT ACCESSORIES",
         desc: "Architectural tailoring meets fluidity in this modern minimalist ensemble. Crafted from premium Italian silk-wool blend with hand-draped accents.",
         frontImg: "images/product-2.jpg",
+        sideImg: "images/collection-4.jpg",
         backImg: "images/product-2-alt.jpg",
+        sideLeftImg: "images/collection-1.jpg",
         outfitIds: ["p6", "p7", "p8", "p9"]
       },
       {
@@ -372,7 +377,9 @@
         subtitle: "LOOK 03 — OUTFIT ACCESSORIES",
         desc: "A bold exploration of contrast, pairing structured leather corsetry with delicate sheer organza for a captivating evening aesthetic.",
         frontImg: "images/product-3.jpg",
+        sideImg: "images/collection-2.jpg",
         backImg: "images/product-3-alt.jpg",
+        sideLeftImg: "images/hero.jpg",
         outfitIds: ["p10", "p11", "p12", "p13"]
       },
       {
@@ -381,20 +388,26 @@
         subtitle: "LOOK 04 — OUTFIT ACCESSORIES",
         desc: "Vibrant hues and dynamic fringe movement define this showstopping finale look. Designed for high impact and effortless motion.",
         frontImg: "images/product-4.jpg",
+        sideImg: "images/lookbook-3.jpg",
         backImg: "images/product-4-alt.jpg",
+        sideLeftImg: "images/brand-story.jpg",
         outfitIds: ["p14", "p15", "p3", "p5"]
       }
     ];
 
     let currentLookIdx = 0;
-    let currentAngleIdx = 0; // Starts at 0 (Back pose)
+    let currentDegrees = 0; // 0 to 359 degrees
+    let velocity = 0; // Inertia velocity
+    let isDragging = false;
+    let startX = 0;
+    let lastX = 0;
+    let autoSpinInterval = null;
     let currentCategoryFilter = "OUTFIT";
     let cartCount = 0;
-    let autoSpinInterval = null;
     const selectedStateMap = { "p1": true, "p6": true, "p10": true, "p14": true };
 
     // DOM Elements
-    const model360Img = document.getElementById("model360Img");
+    const gtaCharacterImg = document.getElementById("gtaCharacterImg");
     const angleText = document.getElementById("angleText");
     const angleRangeSlider = document.getElementById("angleRangeSlider");
     const dragArea = document.getElementById("dragArea");
@@ -421,6 +434,7 @@
 
       // Update Center Main Model
       centerModelImg.src = look.frontImg;
+
       lookTitle.textContent = look.title;
       lookDesc.textContent = look.desc;
       lookCounter.textContent = `${look.lookNum} / 0${LOOKS.length}`;
@@ -430,9 +444,10 @@
         else dot.classList.remove("active");
       });
 
-      // Update Left 360 Model (Reset to 0 = Back Pose initially)
-      currentAngleIdx = 0;
-      update360Pose();
+      // Reset Left GTA Character Angle to 0° Front
+      currentDegrees = 0;
+      velocity = 0;
+      updateGTACharacterFrame();
 
       // Update Right Sidebar Products
       sidebarSub.textContent = currentCategoryFilter === "OUTFIT" ? look.subtitle : "ALL PRODUCTS CATALOG";
@@ -504,47 +519,64 @@
       renderProductCatalog();
     }
 
-    // Left 360° Drag & Controls Handler
-    let isDragging = false;
-    let startX = 0;
-
-    function setPoseAngle(angleIndex) {
-      currentAngleIdx = (angleIndex + ANGLES.length) % ANGLES.length;
-      update360Pose();
-    }
-
-    function update360Pose() {
-      const angle = ANGLES[currentAngleIdx];
+    // GTA-Style Multi-Angle Frame Selection (Real distinct view angles, NO 2D flat image skewing!)
+    function updateGTACharacterFrame() {
+      // Normalize angle to [0, 360)
+      currentDegrees = (currentDegrees % 360 + 360) % 360;
+      const deg = Math.round(currentDegrees);
       const look = LOOKS[currentLookIdx];
-      
-      // Use backImg for back angles (0, 1, 7), frontImg for front angles
-      if (currentAngleIdx === 0 || currentAngleIdx === 1 || currentAngleIdx === 7) {
-        model360Img.src = look.backImg;
-      } else {
-        model360Img.src = look.frontImg;
+
+      let targetImg = look.frontImg;
+      let angleLabel = `ANGLE: FRONT (${deg}°)`;
+
+      // Real 360° Multi-Angle View Switching:
+      // 315° - 45°: FRONT
+      // 45° - 135°: RIGHT SIDE PROFILE (90°)
+      // 135° - 225°: BACK VIEW (180°)
+      // 225° - 315°: LEFT SIDE PROFILE (270°)
+      if (deg >= 45 && deg < 135) {
+        targetImg = look.sideImg; // True Right Side Profile photo
+        angleLabel = `ANGLE: RIGHT SIDE (${deg}°)`;
+      } else if (deg >= 135 && deg < 225) {
+        targetImg = look.backImg; // True Back view photo
+        angleLabel = `ANGLE: BACK (${deg}°)`;
+      } else if (deg >= 225 && deg < 315) {
+        targetImg = look.sideLeftImg; // True Left Side Profile photo
+        angleLabel = `ANGLE: LEFT SIDE (${deg}°)`;
       }
 
-      model360Img.style.transform = `scaleX(${angle.scaleX}) rotateY(${angle.rotY}deg)`;
-      angleText.textContent = angle.name;
-      angleRangeSlider.value = currentAngleIdx;
+      // Smoothly update image source without rotating the card or 2D image
+      if (gtaCharacterImg.getAttribute("src") !== targetImg) {
+        gtaCharacterImg.src = targetImg;
+      }
+
+      angleText.textContent = angleLabel;
+      angleRangeSlider.value = deg;
+    }
+
+    function setCardinalAngle(deg) {
+      currentDegrees = deg;
+      velocity = 0;
+      updateGTACharacterFrame();
     }
 
     angleRangeSlider.addEventListener("input", (e) => {
-      currentAngleIdx = parseInt(e.target.value);
-      update360Pose();
+      currentDegrees = parseInt(e.target.value);
+      velocity = 0;
+      updateGTACharacterFrame();
     });
 
     document.getElementById("btnSpinPrev").addEventListener("click", () => {
-      currentAngleIdx = (currentAngleIdx - 1 + ANGLES.length) % ANGLES.length;
-      update360Pose();
+      currentDegrees -= 45;
+      updateGTACharacterFrame();
     });
 
     document.getElementById("btnSpinNext").addEventListener("click", () => {
-      currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
-      update360Pose();
+      currentDegrees += 45;
+      updateGTACharacterFrame();
     });
 
-    // Auto Spin Toggle
+    // Auto 360° Spin
     btnAutoSpin.addEventListener("click", () => {
       if (autoSpinInterval) {
         clearInterval(autoSpinInterval);
@@ -557,54 +589,53 @@
         btnAutoSpin.innerHTML = '<i class="bi bi-pause-fill"></i> Pause';
         autoSpinBadge.classList.add("spinning");
         autoSpinInterval = setInterval(() => {
-          currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
-          update360Pose();
-        }, 800);
+          currentDegrees += 6;
+          updateGTACharacterFrame();
+        }, 50);
       }
     });
 
-    dragArea.addEventListener("mousedown", (e) => {
+    // Mouse & Touch Dragging with Real Inertia Physics
+    function startDrag(x) {
       isDragging = true;
-      startX = e.clientX;
-    });
+      startX = x;
+      lastX = x;
+      velocity = 0;
+    }
 
-    window.addEventListener("mousemove", (e) => {
+    function moveDrag(x) {
       if (!isDragging) return;
-      const deltaX = e.clientX - startX;
-      if (Math.abs(deltaX) > 20) {
-        if (deltaX > 0) {
-          currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
-        } else {
-          currentAngleIdx = (currentAngleIdx - 1 + ANGLES.length) % ANGLES.length;
-        }
-        startX = e.clientX;
-        update360Pose();
-      }
-    });
+      const deltaX = x - lastX;
+      velocity = deltaX * 0.8;
+      currentDegrees += velocity;
+      lastX = x;
+      updateGTACharacterFrame();
+    }
 
-    window.addEventListener("mouseup", () => isDragging = false);
-
-    // Touch support for 360 view
-    dragArea.addEventListener("touchstart", (e) => {
-      isDragging = true;
-      startX = e.touches[0].clientX;
-    });
-
-    window.addEventListener("touchmove", (e) => {
+    function endDrag() {
       if (!isDragging) return;
-      const deltaX = e.touches[0].clientX - startX;
-      if (Math.abs(deltaX) > 20) {
-        if (deltaX > 0) {
-          currentAngleIdx = (currentAngleIdx + 1) % ANGLES.length;
-        } else {
-          currentAngleIdx = (currentAngleIdx - 1 + ANGLES.length) % ANGLES.length;
-        }
-        startX = e.touches[0].clientX;
-        update360Pose();
-      }
-    });
+      isDragging = false;
+      applyInertia();
+    }
 
-    window.addEventListener("touchend", () => isDragging = false);
+    function applyInertia() {
+      if (Math.abs(velocity) > 0.1 && !isDragging) {
+        currentDegrees += velocity;
+        velocity *= 0.90; // Inertia friction
+        updateGTACharacterFrame();
+        requestAnimationFrame(applyInertia);
+      }
+    }
+
+    // Mouse Events
+    dragArea.addEventListener("mousedown", (e) => startDrag(e.clientX));
+    window.addEventListener("mousemove", (e) => moveDrag(e.clientX));
+    window.addEventListener("mouseup", endDrag);
+
+    // Touch Events
+    dragArea.addEventListener("touchstart", (e) => startDrag(e.touches[0].clientX));
+    window.addEventListener("touchmove", (e) => moveDrag(e.touches[0].clientX));
+    window.addEventListener("touchend", endDrag);
 
     // Accessory Selection Toggle
     function toggleAccessorySelection(id, cardEl) {

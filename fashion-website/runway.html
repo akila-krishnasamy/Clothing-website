@@ -24,19 +24,21 @@
   <style>
     /* Dedicated Runway Reference-Matched App Layout */
     body.runway-app-page {
-      background-color: #EBF1F6;
+      background-color: #FFFFFF;
       color: #111111;
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
 
     .runway-container {
-      max-width: 1540px;
-      margin: 1.5rem auto;
+      width: 100%;
+      margin: 0 auto;
       background-color: #FFFFFF;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-      border-radius: 4px;
+      box-shadow: none;
+      border-radius: 0;
       overflow: hidden;
     }
 
@@ -302,10 +304,11 @@
       flex: 0 0 35%;
       max-width: 35%;
       background-color: #FFFFFF;
-      overflow-y: auto;
-      height: calc(100vh - 180px);
-      padding: 1.5rem;
-      scrollbar-width: thin;
+      height: calc(100vh - 100px);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      overflow: hidden;
     }
 
     .runway-product-card-ref {
@@ -616,17 +619,17 @@
       </section>
 
       <!-- RIGHT 35%: SCROLLABLE OUTFIT PIECES & ACCESSORIES FEED -->
-      <section class="runway-products-panel" id="right-product-scroller">
+      <section class="runway-products-panel">
         
-        <div class="p-3 border-bottom mb-3 bg-cream d-flex align-items-center justify-content-between sticky-top" style="z-index: 10;">
+        <div class="p-3 px-4 border-bottom bg-white d-flex align-items-center justify-content-between flex-shrink-0" style="z-index: 10;">
           <div>
-            <span class="text-uppercase extra-small text-gold fw-bold tracking-widest">OUTFIT PIECES & ACCESSORIES</span>
+            <span class="text-uppercase extra-small text-gold fw-bold tracking-widest d-block mb-1">OUTFIT PIECES & ACCESSORIES</span>
             <h4 class="font-serif fs-5 mb-0 fw-bold" id="right-look-heading">LOOK 11 — MATCHING ITEMS</h4>
           </div>
           <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold px-3 trigger-breakdown" id="right-btn-breakdown" data-id="prod-5">VIEW PRICING</button>
         </div>
 
-        <div id="right-dynamic-pieces-list" class="d-flex flex-direction-column flex-column gap-3">
+        <div id="right-dynamic-pieces-list" class="p-4 d-flex flex-column gap-3 overflow-y-auto flex-grow-1">
           <!-- Dynamically populated via JS depending on active left model look -->
         </div>
 
@@ -927,40 +930,36 @@
       const breakdownModalEl = document.getElementById('outfitBreakdownModal');
       const breakdownModal = breakdownModalEl ? new bootstrap.Modal(breakdownModalEl) : null;
 
-      // Data map for look outfit breakdowns (Separate T-shirt & Pant prices)
+      // Data map for look outfit breakdowns (Exact matching model items)
       const LOOK_DATA = {
         'prod-5': {
           lookNum: 'LOOK 11',
           mainImg: 'images/product-5.jpg',
           top: { name: 'ZR Football Jersey Forest Stripe', price: 4999, img: 'images/product-5.jpg', id: 'prod-5' },
-          pant: { name: 'Legacy Work Pant Sand / Dark Denim', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
-          accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
+          pant: { name: 'Dark Washed Relaxed Denim Pant', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
         },
         'prod-3': {
           lookNum: 'LOOK 15',
           mainImg: 'images/product-2.jpg',
           top: { name: 'Boxy SS Overshirt Blue Stripe', price: 5999, img: 'images/product-2.jpg', id: 'prod-3' },
-          pant: { name: 'Legacy Work Pant Sand', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
-          accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
+          pant: { name: 'Tailored Navy Work Trousers', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
         },
         'prod-4': {
           lookNum: 'LOOK 13',
           mainImg: 'images/product-3.jpg',
           top: { name: 'Steed Raglan Lounge Tee Vintage', price: 3999, img: 'images/product-1.jpg', id: 'prod-2' },
-          pant: { name: 'Legacy Work Pant Sand', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
-          accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
+          pant: { name: 'Legacy Work Pant Sand', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
         },
         'prod-2': {
           lookNum: 'LOOK 14',
           mainImg: 'images/product-1.jpg',
           top: { name: 'Steed Raglan Lounge Tee Vintage', price: 3999, img: 'images/product-1.jpg', id: 'prod-2' },
-          pant: { name: 'Legacy Work Pant Sand', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
-          accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
+          pant: { name: 'Washed Black Denim Trousers', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' }
         },
         'prod-1': {
           lookNum: 'LOOK 12',
           mainImg: 'images/product-4.jpg',
-          top: { name: 'Steed Raglan Lounge Tee Vintage', price: 3999, img: 'images/product-1.jpg', id: 'prod-2' },
+          top: { name: 'Heavyweight Graphic Tee', price: 3999, img: 'images/product-1.jpg', id: 'prod-2' },
           pant: { name: 'Legacy Work Pant Sand', price: 6999, img: 'images/product-3.jpg', id: 'prod-4' },
           accessory: { name: 'Steed Cap Vintage White/Black', price: 2499, img: 'images/product-4.jpg', id: 'prod-1' }
         }
@@ -975,25 +974,41 @@
         document.getElementById('breakdown-outfit-img').src = currentLook.mainImg;
 
         // Top Item (T-Shirt)
-        document.getElementById('item1-img').src = currentLook.top.img;
-        document.getElementById('item1-name').textContent = currentLook.top.name;
-        document.getElementById('item1-price').textContent = `₹${currentLook.top.price.toLocaleString('en-IN')}`;
-        document.getElementById('btn-add-item1').textContent = `ADD T-SHIRT (₹${currentLook.top.price.toLocaleString('en-IN')})`;
+        if (currentLook.top) {
+          document.getElementById('item1-img').src = currentLook.top.img;
+          document.getElementById('item1-name').textContent = currentLook.top.name;
+          document.getElementById('item1-price').textContent = `₹${currentLook.top.price.toLocaleString('en-IN')}`;
+          document.getElementById('btn-add-item1').textContent = `ADD T-SHIRT (₹${currentLook.top.price.toLocaleString('en-IN')})`;
+        }
 
         // Pant Item
-        document.getElementById('item2-img').src = currentLook.pant.img;
-        document.getElementById('item2-name').textContent = currentLook.pant.name;
-        document.getElementById('item2-price').textContent = `₹${currentLook.pant.price.toLocaleString('en-IN')}`;
-        document.getElementById('btn-add-item2').textContent = `ADD PANT (₹${currentLook.pant.price.toLocaleString('en-IN')})`;
+        const pantBox = document.getElementById('item2-img')?.closest('.p-3');
+        if (currentLook.pant) {
+          if (pantBox) pantBox.style.display = 'block';
+          document.getElementById('item2-img').src = currentLook.pant.img;
+          document.getElementById('item2-name').textContent = currentLook.pant.name;
+          document.getElementById('item2-price').textContent = `₹${currentLook.pant.price.toLocaleString('en-IN')}`;
+          document.getElementById('btn-add-item2').textContent = `ADD PANT (₹${currentLook.pant.price.toLocaleString('en-IN')})`;
+        } else if (pantBox) {
+          pantBox.style.display = 'none';
+        }
 
         // Accessory Item
-        document.getElementById('item3-img').src = currentLook.accessory.img;
-        document.getElementById('item3-name').textContent = currentLook.accessory.name;
-        document.getElementById('item3-price').textContent = `₹${currentLook.accessory.price.toLocaleString('en-IN')}`;
-        document.getElementById('btn-add-item3').textContent = `ADD CAP (₹${currentLook.accessory.price.toLocaleString('en-IN')})`;
+        const accBox = document.getElementById('item3-img')?.closest('.p-3');
+        if (currentLook.accessory) {
+          if (accBox) accBox.style.display = 'block';
+          document.getElementById('item3-img').src = currentLook.accessory.img;
+          document.getElementById('item3-name').textContent = currentLook.accessory.name;
+          document.getElementById('item3-price').textContent = `₹${currentLook.accessory.price.toLocaleString('en-IN')}`;
+          document.getElementById('btn-add-item3').textContent = `ADD ACCESSORY (₹${currentLook.accessory.price.toLocaleString('en-IN')})`;
+        } else if (accBox) {
+          accBox.style.display = 'none';
+        }
 
         // Bundle Total
-        const total = currentLook.top.price + currentLook.pant.price + currentLook.accessory.price;
+        let total = (currentLook.top ? currentLook.top.price : 0) + 
+                    (currentLook.pant ? currentLook.pant.price : 0) + 
+                    (currentLook.accessory ? currentLook.accessory.price : 0);
         document.getElementById('bundle-total-price').textContent = `₹${total.toLocaleString('en-IN')}`;
 
         if (breakdownModal) breakdownModal.show();
@@ -1011,24 +1026,24 @@
 
       // Individual item add actions
       document.getElementById('btn-add-item1')?.addEventListener('click', () => {
-        const size = document.getElementById('item1-size').value;
-        if (window.valenceAddToCart) window.valenceAddToCart(currentLook.top.id, size, 1);
+        const size = document.getElementById('item1-size')?.value || 'M';
+        if (window.valenceAddToCart && currentLook.top) window.valenceAddToCart(currentLook.top.id, size, 1);
       });
 
       document.getElementById('btn-add-item2')?.addEventListener('click', () => {
-        const size = document.getElementById('item2-size').value;
-        if (window.valenceAddToCart) window.valenceAddToCart(currentLook.pant.id, size, 1);
+        const size = document.getElementById('item2-size')?.value || '32';
+        if (window.valenceAddToCart && currentLook.pant) window.valenceAddToCart(currentLook.pant.id, size, 1);
       });
 
       document.getElementById('btn-add-item3')?.addEventListener('click', () => {
-        if (window.valenceAddToCart) window.valenceAddToCart(currentLook.accessory.id, 'ONE SIZE', 1);
+        if (window.valenceAddToCart && currentLook.accessory) window.valenceAddToCart(currentLook.accessory.id, 'ONE SIZE', 1);
       });
 
       document.getElementById('btn-add-full-bundle')?.addEventListener('click', () => {
         if (window.valenceAddToCart) {
-          window.valenceAddToCart(currentLook.top.id, document.getElementById('item1-size').value, 1);
-          window.valenceAddToCart(currentLook.pant.id, document.getElementById('item2-size').value, 1);
-          window.valenceAddToCart(currentLook.accessory.id, 'ONE SIZE', 1);
+          if (currentLook.top) window.valenceAddToCart(currentLook.top.id, 'M', 1);
+          if (currentLook.pant) window.valenceAddToCart(currentLook.pant.id, '32', 1);
+          if (currentLook.accessory) window.valenceAddToCart(currentLook.accessory.id, 'ONE SIZE', 1);
           if (breakdownModal) breakdownModal.hide();
         }
       });
@@ -1050,55 +1065,66 @@
 
         if (!container) return;
 
-        container.innerHTML = `
-          <!-- Item 1: Top / T-Shirt -->
-          <div class="runway-product-card-ref active" id="right-card-top" data-pin="top">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <span class="outfit-category-badge">👔 TOP / T-SHIRT (PIN 1)</span>
-              <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
-            </div>
-            <div class="runway-card-img-box">
-              <img src="${look.top.img}" alt="${look.top.name}" class="runway-card-img">
-            </div>
-            <h3 class="runway-card-title">${look.top.name}</h3>
-            <div class="d-flex justify-content-between align-items-center mt-2">
-              <div class="runway-card-price text-dark fw-bold">₹${look.top.price.toLocaleString('en-IN')}</div>
-              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.top.id}', 'M', 1)">ADD TO BAG</button>
-            </div>
-          </div>
+        let cardsHTML = '';
 
-          <!-- Item 2: Bottom / Pant -->
-          <div class="runway-product-card-ref" id="right-card-pant" data-pin="pant">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <span class="outfit-category-badge">👖 BOTTOM / PANT (PIN 2)</span>
-              <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+        if (look.top) {
+          cardsHTML += `
+            <div class="runway-product-card-ref active" id="right-card-top" data-pin="top">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="outfit-category-badge"><i class="bi bi-tag-fill text-gold me-1"></i> TOP / T-SHIRT (PIN 1)</span>
+                <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+              </div>
+              <div class="runway-card-img-box">
+                <img src="${look.top.img}" alt="${look.top.name}" class="runway-card-img">
+              </div>
+              <h3 class="runway-card-title">${look.top.name}</h3>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="runway-card-price text-dark fw-bold">₹${look.top.price.toLocaleString('en-IN')}</div>
+                <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.top.id}', 'M', 1)">ADD TO BAG</button>
+              </div>
             </div>
-            <div class="runway-card-img-box">
-              <img src="${look.pant.img}" alt="${look.pant.name}" class="runway-card-img">
-            </div>
-            <h3 class="runway-card-title">${look.pant.name}</h3>
-            <div class="d-flex justify-content-between align-items-center mt-2">
-              <div class="runway-card-price text-dark fw-bold">₹${look.pant.price.toLocaleString('en-IN')}</div>
-              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.pant.id}', '32', 1)">ADD TO BAG</button>
-            </div>
-          </div>
+          `;
+        }
 
-          <!-- Item 3: Accessory -->
-          <div class="runway-product-card-ref" id="right-card-acc" data-pin="acc">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <span class="outfit-category-badge">🧢 ACCESSORY / FINISHING TOUCH</span>
-              <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+        if (look.pant) {
+          cardsHTML += `
+            <div class="runway-product-card-ref" id="right-card-pant" data-pin="pant">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="outfit-category-badge"><i class="bi bi-tag-fill text-gold me-1"></i> BOTTOM / PANT (PIN 2)</span>
+                <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+              </div>
+              <div class="runway-card-img-box">
+                <img src="${look.pant.img}" alt="${look.pant.name}" class="runway-card-img">
+              </div>
+              <h3 class="runway-card-title">${look.pant.name}</h3>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="runway-card-price text-dark fw-bold">₹${look.pant.price.toLocaleString('en-IN')}</div>
+                <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.pant.id}', '32', 1)">ADD TO BAG</button>
+              </div>
             </div>
-            <div class="runway-card-img-box">
-              <img src="${look.accessory.img}" alt="${look.accessory.name}" class="runway-card-img">
+          `;
+        }
+
+        if (look.accessory) {
+          cardsHTML += `
+            <div class="runway-product-card-ref" id="right-card-acc" data-pin="acc">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="outfit-category-badge"><i class="bi bi-star-fill text-gold me-1"></i> ACCESSORY / FINISHING TOUCH</span>
+                <i class="bi bi-heart runway-card-heart" onclick="this.classList.toggle('active')"></i>
+              </div>
+              <div class="runway-card-img-box">
+                <img src="${look.accessory.img}" alt="${look.accessory.name}" class="runway-card-img">
+              </div>
+              <h3 class="runway-card-title">${look.accessory.name}</h3>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="runway-card-price text-dark fw-bold">₹${look.accessory.price.toLocaleString('en-IN')}</div>
+                <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.accessory.id}', 'ONE SIZE', 1)">ADD TO BAG</button>
+              </div>
             </div>
-            <h3 class="runway-card-title">${look.accessory.name}</h3>
-            <div class="d-flex justify-content-between align-items-center mt-2">
-              <div class="runway-card-price text-dark fw-bold">₹${look.accessory.price.toLocaleString('en-IN')}</div>
-              <button class="btn btn-dark btn-sm rounded-0 extra-small uppercase fw-bold" onclick="if(window.valenceAddToCart) window.valenceAddToCart('${look.accessory.id}', 'ONE SIZE', 1)">ADD TO BAG</button>
-            </div>
-          </div>
-        `;
+          `;
+        }
+
+        container.innerHTML = cardsHTML;
       }
 
       // Initialize right panel for initial look

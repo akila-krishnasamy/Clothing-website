@@ -257,6 +257,35 @@ button {
   text-transform: uppercase;
   position: relative;
   z-index: 1050;
+/* Outfit Category Badge Alignment Fix */
+.outfit-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C5A059;
+  background-color: rgba(197, 160, 89, 0.08);
+  padding: 0.3rem 0.65rem;
+  border-radius: 2px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  line-height: 1.2;
+}
+
+.runway-card-heart {
+  font-size: 1.1rem;
+  color: #AAAAAA;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+  margin-left: auto;
+}
+
+.runway-card-heart:hover,
+.runway-card-heart.active {
+  color: #D93838;
 }
 
 .navbar-editorial {
@@ -325,41 +354,46 @@ button {
 }
 
 .nav-icon-btn {
-  font-size: 1.25rem;
-  color: #FFFFFF;
-  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: #111111 !important;
+  padding: 0.4rem 0.5rem;
   position: relative;
   transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
-.navbar-editorial.scrolled .nav-icon-btn {
-  color: var(--text-dark);
+.navbar-editorial .nav-icon-btn {
+  color: #111111 !important;
 }
 
 .nav-icon-btn:hover {
+  color: var(--accent-gold) !important;
   transform: translateY(-2px);
 }
 
 .cart-badge {
   position: absolute;
-  top: 4px;
-  right: 2px;
-  background-color: #FFFFFF;
-  color: var(--text-dark);
-  font-size: 0.625rem;
-  font-weight: 700;
-  width: 17px;
-  height: 17px;
+  top: -2px;
+  right: -2px;
+  background-color: #111111 !important;
+  color: #FFFFFF !important;
+  font-size: 0.6rem;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  line-height: 1;
 }
 
 .navbar-editorial.scrolled .cart-badge {
-  background-color: var(--text-dark);
-  color: #FFFFFF;
+  background-color: #111111 !important;
+  color: #FFFFFF !important;
 }
 
 /* Mobile Offcanvas Nav */

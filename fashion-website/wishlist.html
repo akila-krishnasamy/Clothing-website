@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MY SAVED WISHLIST — VALENCE STUDIOS</title>
+  <meta name="description" content="View your saved editorial luxury streetwear pieces at VALENCE Studios.">
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-cream">
+
+  <!-- Editorial Announcement Bar -->
+  <div class="announcement-editorial py-2 px-3 text-center border-bottom">
+    <span class="announcement-text extra-small uppercase fw-bold tracking-widest me-2">EXPRESS DELIVERY ACROSS INDIA</span>
+    <span class="text-muted extra-small">| &nbsp;Complimentary Shipping On Orders Above ₹2,999</span>
+  </div>
+
+  <!-- Editorial Navigation Bar -->
+  <header class="navbar-editorial sticky-top bg-white border-bottom">
+    <div class="container-fluid px-lg-5">
+      <div class="d-flex align-items-center justify-content-between py-3">
+        <a href="index.html" class="nav-brand font-serif fs-2 fw-bold text-dark text-decoration-none">Valence</a>
+        
+        <ul class="d-none d-md-flex align-items-center gap-4 list-unstyled mb-0 font-serif fs-6">
+          <li><a href="index.html#collection-section" class="nav-link-editorial">COLLECTION</a></li>
+          <li><a href="index.html#asymmetric-section" class="nav-link-editorial">EDITORIAL</a></li>
+          <li><a href="runway.html" class="nav-link-editorial text-gold"><i class="bi bi-stars me-1"></i> RUNWAY SHOWCASE</a></li>
+          <li><a href="contact.html" class="nav-link-editorial">CONTACT</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="wishlist.html" class="text-dark fs-5 text-decoration-none" title="Wishlist"><i class="bi bi-heart-fill text-danger"></i></a>
+          <a href="cart.html" class="text-dark fs-5 text-decoration-none position-relative" title="Shopping Bag">
+            <i class="bi bi-bag"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark extra-small" id="cart-badge-count">2</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="py-5 bg-white border-bottom text-center">
+    <div class="container py-3">
+      <span class="section-tag">SAVED EDITORIAL PIECES</span>
+      <h1 class="font-serif display-4 fw-bold mb-2">MY WISHLIST</h1>
+      <p class="text-muted small max-w-md mx-auto">
+        Your curated selection of luxury 240 GSM cotton tops, work trousers, and accessories.
+      </p>
+    </div>
+  </section>
+
+  <!-- Wishlist Grid Content -->
+  <section class="py-5">
+    <div class="container">
+      
+      <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+        <span class="font-serif fs-5 fw-bold text-dark" id="wishlist-total-title">3 SAVED ITEMS</span>
+        <button class="btn btn-outline-dark btn-sm rounded-0 extra-small uppercase fw-bold px-3" id="wishlist-move-all">MOVE ALL TO BAG</button>
+      </div>
+
+      <div class="row g-4" id="wishlist-grid">
+        
+        <!-- Wishlist Card 1 -->
+        <div class="col-lg-4 col-md-6" id="wishlist-card-1">
+          <div class="card border-0 rounded-0 bg-white h-100 shadow-sm position-relative overflow-hidden">
+            <button class="btn btn-dark btn-sm rounded-circle position-absolute top-0 end-0 m-3 z-3 remove-wishlist-item" data-target="wishlist-card-1" title="Remove Item">
+              <i class="bi bi-x-lg"></i>
+            </button>
+            
+            <div class="position-relative" style="aspect-ratio: 3/4; overflow: hidden; background: #ECE8DD;">
+              <img src="images/product-5.jpg" alt="ZR Football Jersey" class="w-100 h-100 object-fit-cover">
+              <span class="badge bg-dark text-white position-absolute bottom-0 start-0 m-3 extra-small uppercase">IN STOCK</span>
+            </div>
+
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <span class="extra-small text-muted uppercase tracking-wider mb-1 d-block">TOPS / FOOTBALL JERSEY</span>
+                <h5 class="font-serif fs-4 fw-bold mb-2">ZR Football Jersey Forest Stripe</h5>
+                <div class="fs-5 fw-bold text-dark mb-3">₹4,999</div>
+                
+                <div class="mb-3">
+                  <label class="form-label extra-small fw-bold uppercase tracking-wider">SELECT SIZE</label>
+                  <select class="form-select form-select-sm rounded-0">
+                    <option value="S">Small (S)</option>
+                    <option value="M" selected>Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn-editorial btn-editorial-dark w-100 btn-magnetic btn-add-wishlist-item" data-id="prod-5">
+                <i class="bi bi-bag-plus me-2"></i> MOVE TO SHOPPING BAG
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wishlist Card 2 -->
+        <div class="col-lg-4 col-md-6" id="wishlist-card-2">
+          <div class="card border-0 rounded-0 bg-white h-100 shadow-sm position-relative overflow-hidden">
+            <button class="btn btn-dark btn-sm rounded-circle position-absolute top-0 end-0 m-3 z-3 remove-wishlist-item" data-target="wishlist-card-2" title="Remove Item">
+              <i class="bi bi-x-lg"></i>
+            </button>
+            
+            <div class="position-relative" style="aspect-ratio: 3/4; overflow: hidden; background: #ECE8DD;">
+              <img src="images/product-2.jpg" alt="Boxy SS Overshirt" class="w-100 h-100 object-fit-cover">
+              <span class="badge bg-dark text-white position-absolute bottom-0 start-0 m-3 extra-small uppercase">IN STOCK</span>
+            </div>
+
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <span class="extra-small text-muted uppercase tracking-wider mb-1 d-block">SHIRTS / OVERSIZED</span>
+                <h5 class="font-serif fs-4 fw-bold mb-2">Boxy SS Overshirt Blue Stripe</h5>
+                <div class="fs-5 fw-bold text-dark mb-3">₹5,999</div>
+                
+                <div class="mb-3">
+                  <label class="form-label extra-small fw-bold uppercase tracking-wider">SELECT SIZE</label>
+                  <select class="form-select form-select-sm rounded-0">
+                    <option value="S">Small (S)</option>
+                    <option value="M" selected>Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn-editorial btn-editorial-dark w-100 btn-magnetic btn-add-wishlist-item" data-id="prod-3">
+                <i class="bi bi-bag-plus me-2"></i> MOVE TO SHOPPING BAG
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wishlist Card 3 -->
+        <div class="col-lg-4 col-md-6" id="wishlist-card-3">
+          <div class="card border-0 rounded-0 bg-white h-100 shadow-sm position-relative overflow-hidden">
+            <button class="btn btn-dark btn-sm rounded-circle position-absolute top-0 end-0 m-3 z-3 remove-wishlist-item" data-target="wishlist-card-3" title="Remove Item">
+              <i class="bi bi-x-lg"></i>
+            </button>
+            
+            <div class="position-relative" style="aspect-ratio: 3/4; overflow: hidden; background: #ECE8DD;">
+              <img src="images/product-3.jpg" alt="Legacy Work Pant Sand" class="w-100 h-100 object-fit-cover">
+              <span class="badge bg-dark text-white position-absolute bottom-0 start-0 m-3 extra-small uppercase">IN STOCK</span>
+            </div>
+
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <span class="extra-small text-muted uppercase tracking-wider mb-1 d-block">TROUSERS / CARGO</span>
+                <h5 class="font-serif fs-4 fw-bold mb-2">Legacy Work Pant Sand</h5>
+                <div class="fs-5 fw-bold text-dark mb-3">₹6,999</div>
+                
+                <div class="mb-3">
+                  <label class="form-label extra-small fw-bold uppercase tracking-wider">SELECT SIZE</label>
+                  <select class="form-select form-select-sm rounded-0">
+                    <option value="30">Waist 30"</option>
+                    <option value="32" selected>Waist 32"</option>
+                    <option value="34">Waist 34"</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn-editorial btn-editorial-dark w-100 btn-magnetic btn-add-wishlist-item" data-id="prod-4">
+                <i class="bi bi-bag-plus me-2"></i> MOVE TO SHOPPING BAG
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Blush Pink CTA Banner -->
+  <section class="pink-cta-banner">
+    <h2 class="pink-cta-title">Effortlessly access relevant, high-quality content exactly when you need it</h2>
+    <a href="runway.html" class="btn-dark-get-started">GET STARTED</a>
+  </section>
+
+  <!-- Paint Drops Separator -->
+  <div class="footer-drops-wrapper">
+    <svg class="footer-drops-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="#1A1A1A">
+      <path d="M0,120 L1200,120 L1200,30 Q1170,5 1140,30 Q1110,75 1080,30 Q1050,95 1020,30 Q990,5 960,30 Q930,85 900,30 Q870,10 840,30 Q810,105 780,30 Q750,15 720,30 Q690,95 660,30 Q630,10 600,30 Q570,80 540,30 Q510,5 480,30 Q450,90 420,30 Q390,15 360,30 Q330,100 300,30 Q270,10 240,30 Q210,80 180,30 Q150,5 120,30 Q90,90 60,30 Q30,15 0,30 Z"></path>
+    </svg>
+  </div>
+
+  <!-- Minimized Dark Luxury Footer -->
+  <footer class="flaunter-dark-footer">
+    <div class="container">
+      <a href="index.html" class="flaunter-brand-logo">Valence</a>
+      <ul class="flaunter-primary-nav">
+        <li><a href="index.html#collection-section">NEW DROPS</a></li>
+        <li><a href="index.html#asymmetric-section">EDITORIAL GALLERY</a></li>
+        <li><a href="runway.html">RUNWAY SHOWCASE</a></li>
+      </ul>
+      <div class="flaunter-divider"></div>
+      <ul class="flaunter-sub-nav">
+        <li><a href="runway.html"><i class="bi bi-stars text-warning me-1"></i> RUNWAY SHOP</a></li>
+        <li><a href="wishlist.html">WISHLIST</a></li>
+        <li><a href="cart.html">CART</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+      <div class="flaunter-social-row">
+        <a href="#" class="flaunter-social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="flaunter-social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+      <p class="flaunter-copy-text">Copyright © 2026 VALENCE STUDIOS, Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.remove-wishlist-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-target');
+        const card = document.getElementById(id);
+        if (card) {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.9)';
+          card.style.transition = 'all 0.3s ease';
+          setTimeout(() => card.remove(), 300);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

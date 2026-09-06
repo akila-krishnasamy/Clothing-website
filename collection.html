@@ -38,36 +38,58 @@
     * { box-sizing: border-box; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-cream); color: var(--text-dark); margin: 0; padding: 0; }
 
-    .nav-icon-btn { background: none; border: none; color: #2d3036; font-size: 18px; padding: 4px 8px; position: relative; cursor: pointer; transition: transform 0.2s, color 0.2s; }
-    .nav-icon-btn:hover { color: var(--gold-primary); transform: translateY(-1px); }
-    .cart-badge { position: absolute; top: -1px; right: 0px; background: var(--gold-primary); color: #fff; font-size: 9px; font-weight: 700; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
     /* Hero Banner Section */
-    .collection-hero { background: radial-gradient(circle at 50% 30%, #ffffff 0%, #f4f0e6 100%); padding: 60px 20px 40px; text-center; border-bottom: 1px solid var(--border-subtle); position: relative; }
-    .collection-hero-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 8px; display: block; }
-    .collection-hero-title { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; letter-spacing: 6px; text-transform: uppercase; margin: 0 0 12px; color: var(--text-dark); }
-    .collection-hero-desc { max-width: 620px; margin: 0 auto; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .collection-hero { background: radial-gradient(circle at 50% 30%, #ffffff 0%, #f4f0e6 100%); padding: 50px 20px 35px; text-align: center; border-bottom: 1px solid var(--border-subtle); }
+    .collection-hero-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 6px; display: block; }
+    .collection-hero-title { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; margin: 0 0 10px; color: var(--text-dark); }
+    .collection-hero-desc { max-width: 600px; margin: 0 auto; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-    /* Filter & Controls Toolbar */
-    .filter-toolbar { background: #ffffff; border-bottom: 1px solid var(--border-subtle); padding: 14px 28px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
-    
+    /* Filter Toolbar */
+    .filter-toolbar { background: #ffffff; border-bottom: 1px solid var(--border-subtle); padding: 12px 24px; position: sticky; top: 0; z-index: 99; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
     .filter-categories { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
     .filter-categories::-webkit-scrollbar { display: none; }
-    .cat-btn { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border-subtle); background: #f7f7f9; color: var(--text-muted); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .cat-btn { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border-subtle); background: #f7f7f9; color: var(--text-muted); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
     .cat-btn:hover, .cat-btn.active { background: var(--text-dark); color: #ffffff; border-color: var(--text-dark); }
 
-    .search-filter-input { position: relative; min-width: 220px; }
+    .search-filter-input { position: relative; min-width: 200px; }
     .search-filter-input input { width: 100%; font-size: 11px; padding: 6px 12px 6px 30px; border-radius: 20px; border: 1px solid var(--border-subtle); background: #f8f9fa; }
     .search-filter-input i { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #999; font-size: 12px; }
 
     .sort-select { font-size: 11px; font-weight: 600; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border-subtle); background: #ffffff; cursor: pointer; }
-
     .grid-toggle-btn { background: none; border: 1px solid var(--border-subtle); color: var(--text-muted); padding: 5px 10px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
     .grid-toggle-btn:hover, .grid-toggle-btn.active { color: var(--text-dark); border-color: var(--text-dark); background: #f4f5f7; }
 
-    /* Product Grid Cards */
-    .products-container { padding: 40px 28px; }
-    
+    /* E-Commerce Sidebar Filter Box */
+    .filter-sidebar { background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 8px; padding: 20px; box-shadow: var(--shadow-sm); }
+    .filter-group-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dark); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .filter-divider { height: 1px; background: var(--border-subtle); margin: 16px 0; }
+
+    /* Custom Checkbox & Radio Labels */
+    .filter-option-label { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #4a4e57; cursor: pointer; padding: 4px 0; transition: color 0.2s; }
+    .filter-option-label:hover { color: var(--gold-primary); }
+    .filter-option-label input[type="checkbox"], .filter-option-label input[type="radio"] { accent-color: var(--gold-primary); width: 14px; height: 14px; margin-right: 8px; cursor: pointer; }
+
+    /* Size Pills Filter */
+    .size-pills-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+    .size-pill { font-size: 10px; font-weight: 700; padding: 5px 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: #ffffff; color: var(--text-dark); cursor: pointer; transition: all 0.2s; }
+    .size-pill.active, .size-pill:hover { background: var(--text-dark); color: #ffffff; border-color: var(--text-dark); }
+
+    /* Color Swatches Filter */
+    .color-swatches-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+    .color-swatch { width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; outline: 1px solid var(--border-subtle); cursor: pointer; transition: transform 0.2s; position: relative; }
+    .color-swatch:hover, .color-swatch.active { transform: scale(1.2); outline: 2px solid var(--gold-primary); }
+
+    /* Price Range Slider */
+    .price-range-labels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-dark); margin-top: 6px; }
+
+    /* Active Filter Badges Strip */
+    .active-chips-container { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 16px; }
+    .active-chip { font-size: 10px; font-weight: 700; background: #eceae4; color: #222; padding: 4px 10px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px; }
+    .active-chip i { cursor: pointer; font-size: 11px; }
+    .active-chip i:hover { color: #d93838; }
+
+    /* Product Cards Grid */
+    .products-container { padding: 30px 24px; }
     .product-card { background: #ffffff; border: 1px solid rgba(0,0,0,0.06); border-radius: 8px; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); height: 100%; display: flex; flex-direction: column; position: relative; }
     .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(197, 155, 39, 0.3); }
 
@@ -77,41 +99,29 @@
     .product-card:hover .product-img-alt { opacity: 1; transform: scale(1.04); }
     .product-card:hover .product-img-main { opacity: 0; transform: scale(1.04); }
 
-    .badge-tag { position: absolute; top: 12px; left: 12px; font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 3px; z-index: 2; }
+    .badge-tag { position: absolute; top: 10px; left: 10px; font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 3px; z-index: 2; }
     .badge-runway { background: var(--text-dark); color: #ffffff; }
     .badge-new { background: var(--gold-primary); color: #ffffff; }
     .badge-bestseller { background: #2b7a4b; color: #ffffff; }
 
-    .wishlist-card-btn { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.9); border: none; color: #333; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .wishlist-card-btn { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.9); border: none; color: #333; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     .wishlist-card-btn:hover, .wishlist-card-btn.active { color: #d93838; background: #ffffff; transform: scale(1.1); }
 
-    .quick-view-overlay-btn { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(17, 18, 21, 0.9); color: #ffffff; border: none; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 16px; border-radius: 20px; opacity: 0; transition: all 0.3s ease; z-index: 2; white-space: nowrap; cursor: pointer; }
+    .quick-view-overlay-btn { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(17, 18, 21, 0.9); color: #ffffff; border: none; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 16px; border-radius: 20px; opacity: 0; transition: all 0.3s ease; z-index: 2; white-space: nowrap; cursor: pointer; }
     .product-card:hover .quick-view-overlay-btn { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    .product-info { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .product-info { padding: 14px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .product-cat-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 4px; }
     .product-title { font-size: 13px; font-weight: 600; color: var(--text-dark); margin: 0 0 6px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .product-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+    .product-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
     .product-price { font-size: 13px; font-weight: 700; color: var(--text-dark); }
     .product-price-old { font-size: 11px; text-decoration: line-through; color: var(--text-muted); margin-left: 6px; }
 
-    .btn-add-card { background: var(--text-dark); color: #ffffff; border: none; width: 100%; padding: 8px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 4px; margin-top: 12px; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-add-card { background: var(--text-dark); color: #ffffff; border: none; width: 100%; padding: 8px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 4px; margin-top: 10px; cursor: pointer; transition: background 0.2s, transform 0.15s; }
     .btn-add-card:hover { background: var(--gold-primary); color: #ffffff; transform: translateY(-1px); }
 
-    /* Editorial Banner Highlight */
-    .editorial-highlight-section { background: #111215; color: #ffffff; padding: 60px 40px; margin: 40px 0; border-radius: 12px; position: relative; overflow: hidden; }
-    .editorial-highlight-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; letter-spacing: 4px; margin-bottom: 12px; }
-    .editorial-highlight-section p { font-size: 13px; color: #a0a5b0; max-width: 500px; line-height: 1.6; }
-
-    /* Footer */
-    footer { background: #111215; color: #b0b4be; padding: 50px 28px 20px; font-size: 12px; }
-    footer h5 { font-family: 'Cormorant Garamond', serif; color: #ffffff; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    footer a { color: #b0b4be; text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--gold-primary); }
-
     /* Responsive */
-    @media (max-width: 768px) {
-      .filter-toolbar { padding: 10px 14px; }
+    @media (max-width: 991px) {
       .products-container { padding: 20px 14px; }
       .collection-hero-title { font-size: 28px; }
     }
@@ -119,72 +129,8 @@
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-announcement-bar text-center">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-      <span class="d-none d-md-inline-block"><i class="bi bi-telephone me-1"></i> SUPPORT: +91 98765 43210</span>
-      <span>FREE EXPRESS SHIPPING ACROSS INDIA ON ORDERS OVER ₹2,999 — <a href="runway.html" class="text-white text-decoration-underline ms-1">RUNWAY SHOP</a></span>
-      <div class="dropdown d-none d-sm-inline-block">
-        <button class="btn btn-sm text-white dropdown-toggle p-0 border-0 fs-7" type="button" data-bs-toggle="dropdown">
-          <i class="bi bi-globe me-1"></i> <span>EN</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-          <li><a class="dropdown-item" href="#">English (EN)</a></li>
-          <li><a class="dropdown-item" href="#">हिंदी (Hindi)</a></li>
-          <li><a class="dropdown-item" href="#">मराठी (Marathi)</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- Standard Editorial Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-editorial">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-      <button class="navbar-toggler border-0 p-0 text-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Toggle navigation">
-        <i class="bi bi-list fs-2"></i>
-      </button>
-      <a class="navbar-brand me-0" href="index.html">VALENCE</a>
-      <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex" id="navbarNav">
-        <ul class="navbar-nav align-items-center gap-2">
-          <li class="nav-item"><a class="nav-link nav-link-editorial text-warning fw-bold" href="runway.html"><i class="bi bi-stars me-1"></i> RUNWAY SHOP</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial active" href="collection.html">COLLECTION</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#asymmetric-section">EDITORIAL GALLERY</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#campaign-section">LOOKBOOK</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-editorial" href="index.html#story-section">ABOUT</a></li>
-        </ul>
-      </div>
-      <div class="d-flex align-items-center gap-1 gap-md-2">
-        <button class="nav-icon-btn" id="btnOpenSearch" aria-label="Search"><i class="bi bi-search"></i></button>
-        <button class="nav-icon-btn d-none d-sm-inline-block" aria-label="Account"><i class="bi bi-person"></i></button>
-        <button class="nav-icon-btn" aria-label="Wishlist"><i class="bi bi-heart"></i><span class="cart-badge" id="header-wishlist-count">0</span></button>
-        <button class="nav-icon-btn position-relative" aria-label="Shopping Bag"><i class="bi bi-bag"></i><span class="cart-badge" id="header-cart-count">0</span></button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile Offcanvas Menu -->
-  <div class="offcanvas offcanvas-start offcanvas-editorial" tabindex="-1" id="mobileMenu">
-    <div class="offcanvas-header">
-      <span class="font-serif fs-4 tracking-wider fw-bold">VALENCE STUDIOS</span>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body d-flex flex-column justify-content-between p-4">
-      <div>
-        <a href="runway.html" class="nav-link-mobile text-warning fw-bold">✨ RUNWAY SHOP APP</a>
-        <a href="collection.html" class="nav-link-mobile" data-bs-dismiss="offcanvas">SHOP COLLECTION</a>
-        <a href="index.html#asymmetric-section" class="nav-link-mobile" data-bs-dismiss="offcanvas">EDITORIAL GALLERY</a>
-        <a href="index.html#campaign-section" class="nav-link-mobile" data-bs-dismiss="offcanvas">CAMPAIGNS</a>
-        <a href="index.html#story-section" class="nav-link-mobile" data-bs-dismiss="offcanvas">THE BRAND STORY</a>
-      </div>
-      <div class="pt-4 border-top">
-        <div class="d-flex gap-3 text-dark fs-5">
-          <a href="https://wa.me/919876543210" target="_blank"><i class="bi bi-whatsapp"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Dynamic Shared Navbar Placeholder (injected by js/components.js) -->
+  <div id="site-navbar"></div>
 
   <!-- Hero Header Banner -->
   <section class="collection-hero">
@@ -193,60 +139,218 @@
     <p class="collection-hero-desc">Discover our complete range of architectural silhouettes, boxy cotton tees, tailored trousers, and editorial outerwear designed in India.</p>
   </section>
 
-  <!-- Filter & Controls Sticky Toolbar -->
+  <!-- Sticky Filter & Sort Controls Toolbar -->
   <div class="filter-toolbar">
-    <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between gap-2">
       
-      <!-- Category Tabs -->
-      <div class="filter-categories" id="categoryFilterGroup">
-        <button class="cat-btn active" data-cat="ALL">All Products (<span id="countAll">12</span>)</button>
-        <button class="cat-btn" data-cat="TEES">Tees & Tops</button>
-        <button class="cat-btn" data-cat="OUTERWEAR">Overshirts & Jackets</button>
-        <button class="cat-btn" data-cat="BOTTOMS">Tailored Pants</button>
-        <button class="cat-btn" data-cat="ACC">Accessories & Shoes</button>
+      <!-- Mobile Filter Toggle Button & Category Tabs -->
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-dark btn-sm rounded-pill d-lg-none extra-small fw-bold text-uppercase px-3" data-bs-toggle="offcanvas" data-bs-target="#filterSidebarOffcanvas">
+          <i class="bi bi-sliders me-1"></i> FILTERS (<span id="mobileFilterBadgeCount">0</span>)
+        </button>
+
+        <div class="filter-categories" id="categoryFilterGroup">
+          <button class="cat-btn active" data-cat="ALL">All (<span id="countAll">12</span>)</button>
+          <button class="cat-btn" data-cat="TEES">Tees</button>
+          <button class="cat-btn" data-cat="OUTERWEAR">Outerwear</button>
+          <button class="cat-btn" data-cat="BOTTOMS">Pants</button>
+          <button class="cat-btn" data-cat="DRESSES">Dresses</button>
+          <button class="cat-btn" data-cat="ACC">Accessories</button>
+        </div>
       </div>
 
-      <!-- Search & Sort Controls -->
-      <div class="d-flex align-items-center gap-2 flex-wrap">
+      <!-- Search, Sort & View Switches -->
+      <div class="d-flex align-items-center gap-2 flex-wrap ms-auto">
         <div class="search-filter-input">
           <i class="bi bi-search"></i>
-          <input type="text" id="collectionSearch" placeholder="Search collection..." onkeyup="filterCollection()">
+          <input type="text" id="collectionSearch" placeholder="Search collection..." onkeyup="handleSearchInput()">
         </div>
 
-        <select class="sort-select" id="sortSelect" onchange="sortCollection()">
+        <select class="sort-select" id="sortSelect" onchange="applyAllFilters()">
           <option value="featured">Sort by: Featured</option>
           <option value="price-low">Price: Low to High</option>
           <option value="price-high">Price: High to Low</option>
           <option value="newest">Newest Arrivals</option>
+          <option value="bestseller">Bestsellers First</option>
         </select>
 
         <div class="d-none d-md-flex align-items-center gap-1 border-start ps-2">
-          <button class="grid-toggle-btn active" onclick="setGridColumns(4)" title="4 Columns Grid"><i class="bi bi-grid-3x3-gap-fill"></i></button>
-          <button class="grid-toggle-btn" onclick="setGridColumns(3)" title="3 Columns Grid"><i class="bi bi-grid-fill"></i></button>
+          <button class="grid-toggle-btn active" onclick="setGridColumns(4)" id="gridBtn4" title="4 Columns Grid"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+          <button class="grid-toggle-btn" onclick="setGridColumns(3)" id="gridBtn3" title="3 Columns Grid"><i class="bi bi-grid-fill"></i></button>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Main Products Grid -->
-  <main class="products-container">
-    <div class="row g-4" id="collectionGrid">
-      <!-- Dynamically Rendered Cards -->
-    </div>
+  <!-- Main Grid & Sidebar Layout Container -->
+  <main class="products-container container-fluid">
+    <div class="row g-4">
+      
+      <!-- Desktop Left E-Commerce Filter Sidebar -->
+      <aside class="col-lg-3 d-none d-lg-block">
+        <div class="filter-sidebar sticky-top" style="top: 80px;">
+          
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <span class="fw-bold fs-7 uppercase tracking-wider text-dark"><i class="bi bi-funnel me-1"></i> REFINE SELECTION</span>
+            <button class="btn btn-link text-decoration-none p-0 extra-small fw-bold text-danger text-uppercase" onclick="clearAllFilters()">CLEAR ALL</button>
+          </div>
 
-    <!-- Editorial Highlight Section -->
-    <div class="editorial-highlight-section my-5">
-      <div class="row align-items-center">
-        <div class="col-lg-7">
-          <span class="text-warning font-monospace text-uppercase small tracking-wider">CREATIVE DIRECTION</span>
-          <h2>THE SILHOUETTE OF CONTEMPORARY ELEGANCE</h2>
-          <p>Every piece in the SS26 collection is crafted using 280 GSM heavy organic cottons, Italian silk blends, and precision tailoring. Built for timeless longevity and structural drape.</p>
-          <a href="runway.html" class="btn btn-outline-light btn-sm rounded-pill mt-3 px-4 text-uppercase font-monospace">EXPLORE 360° RUNWAY EXPERIENCE <i class="bi bi-arrow-right ms-1"></i></a>
+          <!-- Price Range Filter -->
+          <div class="mb-3">
+            <div class="filter-group-title">
+              <span>MAX PRICE</span>
+              <span class="text-gold" id="priceRangeValue">₹15,000</span>
+            </div>
+            <input type="range" class="form-range" id="priceRangeInput" min="1000" max="15000" step="500" value="15000" oninput="updatePriceSlider(this.value)">
+            <div class="price-range-labels">
+              <span>₹1,000</span>
+              <span>₹15,000</span>
+            </div>
+          </div>
+
+          <div class="filter-divider"></div>
+
+          <!-- Collection Type Badges Filter -->
+          <div class="mb-3">
+            <div class="filter-group-title">COLLECTION BADGE</div>
+            <label class="filter-option-label">
+              <span><input type="checkbox" class="badge-filter-checkbox" value="RUNWAY" onchange="applyAllFilters()"> Runway Showcase</span>
+              <span class="text-muted extra-small">(3)</span>
+            </label>
+            <label class="filter-option-label">
+              <span><input type="checkbox" class="badge-filter-checkbox" value="NEW DROP" onchange="applyAllFilters()"> New Drop</span>
+              <span class="text-muted extra-small">(3)</span>
+            </label>
+            <label class="filter-option-label">
+              <span><input type="checkbox" class="badge-filter-checkbox" value="BESTSELLER" onchange="applyAllFilters()"> Bestsellers</span>
+              <span class="text-muted extra-small">(3)</span>
+            </label>
+          </div>
+
+          <div class="filter-divider"></div>
+
+          <!-- Size Options Filter -->
+          <div class="mb-3">
+            <div class="filter-group-title">AVAILABLE SIZES</div>
+            <div class="size-pills-wrap" id="sizeFilterContainer">
+              <button class="size-pill" data-size="S" onclick="toggleSizeFilter('S', this)">S</button>
+              <button class="size-pill" data-size="M" onclick="toggleSizeFilter('M', this)">M</button>
+              <button class="size-pill" data-size="L" onclick="toggleSizeFilter('L', this)">L</button>
+              <button class="size-pill" data-size="XL" onclick="toggleSizeFilter('XL', this)">XL</button>
+              <button class="size-pill" data-size="30" onclick="toggleSizeFilter('30', this)">30"</button>
+              <button class="size-pill" data-size="32" onclick="toggleSizeFilter('32', this)">32"</button>
+              <button class="size-pill" data-size="34" onclick="toggleSizeFilter('34', this)">34"</button>
+              <button class="size-pill" data-size="ONE SIZE" onclick="toggleSizeFilter('ONE SIZE', this)">ONE SIZE</button>
+            </div>
+          </div>
+
+          <div class="filter-divider"></div>
+
+          <!-- Color Swatch Filter -->
+          <div class="mb-3">
+            <div class="filter-group-title">COLOR PALETTE</div>
+            <div class="color-swatches-wrap" id="colorFilterContainer">
+              <div class="color-swatch" style="background:#111;" title="Black" data-color="black" onclick="toggleColorFilter('black', this)"></div>
+              <div class="color-swatch" style="background:#ffffff;" title="White" data-color="white" onclick="toggleColorFilter('white', this)"></div>
+              <div class="color-swatch" style="background:#d9c5a0;" title="Beige / Sand" data-color="beige" onclick="toggleColorFilter('beige', this)"></div>
+              <div class="color-swatch" style="background:#1e3d59;" title="Navy Blue" data-color="blue" onclick="toggleColorFilter('blue', this)"></div>
+              <div class="color-swatch" style="background:#c59b27;" title="Gold" data-color="gold" onclick="toggleColorFilter('gold', this)"></div>
+              <div class="color-swatch" style="background:#2b7a4b;" title="Forest Green" data-color="green" onclick="toggleColorFilter('green', this)"></div>
+              <div class="color-swatch" style="background:#5c3a21;" title="Espresso Brown" data-color="brown" onclick="toggleColorFilter('brown', this)"></div>
+            </div>
+          </div>
+
+          <div class="filter-divider"></div>
+
+          <!-- Stock Availability Filter -->
+          <div>
+            <div class="filter-group-title">AVAILABILITY</div>
+            <label class="filter-option-label">
+              <span><input type="checkbox" id="stockOnlyCheckbox" onchange="applyAllFilters()"> In Stock Only</span>
+              <span class="text-muted extra-small" id="inStockCount">(11)</span>
+            </label>
+          </div>
+
         </div>
-      </div>
+      </aside>
+
+      <!-- Right Main Products Content Column -->
+      <section class="col-lg-9">
+        
+        <!-- Active Filter Chips Bar & Live Count -->
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+          <div class="active-chips-container" id="activeFilterChips"></div>
+          <div class="extra-small fw-bold text-muted uppercase tracking-wider" id="resultsCountLabel">SHOWING 12 OF 12 PRODUCTS</div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="row g-3 g-md-4" id="collectionGrid"></div>
+
+        <!-- Editorial Highlight Banner -->
+        <div class="editorial-highlight-section my-5">
+          <div class="row align-items-center">
+            <div class="col-lg-7">
+              <span class="text-warning font-monospace text-uppercase small tracking-wider">CREATIVE DIRECTION</span>
+              <h2>THE SILHOUETTE OF CONTEMPORARY ELEGANCE</h2>
+              <p>Every piece in the SS26 collection is crafted using 280 GSM heavy organic cottons, Italian silk blends, and precision tailoring. Built for timeless longevity and structural drape.</p>
+              <a href="runway.html" class="btn btn-outline-light btn-sm rounded-pill mt-3 px-4 text-uppercase font-monospace">EXPLORE RUNWAY SHOP <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </section>
     </div>
   </main>
+
+  <!-- Mobile Offcanvas Filter Drawer -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="filterSidebarOffcanvas" style="width: 320px;">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title font-serif fw-bold uppercase tracking-wider">FILTER COLLECTION</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-4">
+      
+      <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+        <span class="extra-small fw-bold text-uppercase text-muted">REFINE SELECTION</span>
+        <button class="btn btn-link text-decoration-none p-0 extra-small fw-bold text-danger text-uppercase" onclick="clearAllFilters()">CLEAR ALL</button>
+      </div>
+
+      <!-- Mobile Price Slider -->
+      <div class="mb-4">
+        <div class="filter-group-title">
+          <span>MAX PRICE</span>
+          <span class="text-gold" id="mobilePriceRangeValue">₹15,000</span>
+        </div>
+        <input type="range" class="form-range" id="mobilePriceRangeInput" min="1000" max="15000" step="500" value="15000" oninput="updateMobilePriceSlider(this.value)">
+      </div>
+
+      <!-- Mobile Size Pills -->
+      <div class="mb-4">
+        <div class="filter-group-title">SIZES</div>
+        <div class="size-pills-wrap">
+          <button class="size-pill" data-size="S" onclick="toggleSizeFilter('S', this)">S</button>
+          <button class="size-pill" data-size="M" onclick="toggleSizeFilter('M', this)">M</button>
+          <button class="size-pill" data-size="L" onclick="toggleSizeFilter('L', this)">L</button>
+          <button class="size-pill" data-size="XL" onclick="toggleSizeFilter('XL', this)">XL</button>
+          <button class="size-pill" data-size="30" onclick="toggleSizeFilter('30', this)">30"</button>
+          <button class="size-pill" data-size="32" onclick="toggleSizeFilter('32', this)">32"</button>
+        </div>
+      </div>
+
+      <!-- Mobile Stock Toggle -->
+      <div class="mb-4">
+        <label class="filter-option-label">
+          <span><input type="checkbox" id="mobileStockOnlyCheckbox" onchange="syncMobileStock(this)"> In Stock Only</span>
+        </label>
+      </div>
+
+      <button class="btn btn-dark w-100 py-3 rounded-pill fw-bold text-uppercase fs-7 mt-3" data-bs-dismiss="offcanvas">
+        APPLY FILTERS &amp; VIEW PRODUCTS
+      </button>
+
+    </div>
+  </div>
 
   <!-- Quick View Modal -->
   <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
@@ -288,6 +392,9 @@
     </div>
   </div>
 
+  <!-- Dynamic Shared Footer Placeholder (injected by js/components.js) -->
+  <div id="site-footer"></div>
+
   <!-- Toast Notification -->
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 2000">
     <div id="liveToast" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
@@ -298,85 +405,62 @@
     </div>
   </div>
 
-  <!-- Paint Drops Separator -->
-  <div class="footer-drops-wrapper">
-    <svg class="footer-drops-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="#1A1A1A">
-      <path d="M0,120 L1200,120 L1200,30 Q1170,5 1140,30 Q1110,75 1080,30 Q1050,95 1020,30 Q990,5 960,30 Q930,85 900,30 Q870,10 840,30 Q810,105 780,30 Q750,15 720,30 Q690,95 660,30 Q630,10 600,30 Q570,80 540,30 Q510,5 480,30 Q450,90 420,30 Q390,15 360,30 Q330,100 300,30 Q270,10 240,30 Q210,80 180,30 Q150,5 120,30 Q90,90 60,30 Q30,15 0,30 Z"></path>
-    </svg>
-  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Standard Dark Luxury Footer -->
-  <footer class="flaunter-dark-footer">
-    <div class="container">
-      <a href="index.html" class="flaunter-brand-logo">Valence</a>
-      <ul class="flaunter-primary-nav">
-        <li><a href="index.html#collection-section">NEW DROPS</a></li>
-        <li><a href="index.html#asymmetric-section">EDITORIAL GALLERY</a></li>
-        <li><a href="runway.html">RUNWAY SHOWCASE</a></li>
-      </ul>
-      <div class="flaunter-divider"></div>
-      <ul class="flaunter-sub-nav">
-        <li><a href="runway.html"><i class="bi bi-stars text-warning me-1"></i> RUNWAY SHOP</a></li>
-        <li><a href="index.html#collection-section">COLLECTION</a></li>
-        <li><a href="index.html#asymmetric-section">EDITORIAL GALLERY</a></li>
-        <li><a href="index.html#lookbook-section">LOOKBOOK</a></li>
-        <li><a href="index.html#story-section">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
-      <div class="flaunter-social-row">
-        <a href="#" class="flaunter-social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="flaunter-social-btn" title="Twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="flaunter-social-btn" title="Pinterest"><i class="bi bi-pinterest"></i></a>
-        <a href="#" class="flaunter-social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        <a href="#" class="flaunter-social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
-      </div>
-      <p class="flaunter-copy-text mb-2"><a href="#">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="#">Privacy Policy</a></p>
-      <p class="flaunter-copy-text">Copyright &copy; 2026 VALENCE STUDIOS, Ltd. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+  <!-- E-Commerce Collection Filtering Script Engine -->
   <script>
-    // Master Products Database for Collection
+    // Complete E-Commerce Catalog Products Database
     const COLLECTION_PRODUCTS = [
-      { id: "c1", category: "TEES", catLabel: "OVERSIZED TEE", title: "Oversized Cotton Trench Tee", price: 5950, oldPrice: 6950, badge: "RUNWAY", badgeClass: "badge-runway", mainImg: "images/product-1.jpg", altImg: "images/product-1-alt.jpg", desc: "Crafted from 280 GSM combed organic cotton with dropped shoulders and back graphic print." },
-      { id: "c2", category: "OUTERWEAR", catLabel: "BLAZER / OVERSHIRT", title: "Sculpted Double-Breasted Blazer", price: 8490, oldPrice: null, badge: "NEW DROP", badgeClass: "badge-new", mainImg: "images/product-2.jpg", altImg: "images/product-2-alt.jpg", desc: "Structured wool-blend blazer featuring asymmetric buttoning and peak lapels." },
-      { id: "c3", category: "BOTTOMS", catLabel: "TAILORED PANTS", title: "Wide Leg Tailored Trousers", price: 4895, oldPrice: 5490, badge: "BESTSELLER", badgeClass: "badge-bestseller", mainImg: "images/product-3.jpg", altImg: "images/product-3-alt.jpg", desc: "High-waisted trousers with front double pleats and fluid wide-leg silhouette." },
-      { id: "c4", category: "OUTERWEAR", catLabel: "COCKTAIL DRESS", title: "Fringed Tiered Silk Dress", price: 9800, oldPrice: 11500, badge: "RUNWAY", badgeClass: "badge-runway", mainImg: "images/product-4.jpg", altImg: "images/product-4-alt.jpg", desc: "Hand-fringed silk midi dress engineered for dynamic motion." },
-      { id: "c5", category: "ACC", catLabel: "JEWELRY", title: "Hammered Gold Hoop Earrings", price: 1299, oldPrice: null, badge: null, mainImg: "images/product-5.jpg", altImg: "images/product-5.jpg", desc: "24k gold-plated brass hoops with hand-hammered texture finish." },
-      { id: "c6", category: "ACC", catLabel: "FOOTWEAR", title: "Leather Platform Runway Mule", price: 7800, oldPrice: 8900, badge: "NEW DROP", badgeClass: "badge-new", mainImg: "images/product-6.jpg", altImg: "images/product-6.jpg", desc: "Sculpted Italian leather mules with elevated runway platform." },
-      { id: "c7", category: "ACC", catLabel: "BELT", title: "Statement Buckle Waist Belt", price: 2100, oldPrice: null, badge: null, mainImg: "images/product-7.jpg", altImg: "images/product-7.jpg", desc: "Full-grain calfskin belt featuring custom brushed gold hardware." },
-      { id: "c8", category: "TEES", catLabel: "BLOUSE", title: "Organza Overlay Blouse", price: 5100, oldPrice: 5900, badge: "BESTSELLER", badgeClass: "badge-bestseller", mainImg: "images/product-8.jpg", altImg: "images/product-8.jpg", desc: "Sheer silk organza blouse with dramatic voluminous sleeves." },
-      { id: "c9", category: "OUTERWEAR", catLabel: "JACKET", title: "Embossed Leather Trench Coat", price: 12500, oldPrice: 14500, badge: "RUNWAY", badgeClass: "badge-runway", mainImg: "images/product-3.jpg", altImg: "images/product-3-alt.jpg", desc: "High-fashion leather coat with custom embossed python texture." },
-      { id: "c10", category: "ACC", catLabel: "FOOTWEAR", title: "Pointed Toe Runway Pumps", price: 4500, oldPrice: null, badge: null, mainImg: "images/product-2.jpg", altImg: "images/product-2-alt.jpg", desc: "Sleek pointed pumps crafted with memory foam padding for runway comfort." },
-      { id: "c11", category: "ACC", catLabel: "HANDBAG", title: "Structured Leather Tote", price: 3999, oldPrice: 4999, badge: "BESTSELLER", badgeClass: "badge-bestseller", mainImg: "images/product-4.jpg", altImg: "images/product-4-alt.jpg", desc: "Minimalist tote bag crafted from vegetable-tanned Italian leather." },
-      { id: "c12", category: "BOTTOMS", catLabel: "SKIRT", title: "Pleated Asymmetric Midi Skirt", price: 6200, oldPrice: 7100, badge: "NEW DROP", badgeClass: "badge-new", mainImg: "images/product-5.jpg", altImg: "images/product-5.jpg", desc: "Architectural pleated skirt with high slit and asymmetric hemline." }
+      { id: "c1", category: "TEES", catLabel: "OVERSIZED TEE", title: "Oversized Cotton Trench Tee", price: 5950, oldPrice: 6950, badge: "RUNWAY", badgeClass: "badge-runway", sizes: ["S", "M", "L", "XL"], color: "black", colorName: "Black", inStock: true, mainImg: "images/product-1.jpg", altImg: "images/product-1-alt.jpg", desc: "Crafted from 280 GSM combed organic cotton with dropped shoulders and back graphic print." },
+      { id: "c2", category: "OUTERWEAR", catLabel: "BLAZER / OVERSHIRT", title: "Sculpted Double-Breasted Blazer", price: 8490, oldPrice: null, badge: "NEW DROP", badgeClass: "badge-new", sizes: ["M", "L", "XL"], color: "blue", colorName: "Navy Blue", inStock: true, mainImg: "images/product-2.jpg", altImg: "images/product-2-alt.jpg", desc: "Structured wool-blend blazer featuring asymmetric buttoning and peak lapels." },
+      { id: "c3", category: "BOTTOMS", catLabel: "TAILORED PANTS", title: "Wide Leg Tailored Trousers", price: 4895, oldPrice: 5490, badge: "BESTSELLER", badgeClass: "badge-bestseller", sizes: ["30", "32", "34"], color: "beige", colorName: "Sand Beige", inStock: true, mainImg: "images/product-3.jpg", altImg: "images/product-3-alt.jpg", desc: "High-waisted trousers with front double pleats and fluid wide-leg silhouette." },
+      { id: "c4", category: "DRESSES", catLabel: "COCKTAIL DRESS", title: "Fringed Tiered Silk Dress", price: 9800, oldPrice: 11500, badge: "RUNWAY", badgeClass: "badge-runway", sizes: ["S", "M", "L"], color: "gold", colorName: "Gold", inStock: true, mainImg: "images/product-4.jpg", altImg: "images/product-4-alt.jpg", desc: "Hand-fringed silk midi dress engineered for dynamic motion." },
+      { id: "c5", category: "ACC", catLabel: "JEWELRY", title: "Hammered Gold Hoop Earrings", price: 1299, oldPrice: null, badge: null, sizes: ["ONE SIZE"], color: "gold", colorName: "Gold", inStock: true, mainImg: "images/product-5.jpg", altImg: "images/product-5.jpg", desc: "24k gold-plated brass hoops with hand-hammered texture finish." },
+      { id: "c6", category: "ACC", catLabel: "FOOTWEAR", title: "Leather Platform Runway Mule", price: 7800, oldPrice: 8900, badge: "NEW DROP", badgeClass: "badge-new", sizes: ["M", "L"], color: "black", colorName: "Black", inStock: true, mainImg: "images/product-6.jpg", altImg: "images/product-6.jpg", desc: "Sculpted Italian leather mules with elevated runway platform." },
+      { id: "c7", category: "ACC", catLabel: "BELT", title: "Statement Buckle Waist Belt", price: 2100, oldPrice: null, badge: null, sizes: ["M", "L", "XL"], color: "brown", colorName: "Espresso Brown", inStock: false, mainImg: "images/product-7.jpg", altImg: "images/product-7.jpg", desc: "Full-grain calfskin belt featuring custom brushed gold hardware." },
+      { id: "c8", category: "TEES", catLabel: "BLOUSE", title: "Organza Overlay Blouse", price: 5100, oldPrice: 5900, badge: "BESTSELLER", badgeClass: "badge-bestseller", sizes: ["S", "M"], color: "white", colorName: "White", inStock: true, mainImg: "images/product-8.jpg", altImg: "images/product-8.jpg", desc: "Sheer silk organza blouse with dramatic voluminous sleeves." },
+      { id: "c9", category: "OUTERWEAR", catLabel: "JACKET", title: "Embossed Leather Trench Coat", price: 12500, oldPrice: 14500, badge: "RUNWAY", badgeClass: "badge-runway", sizes: ["L", "XL"], color: "black", colorName: "Black", inStock: true, mainImg: "images/product-3.jpg", altImg: "images/product-3-alt.jpg", desc: "High-fashion leather coat with custom embossed python texture." },
+      { id: "c10", category: "ACC", catLabel: "FOOTWEAR", title: "Pointed Toe Runway Pumps", price: 4500, oldPrice: null, badge: null, sizes: ["S", "M", "L"], color: "black", colorName: "Black", inStock: true, mainImg: "images/product-2.jpg", altImg: "images/product-2-alt.jpg", desc: "Sleek pointed pumps crafted with memory foam padding for runway comfort." },
+      { id: "c11", category: "ACC", catLabel: "HANDBAG", title: "Structured Leather Tote", price: 3999, oldPrice: 4999, badge: "BESTSELLER", badgeClass: "badge-bestseller", sizes: ["ONE SIZE"], color: "green", colorName: "Forest Green", inStock: true, mainImg: "images/product-4.jpg", altImg: "images/product-4-alt.jpg", desc: "Minimalist tote bag crafted from vegetable-tanned Italian leather." },
+      { id: "c12", category: "BOTTOMS", catLabel: "SKIRT", title: "Pleated Asymmetric Midi Skirt", price: 6200, oldPrice: 7100, badge: "NEW DROP", badgeClass: "badge-new", sizes: ["S", "M", "L"], color: "black", colorName: "Black", inStock: true, mainImg: "images/product-5.jpg", altImg: "images/product-5.jpg", desc: "Architectural pleated skirt with high slit and asymmetric hemline." }
     ];
 
+    // Filter State Variables
     let currentCategory = "ALL";
-    let cartCount = parseInt(localStorage.getItem("valence_cart_count") || "0");
-    let wishlistCount = parseInt(localStorage.getItem("valence_wishlist_count") || "0");
+    let selectedMaxPrice = 15000;
+    let selectedSizes = [];
+    let selectedColors = [];
+    let selectedBadges = [];
+    let inStockOnly = false;
+    let gridCols = 4;
 
     const collectionGrid = document.getElementById("collectionGrid");
-    const headerCartCount = document.getElementById("header-cart-count");
-    const headerWishlistCount = document.getElementById("header-wishlist-count");
+    const activeFilterChips = document.getElementById("activeFilterChips");
+    const resultsCountLabel = document.getElementById("resultsCountLabel");
 
-    function initHeaderCounts() {
-      headerCartCount.textContent = cartCount;
-      headerWishlistCount.textContent = wishlistCount;
-    }
-
+    // Grid Renderer
     function renderGrid(products) {
       collectionGrid.innerHTML = "";
+      resultsCountLabel.textContent = `SHOWING ${products.length} OF ${COLLECTION_PRODUCTS.length} PRODUCTS`;
+
       if (products.length === 0) {
-        collectionGrid.innerHTML = '<div class="col-12 text-center py-5 text-muted"><p class="fs-5">No products match your filter criteria.</p></div>';
+        collectionGrid.innerHTML = `
+          <div class="col-12 text-center py-5 text-muted">
+            <i class="bi bi-funnel fs-1 d-block mb-3 text-gold"></i>
+            <h4 class="font-serif fw-bold text-dark">No Products Match Your Filter Criteria</h4>
+            <p class="small">Try resetting your price range, clearing size filters, or searching for another term.</p>
+            <button class="btn btn-dark rounded-pill extra-small fw-bold px-4 py-2 mt-2 uppercase" onclick="clearAllFilters()">RESET ALL FILTERS</button>
+          </div>
+        `;
         return;
       }
 
+      const colClass = gridCols === 3 ? "col-6 col-md-4 product-col" : "col-6 col-md-4 col-lg-3 product-col";
+
       products.forEach(p => {
         const col = document.createElement("div");
-        col.className = "col-6 col-md-4 col-lg-3 product-col";
+        col.className = colClass;
         col.innerHTML = `
           <div class="product-card">
             <div class="product-img-wrap">
@@ -411,55 +495,207 @@
       });
     }
 
-    // Category Tabs Filter
+    // Master Filtering Engine
+    function applyAllFilters() {
+      const searchVal = document.getElementById("collectionSearch").value.toLowerCase();
+      const sortVal = document.getElementById("sortSelect").value;
+      
+      // Sync badge checkboxes state
+      selectedBadges = Array.from(document.querySelectorAll('.badge-filter-checkbox:checked')).map(cb => cb.value);
+      inStockOnly = document.getElementById("stockOnlyCheckbox").checked;
+
+      let filtered = COLLECTION_PRODUCTS.filter(p => {
+        // Category filter
+        if (currentCategory !== "ALL" && p.category !== currentCategory) return false;
+        
+        // Price filter
+        if (p.price > selectedMaxPrice) return false;
+
+        // Stock filter
+        if (inStockOnly && !p.inStock) return false;
+
+        // Size filter
+        if (selectedSizes.length > 0 && !p.sizes.some(s => selectedSizes.includes(s))) return false;
+
+        // Color filter
+        if (selectedColors.length > 0 && !selectedColors.includes(p.color)) return false;
+
+        // Badge filter
+        if (selectedBadges.length > 0 && (!p.badge || !selectedBadges.includes(p.badge))) return false;
+
+        // Search text
+        if (searchVal && !p.title.toLowerCase().includes(searchVal) && !p.catLabel.toLowerCase().includes(searchVal)) return false;
+
+        return true;
+      });
+
+      // Sorting
+      if (sortVal === "price-low") filtered.sort((a,b) => a.price - b.price);
+      else if (sortVal === "price-high") filtered.sort((a,b) => b.price - a.price);
+      else if (sortVal === "newest") filtered.sort((a,b) => b.id.localeCompare(a.id));
+      else if (sortVal === "bestseller") filtered.sort((a,b) => (b.badge === 'BESTSELLER' ? 1 : 0) - (a.badge === 'BESTSELLER' ? 1 : 0));
+
+      renderGrid(filtered);
+      renderActiveChips();
+    }
+
+    // Render Active Filter Chips
+    function renderActiveChips() {
+      activeFilterChips.innerHTML = "";
+      let count = 0;
+
+      if (currentCategory !== "ALL") {
+        count++;
+        activeFilterChips.innerHTML += `<span class="active-chip">Cat: ${currentCategory} <i class="bi bi-x-lg" onclick="resetCategory()"></i></span>`;
+      }
+      if (selectedMaxPrice < 15000) {
+        count++;
+        activeFilterChips.innerHTML += `<span class="active-chip">Under ₹${selectedMaxPrice.toLocaleString('en-IN')} <i class="bi bi-x-lg" onclick="resetPrice()"></i></span>`;
+      }
+      selectedSizes.forEach(s => {
+        count++;
+        activeFilterChips.innerHTML += `<span class="active-chip">Size: ${s} <i class="bi bi-x-lg" onclick="removeSizeFilter('${s}')"></i></span>`;
+      });
+      selectedColors.forEach(c => {
+        count++;
+        activeFilterChips.innerHTML += `<span class="active-chip">Color: ${c} <i class="bi bi-x-lg" onclick="removeColorFilter('${c}')"></i></span>`;
+      });
+      selectedBadges.forEach(b => {
+        count++;
+        activeFilterChips.innerHTML += `<span class="active-chip">${b} <i class="bi bi-x-lg" onclick="removeBadgeFilter('${b}')"></i></span>`;
+      });
+      if (inStockOnly) {
+        count++;
+        activeFilterChips.innerHTML += `<span class="active-chip">In Stock <i class="bi bi-x-lg" onclick="resetStock()"></i></span>`;
+      }
+
+      document.getElementById("mobileFilterBadgeCount").textContent = count;
+    }
+
+    // Filter Trigger Helpers
+    function updatePriceSlider(val) {
+      selectedMaxPrice = parseInt(val);
+      document.getElementById("priceRangeValue").textContent = `₹${selectedMaxPrice.toLocaleString('en-IN')}`;
+      document.getElementById("mobilePriceRangeValue").textContent = `₹${selectedMaxPrice.toLocaleString('en-IN')}`;
+      applyAllFilters();
+    }
+
+    function updateMobilePriceSlider(val) {
+      document.getElementById("priceRangeInput").value = val;
+      updatePriceSlider(val);
+    }
+
+    function toggleSizeFilter(size, btn) {
+      if (selectedSizes.includes(size)) {
+        selectedSizes = selectedSizes.filter(s => s !== size);
+        btn.classList.remove("active");
+      } else {
+        selectedSizes.push(size);
+        btn.classList.add("active");
+      }
+      applyAllFilters();
+    }
+
+    function removeSizeFilter(size) {
+      selectedSizes = selectedSizes.filter(s => s !== size);
+      document.querySelectorAll(`.size-pill[data-size="${size}"]`).forEach(b => b.classList.remove("active"));
+      applyAllFilters();
+    }
+
+    function toggleColorFilter(color, el) {
+      if (selectedColors.includes(color)) {
+        selectedColors = selectedColors.filter(c => c !== color);
+        el.classList.remove("active");
+      } else {
+        selectedColors.push(color);
+        el.classList.add("active");
+      }
+      applyAllFilters();
+    }
+
+    function removeColorFilter(color) {
+      selectedColors = selectedColors.filter(c => c !== color);
+      document.querySelectorAll(`.color-swatch[data-color="${color}"]`).forEach(el => el.classList.remove("active"));
+      applyAllFilters();
+    }
+
+    function removeBadgeFilter(badge) {
+      document.querySelectorAll(`.badge-filter-checkbox[value="${badge}"]`).forEach(cb => cb.checked = false);
+      applyAllFilters();
+    }
+
+    function resetCategory() {
+      currentCategory = "ALL";
+      document.querySelectorAll("#categoryFilterGroup .cat-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('#categoryFilterGroup .cat-btn[data-cat="ALL"]').classList.add("active");
+      applyAllFilters();
+    }
+
+    function resetPrice() {
+      selectedMaxPrice = 15000;
+      document.getElementById("priceRangeInput").value = 15000;
+      document.getElementById("priceRangeValue").textContent = "₹15,000";
+      applyAllFilters();
+    }
+
+    function resetStock() {
+      document.getElementById("stockOnlyCheckbox").checked = false;
+      document.getElementById("mobileStockOnlyCheckbox").checked = false;
+      applyAllFilters();
+    }
+
+    function syncMobileStock(cb) {
+      document.getElementById("stockOnlyCheckbox").checked = cb.checked;
+      applyAllFilters();
+    }
+
+    function handleSearchInput() {
+      applyAllFilters();
+    }
+
+    function clearAllFilters() {
+      currentCategory = "ALL";
+      selectedMaxPrice = 15000;
+      selectedSizes = [];
+      selectedColors = [];
+      selectedBadges = [];
+      inStockOnly = false;
+
+      document.querySelectorAll("#categoryFilterGroup .cat-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('#categoryFilterGroup .cat-btn[data-cat="ALL"]').classList.add("active");
+      
+      document.getElementById("priceRangeInput").value = 15000;
+      document.getElementById("priceRangeValue").textContent = "₹15,000";
+      document.getElementById("collectionSearch").value = "";
+      document.getElementById("stockOnlyCheckbox").checked = false;
+      document.getElementById("mobileStockOnlyCheckbox").checked = false;
+
+      document.querySelectorAll(".badge-filter-checkbox").forEach(cb => cb.checked = false);
+      document.querySelectorAll(".size-pill").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll(".color-swatch").forEach(s => s.classList.remove("active"));
+
+      applyAllFilters();
+    }
+
+    // Grid Column Switcher
+    function setGridColumns(cols) {
+      gridCols = cols;
+      document.getElementById("gridBtn4").classList.toggle("active", cols === 4);
+      document.getElementById("gridBtn3").classList.toggle("active", cols === 3);
+      applyAllFilters();
+    }
+
+    // Category Tabs Event Listeners
     document.querySelectorAll("#categoryFilterGroup .cat-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         document.querySelectorAll("#categoryFilterGroup .cat-btn").forEach(b => b.classList.remove("active"));
-        e.target.classList.add("active");
-        currentCategory = e.target.getAttribute("data-cat");
-        filterCollection();
+        btn.classList.add("active");
+        currentCategory = btn.getAttribute("data-cat");
+        applyAllFilters();
       });
     });
 
-    function filterCollection() {
-      const query = document.getElementById("collectionSearch").value.toLowerCase();
-      let filtered = COLLECTION_PRODUCTS;
-
-      if (currentCategory !== "ALL") {
-        filtered = filtered.filter(p => p.category === currentCategory);
-      }
-
-      if (query) {
-        filtered = filtered.filter(p => p.title.toLowerCase().includes(query) || p.catLabel.toLowerCase().includes(query));
-      }
-
-      renderGrid(filtered);
-    }
-
-    function sortCollection() {
-      const val = document.getElementById("sortSelect").value;
-      let sorted = [...COLLECTION_PRODUCTS];
-
-      if (val === "price-low") sorted.sort((a,b) => a.price - b.price);
-      else if (val === "price-high") sorted.sort((a,b) => b.price - a.price);
-      else if (val === "newest") sorted.sort((a,b) => b.id.localeCompare(a.id));
-
-      renderGrid(sorted);
-    }
-
-    function setGridColumns(cols) {
-      document.querySelectorAll(".grid-toggle-btn").forEach(b => b.classList.remove("active"));
-      event.currentTarget.classList.add("active");
-      const productCols = document.querySelectorAll(".product-col");
-      productCols.forEach(col => {
-        if (cols === 3) {
-          col.className = "col-6 col-md-4 product-col";
-        } else {
-          col.className = "col-6 col-md-4 col-lg-3 product-col";
-        }
-      });
-    }
-
+    // Quick View Modal Opener
     function openQuickView(id) {
       const p = COLLECTION_PRODUCTS.find(item => item.id === id);
       if (!p) return;
@@ -472,7 +708,8 @@
 
       document.getElementById("qvAddToCartBtn").onclick = () => {
         addToCart(p.title);
-        const modal = bootstrap.Modal.getInstance(document.getElementById("quickViewModal"));
+        const modalEl = document.getElementById("quickViewModal");
+        const modal = bootstrap.Modal.getInstance(modalEl);
         if (modal) modal.hide();
       };
 
@@ -480,14 +717,18 @@
       qvModal.show();
     }
 
+    // Shopping Bag Handler
     function addToCart(title) {
+      let cartCount = parseInt(localStorage.getItem("valence_cart_count") || "0");
       cartCount++;
       localStorage.setItem("valence_cart_count", cartCount);
-      headerCartCount.textContent = cartCount;
+      window.dispatchEvent(new Event('storage'));
       showToast(`"${title}" added to your Shopping Bag.`);
     }
 
+    // Wishlist Handler
     function toggleWishlist(id, btn) {
+      let wishlistCount = parseInt(localStorage.getItem("valence_wishlist_count") || "0");
       const icon = btn.querySelector("i");
       if (btn.classList.contains("active")) {
         btn.classList.remove("active");
@@ -499,7 +740,7 @@
         wishlistCount++;
       }
       localStorage.setItem("valence_wishlist_count", wishlistCount);
-      headerWishlistCount.textContent = wishlistCount;
+      window.dispatchEvent(new Event('storage'));
     }
 
     function showToast(msg) {
@@ -509,10 +750,11 @@
       toast.show();
     }
 
-    // Initial load
-    initHeaderCounts();
-    renderGrid(COLLECTION_PRODUCTS);
+    // Initial Load
+    applyAllFilters();
   </script>
+
+  <!-- Shared Dynamic Components Script (Navbar & Footer Injection) -->
   <script src="js/components.js"></script>
 </body>
 </html>

@@ -69,7 +69,7 @@
               <a class="nav-link ${isActive('contact.html')}" href="contact.html">CONTACT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-editorial" href="index.html#story-section">ABOUT</a>
+              <a class="nav-link ${isActive('about.html')}" href="about.html">ABOUT</a>
             </li>
           </ul>
         </div>
@@ -107,7 +107,7 @@
           <a href="index.html#asymmetric-section" class="nav-link-mobile" data-bs-dismiss="offcanvas">EDITORIAL GALLERY</a>
           <a href="index.html#campaign-section" class="nav-link-mobile" data-bs-dismiss="offcanvas">CAMPAIGNS</a>
           <a href="contact.html" class="nav-link-mobile" data-bs-dismiss="offcanvas">CONTACT</a>
-          <a href="index.html#story-section" class="nav-link-mobile" data-bs-dismiss="offcanvas">THE BRAND STORY</a>
+          <a href="about.html" class="nav-link-mobile" data-bs-dismiss="offcanvas">ABOUT & LOOKBOOK</a>
         </div>
         <div class="pt-4 border-top">
           <div class="d-flex justify-content-between mb-3 text-muted small">

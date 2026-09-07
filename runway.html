@@ -31,15 +31,55 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-dark); overflow: hidden; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-dark);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Floating WhatsApp Button Fix */
+    .whatsapp-float-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 44px;
+      height: 44px;
+      background-color: #25d366;
+      color: #ffffff !important;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      z-index: 9999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+    }
+    .whatsapp-float-btn:hover {
+      transform: scale(1.1);
+      color: #ffffff !important;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+
+    #site-navbar {
+      flex-shrink: 0;
+    }
 
     /* Top Announcement Bar */
-    .top-announcement-bar { background: #111215; color: #b5b9c0; font-size: 10px; letter-spacing: 1px; padding: 5px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); height: 28px; }
+    .top-announcement-bar { background: #111215; color: #b5b9c0; font-size: 10px; letter-spacing: 1px; padding: 5px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); flex-shrink: 0; }
     .top-announcement-bar a { color: #e5c158; text-decoration: none; font-weight: 600; }
     .top-announcement-bar a:hover { text-decoration: underline; }
 
     /* Editorial Navigation Header */
-    .navbar-editorial { background: #ffffff; border-bottom: 1px solid var(--border-subtle); padding: 8px 28px; height: 56px; z-index: 1000; box-shadow: var(--shadow-sm); display: flex; align-items: center; }
+    .navbar-editorial { background: #ffffff; border-bottom: 1px solid var(--border-subtle); padding: 8px 28px; z-index: 1000; box-shadow: var(--shadow-sm); display: flex; align-items: center; flex-shrink: 0; }
     .navbar-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; letter-spacing: 4px; color: var(--text-dark) !important; text-transform: uppercase; }
     .nav-link-editorial { color: #4a4e57 !important; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 6px 12px !important; transition: color 0.2s ease; }
     .nav-link-editorial:hover, .nav-link-editorial.active { color: var(--gold-primary) !important; }
@@ -49,27 +89,27 @@
     .cart-badge { position: absolute; top: 0px; right: 1px; background: var(--gold-primary); color: #fff; font-size: 8px; font-weight: 700; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
     /* Main 3-Column Studio Layout */
-    .runway-viewport { display: grid; grid-template-columns: 330px minmax(0, 1fr) 360px; height: calc(100vh - 84px); max-height: calc(100vh - 84px); background: #eaebee; position: relative; overflow: hidden; }
+    .runway-viewport { display: grid; grid-template-columns: 330px minmax(0, 1fr) 360px; flex: 1; min-height: 0; background: #eaebee; position: relative; overflow: hidden; }
 
     /* 1. LEFT: GTA-Style Fixed Card + Multi-Angle Character Viewer */
     .left-360-panel { background: #e3e5e9; border-right: 1px solid var(--border-subtle); position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 14px; user-select: none; height: 100%; overflow: hidden; }
     
-    .panel-header-badge { display: flex; align-items: center; gap: 6px; background: #ffffff; border: 1px solid rgba(0,0,0,0.1); border-radius: 30px; padding: 4px 14px; box-shadow: var(--shadow-sm); z-index: 10; }
+    .panel-header-badge { display: flex; align-items: center; gap: 6px; background: #ffffff; border: 1px solid rgba(0,0,0,0.1); border-radius: 30px; padding: 4px 14px; box-shadow: var(--shadow-sm); z-index: 10; flex-shrink: 0; }
     .panel-header-badge i { color: var(--gold-primary); font-size: 12px; }
     .panel-header-badge span { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--text-dark); text-transform: uppercase; }
 
     /* Fixed Viewport Frame — fills remaining height */
-    .character-viewport-frame { flex: 1; width: 100%; min-height: 0; position: relative; overflow: hidden; background: radial-gradient(circle at 50% 30%, #ffffff 0%, #e6e8ec 100%); border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
+    .character-viewport-frame { flex: 1; width: 100%; min-height: 0; position: relative; overflow: hidden; background: radial-gradient(circle at 50% 30%, #ffffff 0%, #e6e8ec 100%); border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; }
 
     /* Ground Shadow */
     .character-pedestal-shadow { position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); width: 120px; height: 18px; background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none; z-index: 2; }
 
-    /* Character Image — fills frame, anchored top so full figure is visible */
-    .gta-character-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center top; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15)); transition: opacity 0.2s ease; }
+    /* Character Image — fills frame, centered */
+    .gta-character-img { width: 100%; height: 100%; object-fit: contain; object-position: center center; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15)); transition: opacity 0.2s ease; z-index: 3; }
     .gta-character-img.fading { opacity: 0; }
 
     /* Front / Back Toggle Controls */
-    .view-toggle-wrap { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; z-index: 5; background: #ffffff; padding: 10px 14px; border-radius: 10px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); }
+    .view-toggle-wrap { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; z-index: 5; background: #ffffff; padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.06); flex-shrink: 0; }
     .btn-view-toggle { flex: 1; background: #f0f2f5; border: 1px solid var(--border-subtle); color: var(--text-dark); padding: 7px 10px; border-radius: 20px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
     .btn-view-toggle:hover { background: #e2e4e8; }
     .btn-view-toggle.active { background: var(--gold-primary); color: #fff; border-color: var(--gold-primary); }
@@ -82,11 +122,11 @@
     .stage-header h1 { margin: 0 0 4px; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; letter-spacing: 4px; color: var(--text-dark); text-transform: uppercase; }
     .stage-header p { margin: 0; font-size: 10px; line-height: 1.5; color: var(--text-muted); }
 
-    .center-model-container { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 50px; z-index: 2; }
-    .center-model-img { max-height: 58vh; height: auto; width: auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 20px 35px rgba(0,0,0,0.15)); transition: opacity 0.35s ease; }
+    .center-model-container { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding-top: 60px; padding-bottom: 70px; z-index: 2; }
+    .center-model-img { max-height: 100%; max-width: 100%; object-fit: contain; object-position: center center; filter: drop-shadow(0 20px 35px rgba(0,0,0,0.15)); transition: opacity 0.35s ease; }
 
     /* Floating Glassmorphic Stage Controls Bar */
-    .controls-bar { position: absolute; left: 50%; transform: translateX(-50%); bottom: 14px; z-index: 10; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 25px; padding: 6px 18px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-md); }
+    .controls-bar { position: absolute; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 10; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 25px; padding: 6px 18px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-md); }
     .nav-btn { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); background: #ffffff; color: var(--text-dark); display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; transition: all 0.2s; }
     .nav-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
@@ -114,7 +154,7 @@
     .category-tab { font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 12px; border: 1px solid var(--border-subtle); background: #f4f5f7; color: var(--text-muted); white-space: nowrap; cursor: pointer; transition: all 0.2s; }
     .category-tab:hover, .category-tab.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
-    .accessories-scroll-list { flex: 1; overflow-y: auto; padding: 10px 14px; }
+    .accessories-scroll-list { flex: 1; min-height: 0; overflow-y: auto; padding: 10px 14px; }
     .accessories-scroll-list::-webkit-scrollbar { width: 4px; }
     .accessories-scroll-list::-webkit-scrollbar-thumb { background: #d0d3da; border-radius: 2px; }
 
@@ -149,12 +189,12 @@
     @media (max-width: 1050px) {
       .runway-viewport { grid-template-columns: 240px 1fr 260px; }
       .left-360-panel { padding: 10px; }
-      .right-accessories-panel { padding: 10px; }
+      .right-accessories-panel { padding: 0; }
     }
 
     /* ── Tablet stacked: 769px – 900px ──────────────────────────────── */
     @media (max-width: 900px) {
-      body { overflow-x: hidden; overflow-y: auto; }
+      body { overflow-x: hidden; overflow-y: auto; height: auto; display: block; }
       .runway-viewport {
         display: flex;
         flex-direction: column;
@@ -175,12 +215,12 @@
       .btn-view-toggle { padding: 6px; font-size: 8px; }
       .center-stage { height: 460px; }
       .right-accessories-panel { height: auto; max-height: none; border-left: none; border-top: 1px solid var(--border-subtle); }
-      .items-scroll-list { max-height: none; }
+      .accessories-scroll-list { max-height: none; }
     }
 
     /* ── Mobile: ≤ 767px ─────────────────────────────────────────────── */
     @media (max-width: 767px) {
-      body { overflow-x: hidden; overflow-y: auto; }
+      body { overflow-x: hidden; overflow-y: auto; height: auto; display: block; }
 
       .runway-viewport {
         display: flex;
@@ -229,24 +269,14 @@
         padding: 12px;
         overflow: visible;
       }
-      .items-scroll-list {
+      .accessories-scroll-list {
         display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
+        flex-direction: column;
+        overflow-y: visible;
         gap: 10px;
         max-height: none;
-        scrollbar-width: thin;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 6px;
       }
-      .items-scroll-list::-webkit-scrollbar { height: 4px; }
-      .items-scroll-list::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
-      .outfit-item-card {
-        flex: 0 0 140px;
-        min-width: 140px;
-      }
-      .footer-summary { padding: 10px; }
+      .footer-summary { padding: 10px 0; }
       .btn-add-all { min-height: 44px; font-size: 10px; }
     }
 
@@ -368,10 +398,10 @@
   <script>
     // Master Catalog of ALL Store Products
     const ALL_STORE_PRODUCTS = [
-      { id: "p1", type: "TOP", cat: "TOP / SHIRT", name: "Oversized Cotton Trench Coat", price: 5950, img: "images/product-1.jpg" },
-      { id: "p2", type: "BOTTOM", cat: "PANTS", name: "Wide Leg Tailored Trousers", price: 4895, img: "images/product-3.jpg" },
-      { id: "p3", type: "SHOES", cat: "SHOES", name: "Pointed Toe Runway Pumps", price: 4500, img: "images/product-2.jpg" },
-      { id: "p4", type: "SHOES", cat: "HANDBAG", name: "Structured Leather Tote", price: 3999, img: "images/product-4.jpg" },
+      { id: "p1", type: "TOP", cat: "TOP / SHIRT", name: "Oversized Graphic Freedom Tee", price: 5950, img: "images/product-1.jpg" },
+      { id: "p2", type: "BOTTOM", cat: "PANTS", name: "Wide Leg Tailored Denim Trousers", price: 4895, img: "images/product-3.jpg" },
+      { id: "p3", type: "SHOES", cat: "SHOES", name: "Minimalist Leather Court Sneakers", price: 4500, img: "images/product-2.jpg" },
+      { id: "p4", type: "ACC", cat: "HANDBAG", name: "Structured Canvas Tote Bag", price: 3999, img: "images/product-4.jpg" },
       { id: "p5", type: "ACC", cat: "EARRINGS", name: "Hammered Gold Hoop Earrings", price: 1299, img: "images/product-5.jpg" },
       { id: "p6", type: "TOP", cat: "JACKET", name: "Sculpted Double-Breasted Blazer", price: 8490, img: "images/product-2.jpg" },
       { id: "p7", type: "BOTTOM", cat: "SKIRT", name: "Pleated Asymmetric Midi Skirt", price: 6200, img: "images/product-5.jpg" },
